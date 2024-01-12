@@ -9,13 +9,17 @@ import SwiftUI
 
 struct MessageEditor: View {
     @State var text: String = ""
+    var onSend:(String)->Void
     
     var body: some View {
         VStack(spacing: 0){
             content
             HStack{
                 Spacer()
-                Button("전송"){}.buttonStyle(CommonButton()).padding(.horizontal,8).padding(.vertical,8)
+                Button("전송"){
+                    onSend(text)
+                    text = ""
+                }.buttonStyle(CommonButton()).padding(.horizontal,8).padding(.vertical,8)
             }
         }
         .background(.white)

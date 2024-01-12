@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1D8D5FBE0BCFC2D861ECE9F8 /* Pods_ollamaGUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99CC9802010F649185C7EF44 /* Pods_ollamaGUI.framework */; };
+		AC725C2D2B511D3200B3E266 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC725C2C2B511D3200B3E266 /* Interactor.swift */; };
+		AC725C2F2B5125BB00B3E266 /* ChatRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC725C2E2B5125BB00B3E266 /* ChatRequestModel.swift */; };
+		AC725C312B51304000B3E266 /* DictionaryEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC725C302B51304000B3E266 /* DictionaryEncoder.swift */; };
+		AC725C332B517A0D00B3E266 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC725C322B517A0D00B3E266 /* MessageModel.swift */; };
 		AC842E392B4D16F700F9EC3F /* ollamaGUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E382B4D16F700F9EC3F /* ollamaGUIApp.swift */; };
 		AC842E3B2B4D16F700F9EC3F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E3A2B4D16F700F9EC3F /* ContentView.swift */; };
 		AC842E3D2B4D16F800F9EC3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC842E3C2B4D16F800F9EC3F /* Assets.xcassets */; };
@@ -34,6 +38,10 @@
 /* Begin PBXFileReference section */
 		53CA5445BF6B3981C24E69FB /* Pods-ollamaGUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ollamaGUI.debug.xcconfig"; path = "Target Support Files/Pods-ollamaGUI/Pods-ollamaGUI.debug.xcconfig"; sourceTree = "<group>"; };
 		99CC9802010F649185C7EF44 /* Pods_ollamaGUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ollamaGUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC725C2C2B511D3200B3E266 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
+		AC725C2E2B5125BB00B3E266 /* ChatRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestModel.swift; sourceTree = "<group>"; };
+		AC725C302B51304000B3E266 /* DictionaryEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryEncoder.swift; sourceTree = "<group>"; };
+		AC725C322B517A0D00B3E266 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		AC842E352B4D16F700F9EC3F /* ollamaGUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ollamaGUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC842E382B4D16F700F9EC3F /* ollamaGUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ollamaGUIApp.swift; sourceTree = "<group>"; };
 		AC842E3A2B4D16F700F9EC3F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -158,6 +166,7 @@
 				AC842E4F2B4D1BE000F9EC3F /* ViewHelper.swift */,
 				AC842E732B4FDD6A00F9EC3F /* NetworkHelper.swift */,
 				AC842E772B4FE2EA00F9EC3F /* DescribableEnum.swift */,
+				AC725C302B51304000B3E266 /* DictionaryEncoder.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -184,6 +193,8 @@
 			isa = PBXGroup;
 			children = (
 				AC842E582B4E6F4100F9EC3F /* ChatModel.swift */,
+				AC725C2E2B5125BB00B3E266 /* ChatRequestModel.swift */,
+				AC725C322B517A0D00B3E266 /* MessageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -211,6 +222,7 @@
 			children = (
 				AC842E6D2B4FCA4800F9EC3F /* DIContainer.swift */,
 				AC842E6F2B4FDA1D00F9EC3F /* Router.swift */,
+				AC725C2C2B511D3200B3E266 /* Interactor.swift */,
 			);
 			path = Injected;
 			sourceTree = "<group>";
@@ -347,7 +359,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC842E6E2B4FCA4800F9EC3F /* DIContainer.swift in Sources */,
+				AC725C2F2B5125BB00B3E266 /* ChatRequestModel.swift in Sources */,
 				AC842E502B4D1BE000F9EC3F /* ViewHelper.swift in Sources */,
+				AC725C2D2B511D3200B3E266 /* Interactor.swift in Sources */,
 				AC842E742B4FDD6A00F9EC3F /* NetworkHelper.swift in Sources */,
 				AC842E632B4E784300F9EC3F /* ChatBubble.swift in Sources */,
 				AC842E562B4E6EE300F9EC3F /* ChatView.swift in Sources */,
@@ -356,11 +370,13 @@
 				AC842E652B4E81D700F9EC3F /* BubbleShape.swift in Sources */,
 				AC842E702B4FDA1D00F9EC3F /* Router.swift in Sources */,
 				AC842E762B4FE20700F9EC3F /* Loadable.swift in Sources */,
+				AC725C312B51304000B3E266 /* DictionaryEncoder.swift in Sources */,
 				AC842E592B4E6F4100F9EC3F /* ChatModel.swift in Sources */,
 				AC842E782B4FE2EA00F9EC3F /* DescribableEnum.swift in Sources */,
 				AC842E532B4D3A5000F9EC3F /* SidebarButton.swift in Sources */,
 				AC842E3B2B4D16F700F9EC3F /* ContentView.swift in Sources */,
 				AC842E5E2B4E6F8000F9EC3F /* RoleEnum.swift in Sources */,
+				AC725C332B517A0D00B3E266 /* MessageModel.swift in Sources */,
 				AC842E4D2B4D1AFB00F9EC3F /* SideBar.swift in Sources */,
 				AC842E692B4FC4A700F9EC3F /* CommonButton.swift in Sources */,
 				AC842E392B4D16F700F9EC3F /* ollamaGUIApp.swift in Sources */,
@@ -405,6 +421,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -468,6 +485,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -499,6 +517,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"ollamaGUI/Preview Content\"";
 				DEVELOPMENT_TEAM = D5W99SHK6S;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -527,6 +546,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"ollamaGUI/Preview Content\"";
 				DEVELOPMENT_TEAM = D5W99SHK6S;
 				ENABLE_HARDENED_RUNTIME = YES;

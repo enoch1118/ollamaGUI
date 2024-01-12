@@ -7,14 +7,13 @@
 
 import Foundation
 
-struct ChatModel: Decodable, Encodable, Hashable{
-    let id:UUID
-    
-    let role: RoleEnum
-    let content: String
+struct ChatModel: Codable, Hashable,Equatable {
+    let id: UUID
+
+    let message: MessageModel?
     let stream: Bool?
     let done: Bool?
-    
+
     let images: [String]?
     let createdAt: Date?
     let totalDuration: Int?
@@ -26,8 +25,7 @@ struct ChatModel: Decodable, Encodable, Hashable{
     let model: String?
 
     enum CodingKeys: String, CodingKey {
-        case role
-        case content
+        case message
         case images
         case stream
         case createdAt = "created_at"
@@ -44,8 +42,10 @@ struct ChatModel: Decodable, Encodable, Hashable{
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = UUID()
-        role = try container.decode(RoleEnum.self, forKey: .role)
-        content = try container.decode(String.self, forKey: .content)
+        message = try container.decodeIfPresent(
+            MessageModel.self,
+            forKey: .message
+        )
         images = try container.decodeIfPresent([String].self, forKey: .images)
         stream = try container.decodeIfPresent(Bool.self, forKey: .stream)
         createdAt = try container.decodeIfPresent(Date.self, forKey: .createdAt)
@@ -76,10 +76,9 @@ struct ChatModel: Decodable, Encodable, Hashable{
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(role, forKey: .role)
-        try container.encode(content, forKey: .content)
-        try container.encode(images, forKey: .images)
-        try container.encode(stream, forKey: .stream)
+        try container.encodeIfPresent(message, forKey: .message)
+        try container.encodeIfPresent(images, forKey: .images)
+        try container.encodeIfPresent(stream, forKey: .stream)
         try container.encodeIfPresent(createdAt, forKey: .createdAt)
         try container.encodeIfPresent(done, forKey: .done)
         try container.encodeIfPresent(totalDuration, forKey: .totalDuration)
@@ -96,20 +95,21 @@ struct ChatModel: Decodable, Encodable, Hashable{
 }
 
 
-///  helper
-extension ChatModel{
-    var isMe:Bool {
-        role == .user
+extension ChatModel {
+    static func ==(lhs:Self,rhs:Self) ->Bool{
+        return lhs.id == rhs.id
     }
-    
 }
 
-#if DEBUG
+///  helper
 extension ChatModel {
-    init(type:RoleEnum){
-        role = type
-        content = "this is test value and text from \(type)"
-        stream = false
+    var isMe: Bool {
+        message?.role == .user
+    }
+
+    init(text: String) {
+        message = MessageModel(text: text)
+        id = UUID()
         done = nil
         images = nil
         createdAt = nil
@@ -120,21 +120,38 @@ extension ChatModel {
         evalCount = nil
         evalDuration = nil
         model = nil
-        id = UUID()
-    }
-    
-    
-    
-    static var testValue:[ChatModel] {
-        [
-            ChatModel(type: RoleEnum.assistant),
-            ChatModel(type: RoleEnum.user),
-            ChatModel(type: RoleEnum.assistant),
-            ChatModel(type: RoleEnum.user),
-            ChatModel(type: RoleEnum.user),
-            ChatModel(type: RoleEnum.assistant),
-        ]
+        stream = nil
     }
 }
+
+#if DEBUG
+    extension ChatModel {
+        init(type: RoleEnum) {
+            message = MessageModel(text: "this is test", role: type)
+            stream = false
+            done = nil
+            images = nil
+            createdAt = nil
+            totalDuration = nil
+            loadDuration = nil
+            promptEvalCount = nil
+            promptEvalDuration = nil
+            evalCount = nil
+            evalDuration = nil
+            model = nil
+            id = UUID()
+        }
+
+        static var testValue: [ChatModel] {
+            [
+                ChatModel(type: RoleEnum.assistant),
+                ChatModel(type: RoleEnum.user),
+                ChatModel(type: RoleEnum.assistant),
+                ChatModel(type: RoleEnum.user),
+                ChatModel(type: RoleEnum.user),
+                ChatModel(type: RoleEnum.assistant),
+            ]
+        }
+    }
 
 #endif

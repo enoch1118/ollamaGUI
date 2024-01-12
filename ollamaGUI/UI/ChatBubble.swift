@@ -15,7 +15,7 @@ struct ChatBubble: View {
             if chat.isMe {
                 Spacer()
             }
-            content.clipShape(BubbleShape(role: chat.role))
+            content.clipShape(BubbleShape(role: chat.message?.role ?? .user))
             if !chat.isMe {
                 Spacer()
             }
@@ -25,11 +25,11 @@ struct ChatBubble: View {
 
     @ViewBuilder
     var content: some View {
-        Text(chat.content)
+        Text(chat.message?.content ?? "")
             .padding(.horizontal, 30)
             .padding(.vertical, 16)
-            .background((chat.role == .user) ? .blue : .white)
-            .foregroundColor((chat.role == .user) ? .white : .black)
+            .background((chat.isMe) ? .blue : .white)
+            .foregroundColor((chat.isMe) ? .white : .black)
     }
 }
 
