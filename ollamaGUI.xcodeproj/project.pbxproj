@@ -7,19 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D8D5FBE0BCFC2D861ECE9F8 /* Pods_ollamaGUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99CC9802010F649185C7EF44 /* Pods_ollamaGUI.framework */; };
 		AC842E392B4D16F700F9EC3F /* ollamaGUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E382B4D16F700F9EC3F /* ollamaGUIApp.swift */; };
 		AC842E3B2B4D16F700F9EC3F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E3A2B4D16F700F9EC3F /* ContentView.swift */; };
 		AC842E3D2B4D16F800F9EC3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC842E3C2B4D16F800F9EC3F /* Assets.xcassets */; };
 		AC842E402B4D16F800F9EC3F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC842E3F2B4D16F800F9EC3F /* Preview Assets.xcassets */; };
+		AC842E4A2B4D191800F9EC3F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E492B4D191800F9EC3F /* HomeView.swift */; };
+		AC842E4D2B4D1AFB00F9EC3F /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E4C2B4D1AFB00F9EC3F /* SideBar.swift */; };
+		AC842E502B4D1BE000F9EC3F /* ViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E4F2B4D1BE000F9EC3F /* ViewHelper.swift */; };
+		AC842E532B4D3A5000F9EC3F /* SidebarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E522B4D3A5000F9EC3F /* SidebarButton.swift */; };
+		AC842E562B4E6EE300F9EC3F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E552B4E6EE300F9EC3F /* ChatView.swift */; };
+		AC842E592B4E6F4100F9EC3F /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E582B4E6F4100F9EC3F /* ChatModel.swift */; };
+		AC842E5E2B4E6F8000F9EC3F /* RoleEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E5D2B4E6F8000F9EC3F /* RoleEnum.swift */; };
+		AC842E632B4E784300F9EC3F /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E622B4E784300F9EC3F /* ChatBubble.swift */; };
+		AC842E652B4E81D700F9EC3F /* BubbleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E642B4E81D700F9EC3F /* BubbleShape.swift */; };
+		AC842E692B4FC4A700F9EC3F /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E682B4FC4A700F9EC3F /* CommonButton.swift */; };
+		AC842E6B2B4FC7F000F9EC3F /* MessageEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E6A2B4FC7F000F9EC3F /* MessageEditor.swift */; };
+		AC842E6E2B4FCA4800F9EC3F /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E6D2B4FCA4800F9EC3F /* DIContainer.swift */; };
+		AC842E702B4FDA1D00F9EC3F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E6F2B4FDA1D00F9EC3F /* Router.swift */; };
+		AC842E742B4FDD6A00F9EC3F /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E732B4FDD6A00F9EC3F /* NetworkHelper.swift */; };
+		AC842E762B4FE20700F9EC3F /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E752B4FE20700F9EC3F /* Loadable.swift */; };
+		AC842E782B4FE2EA00F9EC3F /* DescribableEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E772B4FE2EA00F9EC3F /* DescribableEnum.swift */; };
+		AC842E7B2B4FE3C200F9EC3F /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E7A2B4FE3C200F9EC3F /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		53CA5445BF6B3981C24E69FB /* Pods-ollamaGUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ollamaGUI.debug.xcconfig"; path = "Target Support Files/Pods-ollamaGUI/Pods-ollamaGUI.debug.xcconfig"; sourceTree = "<group>"; };
+		99CC9802010F649185C7EF44 /* Pods_ollamaGUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ollamaGUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC842E352B4D16F700F9EC3F /* ollamaGUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ollamaGUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC842E382B4D16F700F9EC3F /* ollamaGUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ollamaGUIApp.swift; sourceTree = "<group>"; };
 		AC842E3A2B4D16F700F9EC3F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AC842E3C2B4D16F800F9EC3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC842E3F2B4D16F800F9EC3F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AC842E412B4D16F800F9EC3F /* ollamaGUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ollamaGUI.entitlements; sourceTree = "<group>"; };
+		AC842E492B4D191800F9EC3F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		AC842E4C2B4D1AFB00F9EC3F /* SideBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBar.swift; sourceTree = "<group>"; };
+		AC842E4F2B4D1BE000F9EC3F /* ViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHelper.swift; sourceTree = "<group>"; };
+		AC842E522B4D3A5000F9EC3F /* SidebarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarButton.swift; sourceTree = "<group>"; };
+		AC842E552B4E6EE300F9EC3F /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		AC842E582B4E6F4100F9EC3F /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		AC842E5D2B4E6F8000F9EC3F /* RoleEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleEnum.swift; sourceTree = "<group>"; };
+		AC842E622B4E784300F9EC3F /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
+		AC842E642B4E81D700F9EC3F /* BubbleShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleShape.swift; sourceTree = "<group>"; };
+		AC842E682B4FC4A700F9EC3F /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
+		AC842E6A2B4FC7F000F9EC3F /* MessageEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageEditor.swift; sourceTree = "<group>"; };
+		AC842E6D2B4FCA4800F9EC3F /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		AC842E6F2B4FDA1D00F9EC3F /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Router.swift; path = ../../../../Router.swift; sourceTree = "<group>"; };
+		AC842E732B4FDD6A00F9EC3F /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		AC842E752B4FE20700F9EC3F /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
+		AC842E772B4FE2EA00F9EC3F /* DescribableEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribableEnum.swift; sourceTree = "<group>"; };
+		AC842E7A2B4FE3C200F9EC3F /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		BF65F4059A904DEBDE105736 /* Pods-ollamaGUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ollamaGUI.release.xcconfig"; path = "Target Support Files/Pods-ollamaGUI/Pods-ollamaGUI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,17 +65,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D8D5FBE0BCFC2D861ECE9F8 /* Pods_ollamaGUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		875CC7948AB0503FA84A4A6F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				53CA5445BF6B3981C24E69FB /* Pods-ollamaGUI.debug.xcconfig */,
+				BF65F4059A904DEBDE105736 /* Pods-ollamaGUI.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		AC842E2C2B4D16F700F9EC3F = {
 			isa = PBXGroup;
 			children = (
 				AC842E372B4D16F700F9EC3F /* ollamaGUI */,
 				AC842E362B4D16F700F9EC3F /* Products */,
+				875CC7948AB0503FA84A4A6F /* Pods */,
+				C496E79C72A612FD73E80721 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,6 +102,12 @@
 		AC842E372B4D16F700F9EC3F /* ollamaGUI */ = {
 			isa = PBXGroup;
 			children = (
+				AC842E792B4FE3B300F9EC3F /* Core */,
+				AC842E6C2B4FCA3000F9EC3F /* Injected */,
+				AC842E5C2B4E6F7800F9EC3F /* Enum */,
+				AC842E572B4E6F3000F9EC3F /* Model */,
+				AC842E4E2B4D1BD200F9EC3F /* Helper */,
+				AC842E472B4D190200F9EC3F /* UI */,
 				AC842E382B4D16F700F9EC3F /* ollamaGUIApp.swift */,
 				AC842E3A2B4D16F700F9EC3F /* ContentView.swift */,
 				AC842E3C2B4D16F800F9EC3F /* Assets.xcassets */,
@@ -69,6 +125,113 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		AC842E472B4D190200F9EC3F /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				AC842E542B4E6ED800F9EC3F /* Chat */,
+				AC842E512B4D3A3F00F9EC3F /* Commen */,
+				AC842E4B2B4D1AED00F9EC3F /* SideBar */,
+				AC842E482B4D190D00F9EC3F /* Home */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		AC842E482B4D190D00F9EC3F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AC842E492B4D191800F9EC3F /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		AC842E4B2B4D1AED00F9EC3F /* SideBar */ = {
+			isa = PBXGroup;
+			children = (
+				AC842E4C2B4D1AFB00F9EC3F /* SideBar.swift */,
+			);
+			path = SideBar;
+			sourceTree = "<group>";
+		};
+		AC842E4E2B4D1BD200F9EC3F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				AC842E4F2B4D1BE000F9EC3F /* ViewHelper.swift */,
+				AC842E732B4FDD6A00F9EC3F /* NetworkHelper.swift */,
+				AC842E772B4FE2EA00F9EC3F /* DescribableEnum.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		AC842E512B4D3A3F00F9EC3F /* Commen */ = {
+			isa = PBXGroup;
+			children = (
+				AC842E522B4D3A5000F9EC3F /* SidebarButton.swift */,
+				AC842E682B4FC4A700F9EC3F /* CommonButton.swift */,
+			);
+			path = Commen;
+			sourceTree = "<group>";
+		};
+		AC842E542B4E6ED800F9EC3F /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				AC842E612B4E783400F9EC3F /* Components */,
+				AC842E552B4E6EE300F9EC3F /* ChatView.swift */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
+		AC842E572B4E6F3000F9EC3F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC842E582B4E6F4100F9EC3F /* ChatModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AC842E5C2B4E6F7800F9EC3F /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				AC842E5D2B4E6F8000F9EC3F /* RoleEnum.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		AC842E612B4E783400F9EC3F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AC842E6A2B4FC7F000F9EC3F /* MessageEditor.swift */,
+				AC842E622B4E784300F9EC3F /* ChatBubble.swift */,
+				AC842E642B4E81D700F9EC3F /* BubbleShape.swift */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		AC842E6C2B4FCA3000F9EC3F /* Injected */ = {
+			isa = PBXGroup;
+			children = (
+				AC842E6D2B4FCA4800F9EC3F /* DIContainer.swift */,
+				AC842E6F2B4FDA1D00F9EC3F /* Router.swift */,
+			);
+			path = Injected;
+			sourceTree = "<group>";
+		};
+		AC842E792B4FE3B300F9EC3F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				AC842E752B4FE20700F9EC3F /* Loadable.swift */,
+				AC842E7A2B4FE3C200F9EC3F /* NetworkError.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C496E79C72A612FD73E80721 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				99CC9802010F649185C7EF44 /* Pods_ollamaGUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -76,9 +239,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC842E442B4D16F800F9EC3F /* Build configuration list for PBXNativeTarget "ollamaGUI" */;
 			buildPhases = (
+				5AB10DA11C2E15D989FDEAD2 /* [CP] Check Pods Manifest.lock */,
 				AC842E312B4D16F700F9EC3F /* Sources */,
 				AC842E322B4D16F700F9EC3F /* Frameworks */,
 				AC842E332B4D16F700F9EC3F /* Resources */,
+				69AC2AE32C3A8C10908F7EBC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -134,13 +299,72 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5AB10DA11C2E15D989FDEAD2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ollamaGUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		69AC2AE32C3A8C10908F7EBC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ollamaGUI/Pods-ollamaGUI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ollamaGUI/Pods-ollamaGUI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ollamaGUI/Pods-ollamaGUI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AC842E312B4D16F700F9EC3F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC842E6E2B4FCA4800F9EC3F /* DIContainer.swift in Sources */,
+				AC842E502B4D1BE000F9EC3F /* ViewHelper.swift in Sources */,
+				AC842E742B4FDD6A00F9EC3F /* NetworkHelper.swift in Sources */,
+				AC842E632B4E784300F9EC3F /* ChatBubble.swift in Sources */,
+				AC842E562B4E6EE300F9EC3F /* ChatView.swift in Sources */,
+				AC842E4A2B4D191800F9EC3F /* HomeView.swift in Sources */,
+				AC842E6B2B4FC7F000F9EC3F /* MessageEditor.swift in Sources */,
+				AC842E652B4E81D700F9EC3F /* BubbleShape.swift in Sources */,
+				AC842E702B4FDA1D00F9EC3F /* Router.swift in Sources */,
+				AC842E762B4FE20700F9EC3F /* Loadable.swift in Sources */,
+				AC842E592B4E6F4100F9EC3F /* ChatModel.swift in Sources */,
+				AC842E782B4FE2EA00F9EC3F /* DescribableEnum.swift in Sources */,
+				AC842E532B4D3A5000F9EC3F /* SidebarButton.swift in Sources */,
 				AC842E3B2B4D16F700F9EC3F /* ContentView.swift in Sources */,
+				AC842E5E2B4E6F8000F9EC3F /* RoleEnum.swift in Sources */,
+				AC842E4D2B4D1AFB00F9EC3F /* SideBar.swift in Sources */,
+				AC842E692B4FC4A700F9EC3F /* CommonButton.swift in Sources */,
 				AC842E392B4D16F700F9EC3F /* ollamaGUIApp.swift in Sources */,
+				AC842E7B2B4FE3C200F9EC3F /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,7 +408,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -247,7 +471,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -267,6 +491,7 @@
 		};
 		AC842E452B4D16F800F9EC3F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53CA5445BF6B3981C24E69FB /* Pods-ollamaGUI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -294,6 +519,7 @@
 		};
 		AC842E462B4D16F800F9EC3F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF65F4059A904DEBDE105736 /* Pods-ollamaGUI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

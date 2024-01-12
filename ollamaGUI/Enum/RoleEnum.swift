@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+enum RoleEnum:String,Codable{
+    case user
+    case assistant
+}
+
+extension RoleEnum {
+    var value:String{
+        String(describing: self)
+    }
+}

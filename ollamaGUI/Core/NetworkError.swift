@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+enum NetworkError:Error {
+    case disconnected
+}
+
+
+extension NetworkError {
+    var localizedDescription: String{
+        switch self{
+        case .disconnected:
+            return NSLocalizedString("network error", comment: "")
+        }
+    }
+}

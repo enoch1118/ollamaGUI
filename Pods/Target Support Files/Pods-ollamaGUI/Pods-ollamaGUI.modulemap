@@ -1,0 +1,6 @@
+framework module Pods_ollamaGUI {
+  umbrella header "Pods-ollamaGUI-umbrella.h"
+
+  export *
+  module * { export * }
+}

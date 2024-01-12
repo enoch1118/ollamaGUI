@@ -7,12 +7,23 @@
 
 import SwiftUI
 
-struct SidebarButton: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct SidebarButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .opacity(configuration.isPressed ? 0.8 : 1)
+            .padding(.vertical, 7)
+            .padding(.horizontal, 15)
+            .frame(minWidth: 48, minHeight: 48)
+            .foregroundColor(.white)
+            .focusEffectDisabled()
     }
+    
 }
 
 #Preview {
-    SidebarButton()
+    VStack {
+        Button(action: {}) {
+            Image(systemName: "message")
+        }.buttonStyle(SidebarButton())
+    }.frame(width: 500,height: 500)
 }

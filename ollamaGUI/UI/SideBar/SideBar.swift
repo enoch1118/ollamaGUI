@@ -9,10 +9,31 @@ import SwiftUI
 
 struct SideBar: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Button(action:{
+            }){
+                Image(systemName: "message").resizable().frame(width: 24,height: 24)
+            }.buttonStyle(SidebarButton())
+            
+            Button(action:{
+            }){
+                Image(systemName: "clock").resizable().frame(width: 24,height: 24)
+            }.buttonStyle(SidebarButton())
+            Spacer()
+            Button(action:{
+            }){
+                Image(systemName: "gear").resizable().frame(width: 24,height: 24)
+            }.buttonStyle(SidebarButton())
+            Button(action:{
+            }){
+                Image(.ollamaIcon).resizable().frame(width: 24,height: 24)
+            }.buttonStyle(SidebarButton())
+            
+        
+        }
     }
 }
 
 #Preview {
-    SideBar()
+    ContentView()
 }

@@ -7,12 +7,32 @@
 
 import SwiftUI
 
-struct SwiftUIView: View {
+struct ChatView: View {
+    @State var chats: [ChatModel]
+
+    init(chats: [ChatModel] = []) {
+        self.chats = chats
+    }
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            ScrollView{
+                LazyVStack(spacing: 0) {
+                    ForEach(chats, id: \.self) { chat in
+                        ChatBubble(chat: chat).padding(.vertical,12)
+                    }
+                }.frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+            MessageEditor()
+        }
+        
     }
 }
 
 #Preview {
-    SwiftUIView()
+    ContentView()
+}
+
+#Preview {
+    ChatView(chats: ChatModel.testValue)
 }

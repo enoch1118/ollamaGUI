@@ -7,12 +7,34 @@
 
 import SwiftUI
 
-struct CommonButton: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct CommonButton: ButtonStyle {
+    private var enabled: Bool = true
+
+    init(enabled: Bool = true) {
+        self.enabled = enabled
+    }
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .opacity(configuration.isPressed ? 0.8 : 1)
+            .padding(.vertical, 8)
+            .padding(.horizontal, 15)
+            .frame(minWidth: 48, minHeight: 0)
+            .foregroundColor(.white)
+            .focusEffectDisabled()
+            .background(enabled ? .blue: .gray)
+            .clipShape(RoundedRectangle(cornerRadius: 3))
     }
 }
 
 #Preview {
-    CommonButton()
+    VStack {
+        Button(action: {}) {
+            Text("전송")
+        }.buttonStyle(CommonButton())
+        Button(action: {}) {
+            Text("전송")
+        }.buttonStyle(CommonButton(enabled: false))
+
+    }.frame(width: 500, height: 500)
 }

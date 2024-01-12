@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+class ChatViewModel:ObservableObject{
+    var chat:[ChatModel]
+}

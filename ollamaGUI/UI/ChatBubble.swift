@@ -8,11 +8,34 @@
 import SwiftUI
 
 struct ChatBubble: View {
+    var chat: ChatModel
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack{
+            if chat.isMe {
+                Spacer()
+            }
+            content.clipShape(BubbleShape(role: chat.role))
+            if !chat.isMe {
+                Spacer()
+            }
+        }.frame(maxWidth: .infinity)
+            
+    }
+
+    @ViewBuilder
+    var content: some View {
+        Text(chat.content)
+            .padding(.horizontal, 30)
+            .padding(.vertical, 16)
+            .background((chat.role == .user) ? .blue : .white)
+            .foregroundColor((chat.role == .user) ? .white : .black)
     }
 }
 
 #Preview {
-    ChatBubble()
+    VStack {
+        ChatBubble(chat: .init(type: RoleEnum.user))
+        ChatBubble(chat: .init(type: RoleEnum.assistant))
+    }
 }
