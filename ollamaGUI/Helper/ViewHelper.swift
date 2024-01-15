@@ -14,7 +14,7 @@ struct PlaceHolder<T: View>: ViewModifier {
     func body(content: Content) -> some View {
         ZStack(alignment: .leading) {
             if show { VStack { 
-                placeHolder
+                placeHolder.padding(.leading,5)
                 Spacer()
             } }
             content

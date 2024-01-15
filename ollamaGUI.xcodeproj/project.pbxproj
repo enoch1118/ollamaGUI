@@ -10,8 +10,12 @@
 		1D8D5FBE0BCFC2D861ECE9F8 /* Pods_ollamaGUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99CC9802010F649185C7EF44 /* Pods_ollamaGUI.framework */; };
 		AC1978B02B55009B0091EE4F /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1978AF2B55009B0091EE4F /* StringHelper.swift */; };
 		AC1978B32B5503070091EE4F /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = AC1978B22B5503070091EE4F /* MarkdownUI */; };
+		AC229F842B5526570033143C /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC229F832B5526570033143C /* ChatModel.swift */; };
 		AC40BBE32B55066900AA7D1C /* MarkdownTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40BBE22B55066900AA7D1C /* MarkdownTheme.swift */; };
-		AC40BBEA2B550E7100AA7D1C /* chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC40BBE82B550E7100AA7D1C /* chat.xcdatamodeld */; };
+		AC40BBFA2B551D1700AA7D1C /* MessageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40BBF92B551D1700AA7D1C /* MessageEntity.swift */; };
+		AC40BBFC2B551DA500AA7D1C /* ChatEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40BBFB2B551DA500AA7D1C /* ChatEntity.swift */; };
+		AC40BBFE2B551EBC00AA7D1C /* RoomEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40BBFD2B551EBC00AA7D1C /* RoomEntity.swift */; };
+		AC40BC002B55221000AA7D1C /* DataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40BBFF2B55221000AA7D1C /* DataInteractor.swift */; };
 		AC725C2D2B511D3200B3E266 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC725C2C2B511D3200B3E266 /* Interactor.swift */; };
 		AC725C2F2B5125BB00B3E266 /* ChatRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC725C2E2B5125BB00B3E266 /* ChatRequestModel.swift */; };
 		AC725C312B51304000B3E266 /* DictionaryEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC725C302B51304000B3E266 /* DictionaryEncoder.swift */; };
@@ -25,7 +29,6 @@
 		AC842E502B4D1BE000F9EC3F /* ViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E4F2B4D1BE000F9EC3F /* ViewHelper.swift */; };
 		AC842E532B4D3A5000F9EC3F /* SidebarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E522B4D3A5000F9EC3F /* SidebarButton.swift */; };
 		AC842E562B4E6EE300F9EC3F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E552B4E6EE300F9EC3F /* ChatView.swift */; };
-		AC842E592B4E6F4100F9EC3F /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E582B4E6F4100F9EC3F /* ChatModel.swift */; };
 		AC842E5E2B4E6F8000F9EC3F /* RoleEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E5D2B4E6F8000F9EC3F /* RoleEnum.swift */; };
 		AC842E632B4E784300F9EC3F /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E622B4E784300F9EC3F /* ChatBubble.swift */; };
 		AC842E652B4E81D700F9EC3F /* BubbleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E642B4E81D700F9EC3F /* BubbleShape.swift */; };
@@ -38,14 +41,20 @@
 		AC842E782B4FE2EA00F9EC3F /* DescribableEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E772B4FE2EA00F9EC3F /* DescribableEnum.swift */; };
 		AC842E7B2B4FE3C200F9EC3F /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E7A2B4FE3C200F9EC3F /* NetworkError.swift */; };
 		AC97DE422B543FF200A4508B /* KeyPressedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC97DE412B543FF200A4508B /* KeyPressedController.swift */; };
+		ACF5C0092B5563CD00861735 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5C0082B5563CD00861735 /* ClearButton.swift */; };
+		ACF5C00D2B5564C300861735 /* ChatHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5C00C2B5564C300861735 /* ChatHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		53CA5445BF6B3981C24E69FB /* Pods-ollamaGUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ollamaGUI.debug.xcconfig"; path = "Target Support Files/Pods-ollamaGUI/Pods-ollamaGUI.debug.xcconfig"; sourceTree = "<group>"; };
 		99CC9802010F649185C7EF44 /* Pods_ollamaGUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ollamaGUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC1978AF2B55009B0091EE4F /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
+		AC229F832B5526570033143C /* ChatModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		AC40BBE22B55066900AA7D1C /* MarkdownTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTheme.swift; sourceTree = "<group>"; };
-		AC40BBE92B550E7100AA7D1C /* chat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = chat.xcdatamodel; sourceTree = "<group>"; };
+		AC40BBF92B551D1700AA7D1C /* MessageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageEntity.swift; sourceTree = "<group>"; };
+		AC40BBFB2B551DA500AA7D1C /* ChatEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEntity.swift; sourceTree = "<group>"; };
+		AC40BBFD2B551EBC00AA7D1C /* RoomEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomEntity.swift; sourceTree = "<group>"; };
+		AC40BBFF2B55221000AA7D1C /* DataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInteractor.swift; sourceTree = "<group>"; };
 		AC725C2C2B511D3200B3E266 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		AC725C2E2B5125BB00B3E266 /* ChatRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestModel.swift; sourceTree = "<group>"; };
 		AC725C302B51304000B3E266 /* DictionaryEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryEncoder.swift; sourceTree = "<group>"; };
@@ -61,7 +70,6 @@
 		AC842E4F2B4D1BE000F9EC3F /* ViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHelper.swift; sourceTree = "<group>"; };
 		AC842E522B4D3A5000F9EC3F /* SidebarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarButton.swift; sourceTree = "<group>"; };
 		AC842E552B4E6EE300F9EC3F /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
-		AC842E582B4E6F4100F9EC3F /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		AC842E5D2B4E6F8000F9EC3F /* RoleEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleEnum.swift; sourceTree = "<group>"; };
 		AC842E622B4E784300F9EC3F /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
 		AC842E642B4E81D700F9EC3F /* BubbleShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleShape.swift; sourceTree = "<group>"; };
@@ -74,6 +82,8 @@
 		AC842E772B4FE2EA00F9EC3F /* DescribableEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribableEnum.swift; sourceTree = "<group>"; };
 		AC842E7A2B4FE3C200F9EC3F /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		AC97DE412B543FF200A4508B /* KeyPressedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPressedController.swift; sourceTree = "<group>"; };
+		ACF5C0082B5563CD00861735 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
+		ACF5C00C2B5564C300861735 /* ChatHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHeader.swift; sourceTree = "<group>"; };
 		BF65F4059A904DEBDE105736 /* Pods-ollamaGUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ollamaGUI.release.xcconfig"; path = "Target Support Files/Pods-ollamaGUI/Pods-ollamaGUI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,7 +112,9 @@
 		AC40BBE42B550D5C00AA7D1C /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				AC40BBE82B550E7100AA7D1C /* chat.xcdatamodeld */,
+				AC40BBF92B551D1700AA7D1C /* MessageEntity.swift */,
+				AC40BBFB2B551DA500AA7D1C /* ChatEntity.swift */,
+				AC40BBFD2B551EBC00AA7D1C /* RoomEntity.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -198,6 +210,7 @@
 			children = (
 				AC842E522B4D3A5000F9EC3F /* SidebarButton.swift */,
 				AC842E682B4FC4A700F9EC3F /* CommonButton.swift */,
+				ACF5C0082B5563CD00861735 /* ClearButton.swift */,
 			);
 			path = Commen;
 			sourceTree = "<group>";
@@ -214,7 +227,7 @@
 		AC842E572B4E6F3000F9EC3F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AC842E582B4E6F4100F9EC3F /* ChatModel.swift */,
+				AC229F832B5526570033143C /* ChatModel.swift */,
 				AC725C2E2B5125BB00B3E266 /* ChatRequestModel.swift */,
 				AC725C322B517A0D00B3E266 /* MessageModel.swift */,
 			);
@@ -235,6 +248,7 @@
 				AC842E6A2B4FC7F000F9EC3F /* MessageEditor.swift */,
 				AC842E622B4E784300F9EC3F /* ChatBubble.swift */,
 				AC842E642B4E81D700F9EC3F /* BubbleShape.swift */,
+				ACF5C00C2B5564C300861735 /* ChatHeader.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -245,6 +259,7 @@
 				AC842E6D2B4FCA4800F9EC3F /* DIContainer.swift */,
 				AC842E6F2B4FDA1D00F9EC3F /* Router.swift */,
 				AC725C2C2B511D3200B3E266 /* Interactor.swift */,
+				AC40BBFF2B55221000AA7D1C /* DataInteractor.swift */,
 			);
 			path = Injected;
 			sourceTree = "<group>";
@@ -394,14 +409,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC40BC002B55221000AA7D1C /* DataInteractor.swift in Sources */,
 				AC842E6E2B4FCA4800F9EC3F /* DIContainer.swift in Sources */,
 				AC725C2F2B5125BB00B3E266 /* ChatRequestModel.swift in Sources */,
 				AC842E502B4D1BE000F9EC3F /* ViewHelper.swift in Sources */,
 				AC725C2D2B511D3200B3E266 /* Interactor.swift in Sources */,
+				AC229F842B5526570033143C /* ChatModel.swift in Sources */,
 				AC842E742B4FDD6A00F9EC3F /* NetworkHelper.swift in Sources */,
 				AC842E632B4E784300F9EC3F /* ChatBubble.swift in Sources */,
+				ACF5C0092B5563CD00861735 /* ClearButton.swift in Sources */,
 				AC842E562B4E6EE300F9EC3F /* ChatView.swift in Sources */,
-				AC40BBEA2B550E7100AA7D1C /* chat.xcdatamodeld in Sources */,
 				AC842E4A2B4D191800F9EC3F /* HomeView.swift in Sources */,
 				AC97DE422B543FF200A4508B /* KeyPressedController.swift in Sources */,
 				AC842E6B2B4FC7F000F9EC3F /* MessageEditor.swift in Sources */,
@@ -409,13 +426,16 @@
 				AC842E702B4FDA1D00F9EC3F /* Router.swift in Sources */,
 				AC842E762B4FE20700F9EC3F /* Loadable.swift in Sources */,
 				AC725C312B51304000B3E266 /* DictionaryEncoder.swift in Sources */,
-				AC842E592B4E6F4100F9EC3F /* ChatModel.swift in Sources */,
 				AC842E782B4FE2EA00F9EC3F /* DescribableEnum.swift in Sources */,
 				AC842E532B4D3A5000F9EC3F /* SidebarButton.swift in Sources */,
 				AC842E3B2B4D16F700F9EC3F /* ContentView.swift in Sources */,
+				ACF5C00D2B5564C300861735 /* ChatHeader.swift in Sources */,
 				AC40BBE32B55066900AA7D1C /* MarkdownTheme.swift in Sources */,
+				AC40BBFA2B551D1700AA7D1C /* MessageEntity.swift in Sources */,
+				AC40BBFC2B551DA500AA7D1C /* ChatEntity.swift in Sources */,
 				AC842E5E2B4E6F8000F9EC3F /* RoleEnum.swift in Sources */,
 				AC725C332B517A0D00B3E266 /* MessageModel.swift in Sources */,
+				AC40BBFE2B551EBC00AA7D1C /* RoomEntity.swift in Sources */,
 				AC842E4D2B4D1AFB00F9EC3F /* SideBar.swift in Sources */,
 				AC842E692B4FC4A700F9EC3F /* CommonButton.swift in Sources */,
 				AC842E392B4D16F700F9EC3F /* ollamaGUIApp.swift in Sources */,
@@ -646,19 +666,6 @@
 			productName = MarkdownUI;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		AC40BBE82B550E7100AA7D1C /* chat.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				AC40BBE92B550E7100AA7D1C /* chat.xcdatamodel */,
-			);
-			currentVersion = AC40BBE92B550E7100AA7D1C /* chat.xcdatamodel */;
-			path = chat.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = AC842E2D2B4D16F700F9EC3F /* Project object */;
 }
