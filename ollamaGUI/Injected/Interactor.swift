@@ -11,6 +11,10 @@ import Foundation
 protocol OllamaInteractor {
     func sendChat(chat: ChatRequestModel, cancel: inout Set<AnyCancellable>)
         -> PassthroughSubject<Loadable<ChatModel, NetworkError>, Never>
+    
+    func sendChatStream(chat: ChatRequestModel, cancel: inout Set<AnyCancellable>)
+        -> PassthroughSubject<Loadable<ChatModel, NetworkError>, Never>
+
 }
 
 struct RealOllamaInteractor: OllamaInteractor {
@@ -32,6 +36,20 @@ struct RealOllamaInteractor: OllamaInteractor {
                                                     parameter: chat)
         helper.cancel(bag: &cancel)
         helper.request()
+        return helper.subject
+    }
+    
+    func sendChatStream(chat: ChatRequestModel,
+                  cancel: inout Set<AnyCancellable>)
+        -> PassthroughSubject<Loadable<ChatModel, NetworkError>, Never>
+    {
+        var helper =
+            RealNetworkHelper<ChatRequestModel, ChatModel>(baseUrl: baseUrl,
+                                                    url: "chat",
+                                                    method: .post,
+                                                    parameter: chat)
+        helper.cancel(bag: &cancel)
+        helper.requestStream()
         return helper.subject
     }
 }

@@ -17,7 +17,8 @@ protocol NetworkHelper {
 }
 
 struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
-    U: DictionaryEncodable
+    U: DictionaryEncodable,
+    U: Encodable
 {
     var baseUrl: String
     var url: String
@@ -60,8 +61,6 @@ struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
             subject.send(completion: .finished)
             return
         }
-        print("get body \(b)")
-
         workItem = DispatchWorkItem { [self] in
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .customISO8601
@@ -74,8 +73,7 @@ struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
             )
             .validate(statusCode: 200 ..< 300)
             .response {
-                response in
-                print(String(data: response.data!, encoding: .utf8))
+                _ in
             }
             .responseDecodable(of: T.self, decoder: decoder) { response in
                 print(response)
@@ -86,6 +84,44 @@ struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
                     subject.send(.failed(.commonError(error: error)))
                 }
                 subject.send(completion: .finished)
+            }
+        }
+        DispatchQueue.global().async(execute: workItem!)
+    }
+
+    mutating func requestStream() {
+//        let body = parameter?.getDictionary()
+//        guard let b = body else {
+//            subject.send(.failed(.jsonEncodeError))
+//            subject.send(completion: .finished)
+//            return
+//        }
+        subject.send(.isLoading(last: nil))
+        workItem = DispatchWorkItem { [self] in
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .customISO8601
+            AF.streamRequest(
+                baseUrl + url,
+                method: method,
+                parameters: parameter,
+                encoder: JSONParameterEncoder.default,
+                headers: header ?? HTTPHeaders.default
+            )
+            .validate(statusCode: 200 ..< 300)
+            .responseStreamDecodable(of: T.self, using: decoder) { stream in
+                switch stream.event {
+                case let .stream(result):
+                    switch result {
+                    case let .success(value):
+                        subject.send(.isLoading(last: value))
+                    case let .failure(error):
+                        subject.send(.failed(.commonError(error: error)))
+                        subject.send(completion: .finished)
+                    }
+                case let .complete(completion):
+                    print(completion)
+                    subject.send(completion: .finished)
+                }
             }
         }
         DispatchQueue.global().async(execute: workItem!)
@@ -104,10 +140,15 @@ extension JSONDecoder.DateDecodingStrategy {
     static let customISO8601 = custom {
         let container = try $0.singleValueContainer()
         let string = try container.decode(String.self)
-        if let date = Formatter.iso8601withFractionalSeconds.date(from: string) ?? Formatter.iso8601.date(from: string) {
+        if let date = Formatter.iso8601withFractionalSeconds
+            .date(from: string) ?? Formatter.iso8601.date(from: string)
+        {
             return date
         }
-        throw DecodingError.dataCorruptedError(in: container, debugDescription: "Invalid date: \(string)")
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "Invalid date: \(string)"
+        )
     }
 }
 

@@ -18,6 +18,11 @@ struct ChatView: View {
         Never
     >()
     
+    
+    /// drag drop var
+    @State var image:NSImage? = nil
+    @State var isTargeted: Bool = false
+    
     init(chats: [ChatModel] = []) {
         self.chats = chats
     }
@@ -31,7 +36,6 @@ struct ChatView: View {
                             ChatBubble(chat: chat).padding(.vertical, 12).id(chat.id)
                         }
                     }.onChange(of: chats) { _, _ in
-                        print("change \(chats.last?.id)")
                         withAnimation {
                             proxy.scrollTo(chats.last?.id,anchor: .bottom)
                         }
@@ -40,20 +44,45 @@ struct ChatView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             
-            MessageEditor(onSend: onSend)
+            MessageEditor(image:$image,onSend: onSend)
             
-        }.onReceive(subject, perform: { value in
+                
+        }
+        /// handle combine
+        .onReceive(subject, perform: { value in
             switch value {
             case let .loaded(value):
                 chats.append(value)
                 
             case let .failed(value):
                 print(value)
-            case .isLoading(last: nil):
-                break
+            case let .isLoading(last: value):
+                guard var lastChat = value else{
+                    return
+                }
+                var chat = chats.removeLast()
+                lastChat.message!.content = (chat.message?.content ?? "") + lastChat.message!.content
+                chats.append(lastChat)
             default:
                 return
             }
+        })
+        .onDrop(of: [.image], isTargeted: $isTargeted, perform: { items in
+            guard let item = items.first else {
+                return false
+            }
+            _ = item.loadDataRepresentation(
+                for: .image,
+                completionHandler: { data, error in
+                    if error == nil, let data {
+                        DispatchQueue.main.async {
+                            image = NSImage(data: data)
+                        }
+                    }
+                }
+            )
+            return true
+
         })
     }
 }
@@ -61,11 +90,12 @@ struct ChatView: View {
 extension ChatView {
     func onSend(text: String) {
         let model = MessageModel(text: text)
-        let viewModel = ChatModel(text: text)
+        let viewModel = ChatModel(text: text,role: .user)
         chats.append(viewModel)
-        let requestModel = ChatRequestModel(of: model)
+        let requestModel = ChatRequestModel(of: model,stream: true)
+        chats.append(.init(text: "", role: .assistant))
 
-        subject = container.interactor.sendChat(
+        subject = container.interactor.sendChatStream(
             chat: requestModel,
             cancel: &cancel
         )

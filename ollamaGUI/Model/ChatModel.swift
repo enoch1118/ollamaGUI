@@ -10,7 +10,7 @@ import Foundation
 struct ChatModel: Codable, Hashable,Equatable {
     let id: UUID
 
-    let message: MessageModel?
+    var message: MessageModel?
     let stream: Bool?
     let done: Bool?
 
@@ -95,6 +95,14 @@ struct ChatModel: Codable, Hashable,Equatable {
 }
 
 
+/// core data extension
+extension ChatModel {
+    
+    
+    
+}
+
+
 extension ChatModel {
     static func ==(lhs:Self,rhs:Self) ->Bool{
         return lhs.id == rhs.id
@@ -107,8 +115,8 @@ extension ChatModel {
         message?.role == .user
     }
 
-    init(text: String) {
-        message = MessageModel(text: text)
+    init(text: String,role: RoleEnum) {
+        message = MessageModel(text: text,role: role)
         id = UUID()
         done = nil
         images = nil
