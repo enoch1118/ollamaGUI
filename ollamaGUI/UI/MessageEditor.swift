@@ -9,19 +9,23 @@ import SwiftUI
 
 struct MessageEditor: View {
     @State var text: String = ""
-    @Binding var image:NSImage?
+    @Binding var image: NSImage?
     @ObservedObject var shiftController: KeyPressedController = .init()
+    @FocusState var focused:Bool?
     var onSend: (String) -> Void
+    var onClean: () -> Void
 
     var body: some View {
         VStack(spacing: 0) {
             content
             HStack {
                 Spacer()
-                if image != nil{
-                    Image(nsImage: image!).resizable().frame(width: 50,height: 50)
+                if image != nil {
+                    Image(nsImage: image!).resizable()
+                        .frame(width: 50, height: 50)
                 }
-                
+
+
                 Button("전송") {
                     onSend(text)
                     text = ""
@@ -39,6 +43,7 @@ struct MessageEditor: View {
                 Text("무엇이든 물어보세요").foregroundStyle(.gray),
                 show: text.isEmpty
             )
+            .focused($focused, equals: true)
             .font(.body)
             .frame(height: 50)
             .fixedSize(
@@ -51,6 +56,7 @@ struct MessageEditor: View {
             .padding(.horizontal)
             .padding(.top)
             .foregroundColor(.black)
+
             .onChange(of: text) { oldV, _ in
                 guard let isReturn = text.last, isReturn == "\n" else {
                     return
@@ -61,12 +67,14 @@ struct MessageEditor: View {
                     text = ""
                     onSend(oldV)
                 }
+            }.onAppear{
+                self.focused = true
             }
     }
 }
 
 #Preview {
-    ChatView(chats: ChatModel.testValue)
+    ChatView(room: RoomEntity()).injectPreview()
 }
 
 // #Preview {

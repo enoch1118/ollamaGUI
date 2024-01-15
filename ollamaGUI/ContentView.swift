@@ -7,8 +7,16 @@
 
 import SwiftUI
 import SwiftUIIntrospect
+import SwiftData
 
 struct ContentView: View {
+    @Environment(\.modelContext) private var context
+    @Environment(\.injected) private var container
+    
+    @State var rooms:[RoomEntity] = []
+    @State var room:RoomEntity? = nil
+    
+    let descriptor = FetchDescriptor<RoomEntity>()
     var body: some View {
         NavigationSplitView(
             sidebar: {
@@ -21,7 +29,12 @@ struct ContentView: View {
                     )
             },
             detail: {
-                ChatView()
+                if room != nil {
+                    ChatView(room: room!)
+                        .id(room?.id)
+                }else{
+                    Color.clear
+                }
             }
         ).navigationSplitViewStyle(.balanced)
         /// disable sidebar collapse
@@ -33,10 +46,13 @@ struct ContentView: View {
                         .splitViewItems
                         .first?.canCollapse = false
                 }
-            )
+            ).onAppear{
+                rooms = container.dataInteractor.fetchRoom(context: context)
+                room = rooms.first!
+            }
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView().injectPreview()
 }

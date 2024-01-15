@@ -13,16 +13,16 @@ struct ChatModel: Codable, Hashable,Equatable {
     var message: MessageModel?
     let stream: Bool?
     let done: Bool?
-
-    let images: [String]?
     let createdAt: Date?
+    let images: [String]?
+    let model: String?
+    
     let totalDuration: Int?
     let loadDuration: Int?
     let promptEvalCount: Int?
     let promptEvalDuration: Int?
     let evalCount: Int?
     let evalDuration: Int?
-    let model: String?
 
     enum CodingKeys: String, CodingKey {
         case message
@@ -95,13 +95,6 @@ struct ChatModel: Codable, Hashable,Equatable {
 }
 
 
-/// core data extension
-extension ChatModel {
-    
-    
-    
-}
-
 
 extension ChatModel {
     static func ==(lhs:Self,rhs:Self) ->Bool{
@@ -120,7 +113,25 @@ extension ChatModel {
         id = UUID()
         done = nil
         images = nil
-        createdAt = nil
+        createdAt = Date.now
+        totalDuration = nil
+        loadDuration = nil
+        promptEvalCount = nil
+        promptEvalDuration = nil
+        evalCount = nil
+        evalDuration = nil
+        model = nil
+        stream = nil
+    }
+    
+    
+    init(entity:ChatEntity) {
+        let me = entity.message ?? MessageEntity(role: .user, content: "error")
+        message = MessageModel(text: me.content,role: me.role,images: [])
+        createdAt = entity.createdAt
+        id = UUID()
+        done = nil
+        images = nil
         totalDuration = nil
         loadDuration = nil
         promptEvalCount = nil
@@ -139,7 +150,7 @@ extension ChatModel {
             stream = false
             done = nil
             images = nil
-            createdAt = nil
+            createdAt = Date.now
             totalDuration = nil
             loadDuration = nil
             promptEvalCount = nil

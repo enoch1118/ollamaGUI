@@ -10,12 +10,20 @@ import SwiftUI
 
 struct DIContainer: EnvironmentKey {
     static var defaultValue: Self { Self.default }
+    static var previewValue: Self { Self.preview }
 
     private static let `default` = Self(
-        interactor: RealOllamaInteractor(baseUrl: "http://localhost:11434/api/")
+        interactor: RealOllamaInteractor(baseUrl: "http://localhost:11434/api/"),
+        dataInteractor: RealDataInteractor()
+    )
+    
+    private static let preview = Self(
+        interactor: RealOllamaInteractor(baseUrl: "http://localhost:11434/api/"),
+        dataInteractor: StubDataInteractor()
     )
 
     let interactor: OllamaInteractor
+    let dataInteractor: DataInteractor
 }
 
 extension EnvironmentValues {
@@ -41,7 +49,7 @@ extension View {
     }
 
     func injectPreview() -> some View {
-        let container = DIContainer.defaultValue
+        let container = DIContainer.previewValue
         return environment(\.injected, container).environment(\.isPreview, true)
     }
 }
