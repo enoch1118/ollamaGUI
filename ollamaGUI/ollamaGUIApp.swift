@@ -11,7 +11,7 @@ import SwiftUI
 struct ollamaGUIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView().frame(minWidth: 500,maxWidth: 500,minHeight: 600)
+            ContentView().frame(minWidth: 500,maxWidth: 500,minHeight: 600).inject()
         }
         .windowToolbarStyle(UnifiedCompactWindowToolbarStyle())
         .windowStyle(HiddenTitleBarWindowStyle())

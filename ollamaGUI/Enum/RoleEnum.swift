@@ -8,8 +8,8 @@
 import Foundation
 
 enum RoleEnum:String,Codable{
-    case user
-    case assistant
+    case user = "user"
+    case assistant = "assistant"
 }
 
 extension RoleEnum {
