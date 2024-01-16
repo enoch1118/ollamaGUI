@@ -32,6 +32,7 @@ struct ChatBubble: View {
         .markdownTheme((chat.isMe) ? .user : .assistant)
         .padding(.horizontal, 30)
         .padding(.vertical, 16)
+        .textSelection(.enabled)
         .foregroundColor((chat.isMe) ? .white : .black)
                     .background((chat.isMe) ? .blue : .white)
 

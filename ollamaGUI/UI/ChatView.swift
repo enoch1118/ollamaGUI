@@ -14,6 +14,8 @@ struct ChatView: View {
     
     var room: RoomEntity
     @State var chats: [ChatModel] = []
+    @State var isLoading:Bool =
+    false
     @State var cancel = Set<AnyCancellable>()
     @State var subject = PassthroughSubject<
         Loadable<ChatModel, NetworkError>,
@@ -51,8 +53,18 @@ struct ChatView: View {
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
+            }.overlay(alignment:.bottom){
+                    StopButton(onCancel: onCancel)
+                        .padding()
+                        .opacity(isLoading ? 1 : 0)
+                        .offset(y: isLoading ? 0 : 20)
+                        .animation(.snappy, value: isLoading)
             }
-            MessageEditor(image:$image,onSend: onSend,onClean: onClean).background{
+            MessageEditor(image:$image,
+                          isLoading:$isLoading
+                          ,onSend: onSend
+                          ,onClean: onClean).background{
                 Color.white.shadow(radius:10,y:-5)
             }
             
@@ -68,6 +80,7 @@ struct ChatView: View {
             case let .loaded(value):
                 chats.append(value)
             case let .failed(value):
+                isLoading = false
                 print(value)
             case let .isLoading(last: value):
                 guard var lastChat = value else{
@@ -79,45 +92,56 @@ struct ChatView: View {
                 chats.append(lastChat)
                 
                 if lastChat.done ?? false {
+                    isLoading = false
+                    room.title = lastChat.message?.content ?? "title"
+                    cancel.removeFirst()
                     room.chats.append(lastChat.toEntity)
                 }
             default:
+                isLoading = false
                 return
             }
         })
-        .onDrop(of: [.image], isTargeted: $isTargeted, perform: { items in
-            guard let item = items.first else {
-                return false
-            }
-            _ = item.loadDataRepresentation(
-                for: .image,
-                completionHandler: { data, error in
-                    if error == nil, let data {
-                        DispatchQueue.main.async {
-                            image = NSImage(data: data)
-                        }
-                    }
-                }
-            )
-            return true
-
-        })
+//        .onDrop(of: [.image], isTargeted: $isTargeted, perform: { items in
+//            guard let item = items.first else {
+//                return false
+//            }
+//            _ = item.loadDataRepresentation(
+//                for: .image,
+//                completionHandler: { data, error in
+//                    if error == nil, let data {
+//                        DispatchQueue.main.async {
+//                            image = NSImage(data: data)
+//                        }
+//                    }
+//                }
+//            )
+//            return true
+//
+//        })
     }
 }
 
+
 extension ChatView {
     func onSend(text: String) {
-        let model = MessageModel(text: text)
         let viewModel = ChatModel(text: text,role: .user)
         chats.append(viewModel)
-        let requestModel = ChatRequestModel(of: model,stream: true)
+        let requestModel = ChatRequestModel(ofList: chats.map{$0.message!},stream: true)
         chats.append(.init(text: "", role: .assistant))
         room.chats.append(viewModel.toEntity)
+        isLoading = true
 
         subject = container.interactor.sendChatStream(
             chat: requestModel,
             cancel: &cancel
         )
+        print(cancel.count)
+    }
+    
+    func onCancel(){
+        let cancel = cancel.removeFirst()
+        cancel.cancel()
     }
     
     

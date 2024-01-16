@@ -39,7 +39,9 @@ extension Theme {
             conf.label
                 .padding(.horizontal, 16)
                 .padding(.vertical, 20)
-
+                .frame(maxWidth: .infinity,alignment: .leading)
+                .padding(.top,14)
+            
                 .markdownTextStyle {
                     ForegroundColor(.white)
                 }

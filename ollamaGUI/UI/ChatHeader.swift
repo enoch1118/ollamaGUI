@@ -8,14 +8,30 @@
 import SwiftUI
 
 struct ChatHeader: View {
+    @Environment(\.injected) var container
     var room:RoomEntity
     var onClean: ()->Void
     var body: some View {
         HStack{
             Image(systemName: "message")
-            Text(room.title ?? "untitled")
+            Text(room.title ?? "untitled").lineLimit(1)
             Spacer()
+            Button(action:{
+                if !container.appSetting.getPin() {
+                    for window in NSApplication.shared.windows {
+                        window.level = .floating
+                    }
+                }else{
+                    for window in NSApplication.shared.windows {
+                        window.level = .normal
+                    }
+                }
+                container.appSetting.togglePin()
+            }){
+                Image(systemName: "pin")
+            }.buttonStyle(ClearButton())
             Button(action: {
+                
                 onClean()
             }, label: {
                 Image(systemName: "trash")

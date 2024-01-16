@@ -53,4 +53,11 @@ struct ChatRequestModel: Encodable, DictionaryEncodable {
         self.stream = stream
         messages = [of]
     }
+    
+    init(ofList: [MessageModel], stream: Bool = false) {
+        model = "llama2"
+        self.stream = stream
+        messages = ofList
+
+    }
 }
