@@ -10,8 +10,9 @@ import SwiftUI
 struct MessageEditor: View {
     @State var text: String = ""
     @Binding var image: NSImage?
+    @Binding var isLoading: Bool
     @ObservedObject var shiftController: KeyPressedController = .init()
-    @FocusState var focused:Bool?
+    @FocusState var focused: Bool?
     var onSend: (String) -> Void
     var onClean: () -> Void
 
@@ -25,11 +26,18 @@ struct MessageEditor: View {
                         .frame(width: 50, height: 50)
                 }
 
-
-                Button("전송") {
-                    onSend(text)
-                    text = ""
-                }.buttonStyle(CommonButton(enabled: text.count > 0)).padding()
+                Group{
+                    if !isLoading {
+                        Button("전송") {
+                            onSend(text)
+                            text = ""
+                        }.buttonStyle(CommonButton(enabled: text.count > 0))
+                    } else {
+                        Button("생성중") {
+                        }.buttonStyle(CommonButton(enabled: false))
+                    }
+                    
+                }.frame(height: 44).padding()
             }
         }
         .background(.white)
@@ -63,11 +71,11 @@ struct MessageEditor: View {
                 }
                 if shiftController.isShiftPressed {
                     return
-                } else {
+                } else if !isLoading && !text.isEmpty{
                     text = ""
                     onSend(oldV)
                 }
-            }.onAppear{
+            }.onAppear {
                 self.focused = true
             }
     }

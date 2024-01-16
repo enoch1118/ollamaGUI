@@ -43,6 +43,8 @@
 		AC97DE422B543FF200A4508B /* KeyPressedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC97DE412B543FF200A4508B /* KeyPressedController.swift */; };
 		ACF5C0092B5563CD00861735 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5C0082B5563CD00861735 /* ClearButton.swift */; };
 		ACF5C00D2B5564C300861735 /* ChatHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5C00C2B5564C300861735 /* ChatHeader.swift */; };
+		ACF5C00F2B55704800861735 /* StopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5C00E2B55704800861735 /* StopButton.swift */; };
+		ACF5C0112B557BBC00861735 /* AppSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5C0102B557BBC00861735 /* AppSetting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +86,8 @@
 		AC97DE412B543FF200A4508B /* KeyPressedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPressedController.swift; sourceTree = "<group>"; };
 		ACF5C0082B5563CD00861735 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
 		ACF5C00C2B5564C300861735 /* ChatHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHeader.swift; sourceTree = "<group>"; };
+		ACF5C00E2B55704800861735 /* StopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopButton.swift; sourceTree = "<group>"; };
+		ACF5C0102B557BBC00861735 /* AppSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetting.swift; sourceTree = "<group>"; };
 		BF65F4059A904DEBDE105736 /* Pods-ollamaGUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ollamaGUI.release.xcconfig"; path = "Target Support Files/Pods-ollamaGUI/Pods-ollamaGUI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,6 +253,7 @@
 				AC842E622B4E784300F9EC3F /* ChatBubble.swift */,
 				AC842E642B4E81D700F9EC3F /* BubbleShape.swift */,
 				ACF5C00C2B5564C300861735 /* ChatHeader.swift */,
+				ACF5C00E2B55704800861735 /* StopButton.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 				AC842E6F2B4FDA1D00F9EC3F /* Router.swift */,
 				AC725C2C2B511D3200B3E266 /* Interactor.swift */,
 				AC40BBFF2B55221000AA7D1C /* DataInteractor.swift */,
+				ACF5C0102B557BBC00861735 /* AppSetting.swift */,
 			);
 			path = Injected;
 			sourceTree = "<group>";
@@ -414,10 +420,12 @@
 				AC725C2F2B5125BB00B3E266 /* ChatRequestModel.swift in Sources */,
 				AC842E502B4D1BE000F9EC3F /* ViewHelper.swift in Sources */,
 				AC725C2D2B511D3200B3E266 /* Interactor.swift in Sources */,
+				ACF5C00F2B55704800861735 /* StopButton.swift in Sources */,
 				AC229F842B5526570033143C /* ChatModel.swift in Sources */,
 				AC842E742B4FDD6A00F9EC3F /* NetworkHelper.swift in Sources */,
 				AC842E632B4E784300F9EC3F /* ChatBubble.swift in Sources */,
 				ACF5C0092B5563CD00861735 /* ClearButton.swift in Sources */,
+				ACF5C0112B557BBC00861735 /* AppSetting.swift in Sources */,
 				AC842E562B4E6EE300F9EC3F /* ChatView.swift in Sources */,
 				AC842E4A2B4D191800F9EC3F /* HomeView.swift in Sources */,
 				AC97DE422B543FF200A4508B /* KeyPressedController.swift in Sources */,
