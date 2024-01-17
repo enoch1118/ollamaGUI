@@ -25,6 +25,7 @@
 		AC725C332B517A0D00B3E266 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC725C322B517A0D00B3E266 /* MessageModel.swift */; };
 		AC7C8ADF2B57C7640031FEF1 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7C8ADE2B57C7640031FEF1 /* DateHelper.swift */; };
 		AC7C8AE12B57CA0C0031FEF1 /* FloatingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7C8AE02B57CA0C0031FEF1 /* FloatingWindow.swift */; };
+		AC7C8AE32B5828970031FEF1 /* WindowHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7C8AE22B5828970031FEF1 /* WindowHelper.swift */; };
 		AC842E392B4D16F700F9EC3F /* ollamaGUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E382B4D16F700F9EC3F /* ollamaGUIApp.swift */; };
 		AC842E3B2B4D16F700F9EC3F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E3A2B4D16F700F9EC3F /* ContentView.swift */; };
 		AC842E3D2B4D16F800F9EC3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC842E3C2B4D16F800F9EC3F /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 		AC725C322B517A0D00B3E266 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		AC7C8ADE2B57C7640031FEF1 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		AC7C8AE02B57CA0C0031FEF1 /* FloatingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingWindow.swift; sourceTree = "<group>"; };
+		AC7C8AE22B5828970031FEF1 /* WindowHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowHelper.swift; sourceTree = "<group>"; };
 		AC842E352B4D16F700F9EC3F /* ollamaGUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ollamaGUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC842E382B4D16F700F9EC3F /* ollamaGUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ollamaGUIApp.swift; sourceTree = "<group>"; };
 		AC842E3A2B4D16F700F9EC3F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				AC40BBE22B55066900AA7D1C /* MarkdownTheme.swift */,
 				AC36BCA82B57B25200AD8BD2 /* RandomGenerator.swift */,
 				AC7C8ADE2B57C7640031FEF1 /* DateHelper.swift */,
+				AC7C8AE22B5828970031FEF1 /* WindowHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				AC842E632B4E784300F9EC3F /* ChatBubble.swift in Sources */,
 				ACF5C0092B5563CD00861735 /* ClearButton.swift in Sources */,
 				ACF5C0112B557BBC00861735 /* AppSetting.swift in Sources */,
+				AC7C8AE32B5828970031FEF1 /* WindowHelper.swift in Sources */,
 				AC842E562B4E6EE300F9EC3F /* ChatView.swift in Sources */,
 				AC842E4A2B4D191800F9EC3F /* HomeView.swift in Sources */,
 				AC97DE422B543FF200A4508B /* KeyPressedController.swift in Sources */,

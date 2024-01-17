@@ -8,74 +8,105 @@
 import SwiftUI
 
 struct RoomItem: View {
-    @State var color: Color = .clear
-    @State var position:CGPoint = .zero
-    @State var show:Bool = false
-    var room: RoomEntity
-    var onDelete:(RoomEntity)->Void
-    var body: some View {
-        VStack {
-            HStack {
-                Image(systemName: "message.fill").font(.headline)
-                Text(room.title ?? "no title").lineLimit(1)
-                Text("\(room.chats.count)").font(.caption)
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            Spacer().frame(height: 8)
-            HStack {
-                Text(room.chats.last?.message?.content ?? "").font(.caption)
-                Spacer()
-                if Date.now.hasSame(.day, as: room.updatedAt) {
-                    Text(room.updatedAt, style: .time).font(.caption)
-                } else{
-                    Text(room.updatedAt, style: .date).font(.caption)
-                }
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            Spacer()
-                
-            
-        }
-        .padding()
-        .frame(height: 75, alignment: .leading)
-        .onTapGesture(count: 2, perform: {
-                position = leftCenter
-                show = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.15){
-                    position = .init(x: leftCenter.x + 400, y: leftCenter.y)
-                }
-            })
-        .background(color)
-        .floatingWindow(position:$position, show: $show){
-            ChatView(room: room)
-        }
-        .contextMenu(ContextMenu(menuItems: {
-            Button(action:{
-              onDelete(room)
-            }){
-                Text("delete")
-            }
-        }))
-        .onHover(perform: { hovering in
-            if hovering {
-                color = .chatHover
-            } else {
-                color = .clear
-            }
+    @Environment(\.modelContext) private var context
 
-        }).clipped()
+    @State var color: Color = .clear
+    @State var position: CGPoint = .zero
+    @State var show: Bool = false
+    @State var floating: Bool = false
+    var room: RoomEntity
+    var onDelete: (RoomEntity) -> Void
+    var body: some View {
+        Button(action: {
+            show.toggle()
+        }) {
+            VStack {
+                HStack {
+                    Image(systemName: "message.fill").font(.headline)
+                    Text(room.title ?? "no title")
+                        .frame(
+                            maxWidth: .infinity,
+                            minHeight: 48,
+                            alignment: .leading
+                        )
+                        .font(.body).lineLimit(2)
+                }
+                .frame(
+                    maxWidth: .infinity,
+                    maxHeight: .infinity,
+                    alignment: .leading
+                )
+                Spacer()
+                HStack {
+                    Spacer()
+                    if Date.now.hasSame(.day, as: room.updatedAt) {
+                        Text(room.updatedAt, style: .time).font(.caption)
+                    } else {
+                        Text(room.updatedAt, style: .date).font(.caption)
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                Spacer()
+            }
+            .padding()
+            .frame(height: 75, alignment: .leading)
+
+            .background(color)
+            .floatingWindow(
+                position: $position,
+                show: $show,
+                floating: $floating
+            ) {
+                ChatView(
+                    show:$show,
+                    position: $position,
+                    room: room
+                ).environment(\.modelContext, context)
+                    
+            }
+            .contextMenu(ContextMenu(menuItems: {
+                Button(action: {
+                    onDelete(room)
+                }) {
+                    Text("delete")
+                }
+            }))
+            .onHover(perform: { hovering in
+                if hovering {
+                    color = .chatHover
+                } else {
+                    color = .clear
+                }
+
+            })
+            .clipped()
+        }.buttonStyle(.plain).padding(0).background(.clear)
     }
 }
 
+extension RoomItem {
+    func setPosition(_ pos: CGPoint) {
+        position = pos
+    }
 
-var leftCenter: CGPoint{
-    guard let screen = NSScreen.main?.visibleFrame.size else{return .zero}
-    return .init(x: 20 - 400, y: screen.height / 2 - 300)
+    func setShow(_ show: Bool) {
+        self.show = show
+    }
 }
 
-var bottomRight: CGPoint{
-    guard let screen = NSScreen.main?.visibleFrame.size else{return .zero}
+var leftCenter: CGPoint {
+    guard let screen = NSScreen.main?.visibleFrame.size else { return .zero }
+    return .init(x: 20 - 400, y: screen.height / 2 - (screen.height * 0.35))
+}
+
+var bottomRight: CGPoint {
+    guard let screen = NSScreen.main?.visibleFrame.size else { return .zero }
     return .init(x: screen.width - 220, y: 20)
+}
+
+var floatingSize: CGSize {
+    guard let screen = NSScreen.main?.visibleFrame.size else { return .zero }
+    return .init(width: 500, height: screen.height * 0.7)
 }
 
 #Preview {

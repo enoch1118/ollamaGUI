@@ -48,7 +48,7 @@ struct MessageEditor: View {
     var content: some View {
         TextEditor(text: $text)
             .placeHolder(
-                Text("무엇이든 물어보세요").foregroundStyle(.gray),
+                Text("Ask anything").foregroundStyle(.gray),
                 show: text.isEmpty
             )
             .focused($focused, equals: true)
@@ -79,10 +79,6 @@ struct MessageEditor: View {
                 self.focused = true
             }
     }
-}
-
-#Preview {
-    ChatView(room: RoomEntity()).injectPreview()
 }
 
 // #Preview {

@@ -9,28 +9,39 @@ import Foundation
 import SwiftUI
 
 /// - Custom View Modifier for Floating Window (Like Sheets)
-extension View{
+extension View {
     @ViewBuilder
-    func floatingWindow<Content: View>(position: Binding<CGPoint>,show: Binding<Bool>,@ViewBuilder content: @escaping ()->Content)->some View{
-        self
-            .modifier(FloatingWindowModifier(windowView: content(), position: position, show: show))
+    func floatingWindow<Content: View>(
+        position: Binding<CGPoint>,
+        show: Binding<Bool>,
+        floating: Binding<Bool>,
+        @ViewBuilder content: @escaping () -> Content
+    ) -> some View {
+        modifier(FloatingWindowModifier(windowView: content(),
+                                        position: position, show: show,floating: floating))
     }
 }
 
 /// - Floating Window Modifier
-fileprivate struct FloatingWindowModifier<WindowView: View>: ViewModifier{
+private struct FloatingWindowModifier<WindowView: View>: ViewModifier {
     var windowView: WindowView
     @Binding var position: CGPoint
     @Binding var show: Bool
+    @Binding var floating: Bool
     @State private var panel: FloatingPanelHelper<WindowView>?
-    
+
     func body(content: Content) -> some View {
         content
             .onAppear {
                 /// - Creating and Storing Panel for Future View Updates
-                panel = FloatingPanelHelper(position: $position,show: $show, content: {
-                    windowView
-                })
+                panel = FloatingPanelHelper(
+                    position: $position,
+                    show: $show,
+                    floating: $floating,
+                    content: {
+                        windowView
+                    }
+                )
                 /// - To Place panel at center by default
                 panel?.center()
             }
@@ -39,91 +50,118 @@ fileprivate struct FloatingWindowModifier<WindowView: View>: ViewModifier{
                 ViewUpdater(content: windowView, panel: $panel)
             })
             /// - Updating Position Dynamically
-            .onChange(of: position) { oldValue,newValue in
+            .onChange(of: position) { _, newValue in
                 panel?.updatePosition(newValue)
             }
-            .onChange(of: show) { _,newValue in
+            .onChange(of: show) { old, newValue in
                 /// - When Ever Show is Toggled Presenting Floating Panel
-                if newValue{
+                if newValue {
                     panel?.updatePositionWithoutAnimation(position)
                     panel?.orderFront(nil)
                     panel?.makeKey()
-                }else{
+                } else {
                     /// - Removing Panel
                     panel?.close()
                 }
             }
+            
     }
 }
 
-fileprivate struct ViewUpdater<Content: View>: NSViewRepresentable{
+private struct ViewUpdater<Content: View>: NSViewRepresentable {
     var content: Content
     @Binding var panel: FloatingPanelHelper<Content>?
-    func makeNSView(context: Context) -> NSView {
+    func makeNSView(context _: Context) -> NSView {
         /// - Simply Return Empty View
         return NSView()
     }
-    
-    func updateNSView(_ nsView: NSView, context: Context) {
+
+    func updateNSView(_: NSView, context _: Context) {
         /// - Update Panel's Hosting View
-        if let hostingView = panel?.contentView as? NSHostingView<Content>{
+        if let hostingView = panel?.contentView as? NSHostingView<Content> {
             hostingView.rootView = content
         }
     }
 }
 
 /// - Creating Floating Panel Using NSPanel
-fileprivate class FloatingPanelHelper<Content: View>: NSWindow{
+private class FloatingPanelHelper<Content: View>: NSWindow {
     @Binding private var show: Bool
+    @Binding private var floating: Bool
     @Binding private var position: CGPoint
-    
-    init(position: Binding<CGPoint>,show: Binding<Bool>,@ViewBuilder content: @escaping ()->Content){
+
+    init(
+        position: Binding<CGPoint>,
+        show: Binding<Bool>,
+        floating: Binding<Bool>,
+        @ViewBuilder content: @escaping () -> Content
+    ) {
         /// - Need to Implement it's super initializer
         /// - Your Custom Window Mask's Goes Here
-        self._show = show
-        self._position = position
-        super.init(contentRect: .zero, styleMask: [.resizable,.closable,.fullSizeContentView], backing: .buffered, defer: false)
-        
+        _show = show
+        _position = position
+        _floating = floating
+        super.init(
+            contentRect: .zero,
+            styleMask: [.resizable, .closable, .fullSizeContentView],
+            backing: .buffered,
+            defer: false
+        )
+
         /// - Setting Up Window Properties
-        level = .floating/// - Hiding Out TitleBar
+        level = .floating /// - Hiding Out TitleBar
         titleVisibility = .hidden
         titlebarAppearsTransparent = true
-        
+
         backgroundColor = .clear
-        hasShadow = false
+        hasShadow = true
         isMovableByWindowBackground = true
-        
+        isReleasedWhenClosed = false
+
         /// - Removing all traffic buttons
-        standardWindowButton(.closeButton)?.isHidden = false
+        standardWindowButton(.closeButton)?.isHidden = true
         standardWindowButton(.miniaturizeButton)?.isHidden = true
         standardWindowButton(.zoomButton)?.isHidden = true
-        
+
         /// - Adding Content View
         /// - Adding SwiftUI View With the Help of HostingView
         contentView = NSHostingView(rootView: content())
     }
-    
+
     override var canBecomeKey: Bool {
         true
     }
     
+
     /// - Live Position Update when the window is dragged across the screen
-    override func mouseDragged(with event: NSEvent) {
-        position = self.frame.origin
+    override func mouseDragged(with _: NSEvent) {
+        position = frame.origin
     }
-    
-    
+
     /// - Updating Position With Animation
-    func updatePosition(_ to: CGPoint){
+    func updatePosition(_ to: CGPoint) {
         let fittingSize = contentView?.fittingSize ?? .zero
-        self.setFrame(.init(origin: to, size: fittingSize), display: true, animate: true)
+        setFrame(
+            .init(origin: to, size: fittingSize),
+            display: true,
+            animate: true
+        )
     }
     
+    func updateFloading(){
+        if floating {
+            level = .floating
+        } else{
+            level = .normal
+        }
+    }
+
     /// - Updating Position Without Animation
-    func updatePositionWithoutAnimation(_ to: CGPoint){
-        self.setFrameOrigin(to)
+    func updatePositionWithoutAnimation(_ to: CGPoint) {
+        setFrameOrigin(to)
     }
     
+
     /// - Dynamic Updation when the panel is closed
     override func close() {
         super.close()
