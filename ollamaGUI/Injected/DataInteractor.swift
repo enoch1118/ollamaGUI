@@ -37,7 +37,7 @@ struct RealDataInteractor: DataInteractor {
         if rooms == nil || rooms!.isEmpty {
             fatalError()
         }
-        return rooms!
+        return rooms!.sorted(by: {$0.updatedAt > $1.updatedAt})
     }
     
     func clearRoom(context:ModelContext,room:RoomEntity)->Void{
@@ -55,7 +55,7 @@ struct RealDataInteractor: DataInteractor {
 
 struct StubDataInteractor: DataInteractor{
     func fetchRoom(context: ModelContext) -> [RoomEntity] {
-        [RoomEntity()]
+        [.randomRoom,.randomRoom,.randomRoom]
     }
     
     

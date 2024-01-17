@@ -17,6 +17,3 @@ struct StopButton: View {
     }
 }
 
-#Preview {
-    ChatView(room: RoomEntity()).injectPreview()
-}

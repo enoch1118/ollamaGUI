@@ -10,10 +10,11 @@ import SwiftUI
 struct ChatHeader: View {
     @Environment(\.injected) var container
     var room:RoomEntity
+    @Binding var show:Bool
     var onClean: ()->Void
     var body: some View {
-        HStack{
-            Image(systemName: "message")
+        HStack(spacing: 0){
+            Image(systemName: "message.fill").padding(.trailing)
             Text(room.title ?? "untitled").lineLimit(1)
             Spacer()
             Button(action:{
@@ -31,15 +32,11 @@ struct ChatHeader: View {
                 Image(systemName: "pin")
             }.buttonStyle(ClearButton())
             Button(action: {
-                
-                onClean()
+                show.toggle()
             }, label: {
-                Image(systemName: "trash")
-            }).buttonStyle(ClearButton(enabled: true))
-        }.padding().background(.ultraThickMaterial)
+                Image(systemName: "xmark")
+            }).buttonStyle(SidebarButton())
+        }.padding(.leading).padding(.vertical)
     }
 }
 
-#Preview {
-    ChatView(room: RoomEntity()).injectPreview()
-}

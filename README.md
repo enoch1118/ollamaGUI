@@ -2,8 +2,9 @@
 
 
 <p style="display:flex;justify-content:center;align-items:center"> 
-<img src="./image/png.png" width="300px" height="500px"/>
-<img src="./image/gif.gif" width="300px" height="500px"/>
+
+<img src="./image/png2.png" width="300px" height="500px"/>
+<img src="./image/png3.png" width="300px" height="500px"/>
 </p>
 
 

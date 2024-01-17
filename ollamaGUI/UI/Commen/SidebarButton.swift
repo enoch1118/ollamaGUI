@@ -10,11 +10,10 @@ import SwiftUI
 struct SidebarButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
+            .frame(width: 25,height: 25)
+            .frame(width: 40, height: 40,alignment: .center)
+            .foregroundColor(.sidebarIcon)
             .opacity(configuration.isPressed ? 0.8 : 1)
-            .padding(.vertical, 7)
-            .padding(.horizontal, 15)
-            .frame(minWidth: 48, minHeight: 48)
-            .foregroundColor(.white)
             .focusEffectDisabled()
     }
     

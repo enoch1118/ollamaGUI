@@ -11,6 +11,9 @@
 		AC1978B02B55009B0091EE4F /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1978AF2B55009B0091EE4F /* StringHelper.swift */; };
 		AC1978B32B5503070091EE4F /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = AC1978B22B5503070091EE4F /* MarkdownUI */; };
 		AC229F842B5526570033143C /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC229F832B5526570033143C /* ChatModel.swift */; };
+		AC36BCA42B57B0E200AD8BD2 /* RoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC36BCA32B57B0E200AD8BD2 /* RoomView.swift */; };
+		AC36BCA72B57B0FE00AD8BD2 /* RoomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC36BCA62B57B0FE00AD8BD2 /* RoomItem.swift */; };
+		AC36BCA92B57B25200AD8BD2 /* RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC36BCA82B57B25200AD8BD2 /* RandomGenerator.swift */; };
 		AC40BBE32B55066900AA7D1C /* MarkdownTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40BBE22B55066900AA7D1C /* MarkdownTheme.swift */; };
 		AC40BBFA2B551D1700AA7D1C /* MessageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40BBF92B551D1700AA7D1C /* MessageEntity.swift */; };
 		AC40BBFC2B551DA500AA7D1C /* ChatEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40BBFB2B551DA500AA7D1C /* ChatEntity.swift */; };
@@ -20,6 +23,9 @@
 		AC725C2F2B5125BB00B3E266 /* ChatRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC725C2E2B5125BB00B3E266 /* ChatRequestModel.swift */; };
 		AC725C312B51304000B3E266 /* DictionaryEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC725C302B51304000B3E266 /* DictionaryEncoder.swift */; };
 		AC725C332B517A0D00B3E266 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC725C322B517A0D00B3E266 /* MessageModel.swift */; };
+		AC7C8ADF2B57C7640031FEF1 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7C8ADE2B57C7640031FEF1 /* DateHelper.swift */; };
+		AC7C8AE12B57CA0C0031FEF1 /* FloatingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7C8AE02B57CA0C0031FEF1 /* FloatingWindow.swift */; };
+		AC7C8AE32B5828970031FEF1 /* WindowHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7C8AE22B5828970031FEF1 /* WindowHelper.swift */; };
 		AC842E392B4D16F700F9EC3F /* ollamaGUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E382B4D16F700F9EC3F /* ollamaGUIApp.swift */; };
 		AC842E3B2B4D16F700F9EC3F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E3A2B4D16F700F9EC3F /* ContentView.swift */; };
 		AC842E3D2B4D16F800F9EC3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC842E3C2B4D16F800F9EC3F /* Assets.xcassets */; };
@@ -35,7 +41,6 @@
 		AC842E692B4FC4A700F9EC3F /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E682B4FC4A700F9EC3F /* CommonButton.swift */; };
 		AC842E6B2B4FC7F000F9EC3F /* MessageEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E6A2B4FC7F000F9EC3F /* MessageEditor.swift */; };
 		AC842E6E2B4FCA4800F9EC3F /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E6D2B4FCA4800F9EC3F /* DIContainer.swift */; };
-		AC842E702B4FDA1D00F9EC3F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E6F2B4FDA1D00F9EC3F /* Router.swift */; };
 		AC842E742B4FDD6A00F9EC3F /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E732B4FDD6A00F9EC3F /* NetworkHelper.swift */; };
 		AC842E762B4FE20700F9EC3F /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E752B4FE20700F9EC3F /* Loadable.swift */; };
 		AC842E782B4FE2EA00F9EC3F /* DescribableEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E772B4FE2EA00F9EC3F /* DescribableEnum.swift */; };
@@ -52,6 +57,9 @@
 		99CC9802010F649185C7EF44 /* Pods_ollamaGUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ollamaGUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC1978AF2B55009B0091EE4F /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		AC229F832B5526570033143C /* ChatModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		AC36BCA32B57B0E200AD8BD2 /* RoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomView.swift; sourceTree = "<group>"; };
+		AC36BCA62B57B0FE00AD8BD2 /* RoomItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomItem.swift; sourceTree = "<group>"; };
+		AC36BCA82B57B25200AD8BD2 /* RandomGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomGenerator.swift; sourceTree = "<group>"; };
 		AC40BBE22B55066900AA7D1C /* MarkdownTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTheme.swift; sourceTree = "<group>"; };
 		AC40BBF92B551D1700AA7D1C /* MessageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageEntity.swift; sourceTree = "<group>"; };
 		AC40BBFB2B551DA500AA7D1C /* ChatEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEntity.swift; sourceTree = "<group>"; };
@@ -61,6 +69,9 @@
 		AC725C2E2B5125BB00B3E266 /* ChatRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestModel.swift; sourceTree = "<group>"; };
 		AC725C302B51304000B3E266 /* DictionaryEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryEncoder.swift; sourceTree = "<group>"; };
 		AC725C322B517A0D00B3E266 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		AC7C8ADE2B57C7640031FEF1 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		AC7C8AE02B57CA0C0031FEF1 /* FloatingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingWindow.swift; sourceTree = "<group>"; };
+		AC7C8AE22B5828970031FEF1 /* WindowHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowHelper.swift; sourceTree = "<group>"; };
 		AC842E352B4D16F700F9EC3F /* ollamaGUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ollamaGUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC842E382B4D16F700F9EC3F /* ollamaGUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ollamaGUIApp.swift; sourceTree = "<group>"; };
 		AC842E3A2B4D16F700F9EC3F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,7 +89,6 @@
 		AC842E682B4FC4A700F9EC3F /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
 		AC842E6A2B4FC7F000F9EC3F /* MessageEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageEditor.swift; sourceTree = "<group>"; };
 		AC842E6D2B4FCA4800F9EC3F /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
-		AC842E6F2B4FDA1D00F9EC3F /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Router.swift; path = ../../../../Router.swift; sourceTree = "<group>"; };
 		AC842E732B4FDD6A00F9EC3F /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		AC842E752B4FE20700F9EC3F /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		AC842E772B4FE2EA00F9EC3F /* DescribableEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribableEnum.swift; sourceTree = "<group>"; };
@@ -111,6 +121,23 @@
 				BF65F4059A904DEBDE105736 /* Pods-ollamaGUI.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		AC36BCA22B57B0D500AD8BD2 /* Room */ = {
+			isa = PBXGroup;
+			children = (
+				AC36BCA52B57B0E900AD8BD2 /* Components */,
+				AC36BCA32B57B0E200AD8BD2 /* RoomView.swift */,
+			);
+			path = Room;
+			sourceTree = "<group>";
+		};
+		AC36BCA52B57B0E900AD8BD2 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AC36BCA62B57B0FE00AD8BD2 /* RoomItem.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		AC40BBE42B550D5C00AA7D1C /* Data */ = {
@@ -171,7 +198,7 @@
 		AC842E472B4D190200F9EC3F /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				AC97DE402B543FDE00A4508B /* Controller */,
+				AC36BCA22B57B0D500AD8BD2 /* Room */,
 				AC842E542B4E6ED800F9EC3F /* Chat */,
 				AC842E512B4D3A3F00F9EC3F /* Commen */,
 				AC842E4B2B4D1AED00F9EC3F /* SideBar */,
@@ -205,6 +232,9 @@
 				AC725C302B51304000B3E266 /* DictionaryEncoder.swift */,
 				AC1978AF2B55009B0091EE4F /* StringHelper.swift */,
 				AC40BBE22B55066900AA7D1C /* MarkdownTheme.swift */,
+				AC36BCA82B57B25200AD8BD2 /* RandomGenerator.swift */,
+				AC7C8ADE2B57C7640031FEF1 /* DateHelper.swift */,
+				AC7C8AE22B5828970031FEF1 /* WindowHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -213,8 +243,10 @@
 			isa = PBXGroup;
 			children = (
 				AC842E522B4D3A5000F9EC3F /* SidebarButton.swift */,
+				AC97DE402B543FDE00A4508B /* Controller */,
 				AC842E682B4FC4A700F9EC3F /* CommonButton.swift */,
 				ACF5C0082B5563CD00861735 /* ClearButton.swift */,
+				AC7C8AE02B57CA0C0031FEF1 /* FloatingWindow.swift */,
 			);
 			path = Commen;
 			sourceTree = "<group>";
@@ -262,7 +294,6 @@
 			isa = PBXGroup;
 			children = (
 				AC842E6D2B4FCA4800F9EC3F /* DIContainer.swift */,
-				AC842E6F2B4FDA1D00F9EC3F /* Router.swift */,
 				AC725C2C2B511D3200B3E266 /* Interactor.swift */,
 				AC40BBFF2B55221000AA7D1C /* DataInteractor.swift */,
 				ACF5C0102B557BBC00861735 /* AppSetting.swift */,
@@ -416,6 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC40BC002B55221000AA7D1C /* DataInteractor.swift in Sources */,
+				AC7C8ADF2B57C7640031FEF1 /* DateHelper.swift in Sources */,
 				AC842E6E2B4FCA4800F9EC3F /* DIContainer.swift in Sources */,
 				AC725C2F2B5125BB00B3E266 /* ChatRequestModel.swift in Sources */,
 				AC842E502B4D1BE000F9EC3F /* ViewHelper.swift in Sources */,
@@ -423,18 +455,20 @@
 				ACF5C00F2B55704800861735 /* StopButton.swift in Sources */,
 				AC229F842B5526570033143C /* ChatModel.swift in Sources */,
 				AC842E742B4FDD6A00F9EC3F /* NetworkHelper.swift in Sources */,
+				AC7C8AE12B57CA0C0031FEF1 /* FloatingWindow.swift in Sources */,
 				AC842E632B4E784300F9EC3F /* ChatBubble.swift in Sources */,
 				ACF5C0092B5563CD00861735 /* ClearButton.swift in Sources */,
 				ACF5C0112B557BBC00861735 /* AppSetting.swift in Sources */,
+				AC7C8AE32B5828970031FEF1 /* WindowHelper.swift in Sources */,
 				AC842E562B4E6EE300F9EC3F /* ChatView.swift in Sources */,
 				AC842E4A2B4D191800F9EC3F /* HomeView.swift in Sources */,
 				AC97DE422B543FF200A4508B /* KeyPressedController.swift in Sources */,
 				AC842E6B2B4FC7F000F9EC3F /* MessageEditor.swift in Sources */,
 				AC842E652B4E81D700F9EC3F /* BubbleShape.swift in Sources */,
-				AC842E702B4FDA1D00F9EC3F /* Router.swift in Sources */,
 				AC842E762B4FE20700F9EC3F /* Loadable.swift in Sources */,
 				AC725C312B51304000B3E266 /* DictionaryEncoder.swift in Sources */,
 				AC842E782B4FE2EA00F9EC3F /* DescribableEnum.swift in Sources */,
+				AC36BCA42B57B0E200AD8BD2 /* RoomView.swift in Sources */,
 				AC842E532B4D3A5000F9EC3F /* SidebarButton.swift in Sources */,
 				AC842E3B2B4D16F700F9EC3F /* ContentView.swift in Sources */,
 				ACF5C00D2B5564C300861735 /* ChatHeader.swift in Sources */,
@@ -446,6 +480,8 @@
 				AC40BBFE2B551EBC00AA7D1C /* RoomEntity.swift in Sources */,
 				AC842E4D2B4D1AFB00F9EC3F /* SideBar.swift in Sources */,
 				AC842E692B4FC4A700F9EC3F /* CommonButton.swift in Sources */,
+				AC36BCA72B57B0FE00AD8BD2 /* RoomItem.swift in Sources */,
+				AC36BCA92B57B25200AD8BD2 /* RandomGenerator.swift in Sources */,
 				AC842E392B4D16F700F9EC3F /* ollamaGUIApp.swift in Sources */,
 				AC1978B02B55009B0091EE4F /* StringHelper.swift in Sources */,
 				AC842E7B2B4FE3C200F9EC3F /* NetworkError.swift in Sources */,

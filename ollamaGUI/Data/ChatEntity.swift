@@ -8,23 +8,29 @@
 import Foundation
 import SwiftData
 
-
 //
-//var message: MessageModel?
-//let stream: Bool?
-//let done: Bool?
-//let createdAt: Date?
-//let images: [String]?
-//let model: String?
+// var message: MessageModel?
+// let stream: Bool?
+// let done: Bool?
+// let createdAt: Date?
+// let images: [String]?
+// let model: String?
 //
 @Model
-class ChatEntity{
-    @Relationship(deleteRule:.cascade) var message:MessageEntity?
+class ChatEntity {
+    @Relationship(deleteRule: .cascade) var message: MessageEntity?
     var createdAt: Date
-    
-    
+
     init(message: MessageEntity? = nil, createdAt: Date) {
         self.message = message
         self.createdAt = createdAt
     }
 }
+
+#if DEBUG
+    extension ChatEntity {
+        static var randomChat: ChatEntity {
+            return ChatEntity(message: nil,createdAt: RandomGenerator.randomDate())
+        }
+    }
+#endif
