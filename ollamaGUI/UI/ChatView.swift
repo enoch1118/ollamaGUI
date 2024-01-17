@@ -102,6 +102,9 @@ struct ChatView: View {
                 return
             }
         })
+        .background(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .frame(width: 400,height: 600)
 //        .onDrop(of: [.image], isTargeted: $isTargeted, perform: { items in
 //            guard let item = items.first else {
 //                return false

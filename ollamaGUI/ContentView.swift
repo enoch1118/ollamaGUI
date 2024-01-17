@@ -20,25 +20,21 @@ struct ContentView: View {
     var body: some View {
         NavigationSplitView(
             columnVisibility: $sideBar, sidebar: {
-                SideBar(rooms:$rooms,selected: $room, onSelect: onSelect,onInsert:onInsert,onDelete:onDelete)
-                    .toolbar(removing: .sidebarToggle)
+                ZStack{
+                    Color.sidebar.ignoresSafeArea()
+                    SideBar(rooms:$rooms,selected: $room, onSelect: onSelect,onInsert:onInsert,onDelete:onDelete)
+                }.toolbar(removing: .sidebarToggle)
                     .navigationSplitViewColumnWidth(
-                        min: 200,
-                        ideal: 200,
-                        max:200
-                    )
+                        min: 65,
+                        ideal: 65,
+                        max:65)
             },
             detail: {
-                if room != nil {
-                    ChatView(room: room!)
-                        .id(room?.id)
-                } else {
-                    Text("loading")
-                }
+                RoomView(rooms:$rooms,onInsert: onInsert,onDelete: onDelete)
             }
         )
-        .background(.ultraThinMaterial)
         .navigationSplitViewStyle(.balanced)
+        .background(.chatHover)
             /// disable sidebar collapse
             .introspect(
                 .navigationSplitView,
@@ -73,22 +69,26 @@ extension ContentView {
     
     
     func onDelete(_ room:RoomEntity)->Void{
-        self.room = nil
-        container.dataInteractor.deleteRoom(context: context, room: room)
-        rooms = container.dataInteractor.fetchRoom(context: context)
-        if rooms.isEmpty {
-            onInsert()
-        }else{
-            self.room = rooms.first!
+        withAnimation{
+            self.room = nil
+            container.dataInteractor.deleteRoom(context: context, room: room)
+            rooms = container.dataInteractor.fetchRoom(context: context)
+            if rooms.isEmpty {
+                onInsert()
+            }else{
+                self.room = rooms.first!
+            }
         }
     }
     
     
     func onInsert() ->Void{
-        let id = container.dataInteractor.insertRoom(context: context)
-        rooms = container.dataInteractor.fetchRoom(context: context)
-        room = rooms.first{
-            id == $0.id
+        withAnimation{
+            let id = container.dataInteractor.insertRoom(context: context)
+            rooms = container.dataInteractor.fetchRoom(context: context)
+            room = rooms.first{
+                id == $0.id
+            }
         }
         
     }

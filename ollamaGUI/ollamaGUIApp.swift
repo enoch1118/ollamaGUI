@@ -25,13 +25,13 @@ struct ollamaGUIApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .frame(minWidth: 600, minHeight: 600)
+                .frame(minWidth: 390,maxWidth: 390, minHeight: 640,idealHeight:640)
                 .inject()
+                .preferredColorScheme(.dark)
                 .modelContainer(
                     for: [MessageEntity.self, ChatEntity.self, RoomEntity.self]
                 )
         }
-        .windowToolbarStyle(UnifiedCompactWindowToolbarStyle())
         .windowStyle(HiddenTitleBarWindowStyle())
         .windowResizability(.contentSize)
     }
