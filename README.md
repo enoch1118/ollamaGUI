@@ -6,7 +6,7 @@
 <img src="./image/png3.png" width="300px" height="500px"/>
 </p>
 
-<video src='https://github.com/enoch1118/ollamaGUI/assets/54224095/3420f1ed-e91f-4579-89e8-9ebfb602963a' width=600px/>
+https://github.com/enoch1118/ollamaGUI/assets/54224095/3420f1ed-e91f-4579-89e8-9ebfb602963a
 
 
 ### Introduction to Ollamagui
