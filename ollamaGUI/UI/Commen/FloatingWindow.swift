@@ -53,6 +53,10 @@ private struct FloatingWindowModifier<WindowView: View>: ViewModifier {
             .onChange(of: position) { _, newValue in
                 panel?.updatePosition(newValue)
             }
+            .onChange(of: floating, { _, newValue in
+                panel?.updateFloading(newValue)
+                
+            })
             .onChange(of: show) { old, newValue in
                 /// - When Ever Show is Toggled Presenting Floating Panel
                 if newValue {
@@ -109,7 +113,7 @@ private class FloatingPanelHelper<Content: View>: NSWindow {
         )
 
         /// - Setting Up Window Properties
-        level = .floating /// - Hiding Out TitleBar
+        level = .normal/// - Hiding Out TitleBar
         titleVisibility = .hidden
         titlebarAppearsTransparent = true
 
@@ -140,7 +144,7 @@ private class FloatingPanelHelper<Content: View>: NSWindow {
 
     /// - Updating Position With Animation
     func updatePosition(_ to: CGPoint) {
-        let fittingSize = contentView?.fittingSize ?? .zero
+        let fittingSize = frame.size
         setFrame(
             .init(origin: to, size: fittingSize),
             display: true,
@@ -148,8 +152,8 @@ private class FloatingPanelHelper<Content: View>: NSWindow {
         )
     }
     
-    func updateFloading(){
-        if floating {
+    func updateFloading(_ to:Bool){
+        if to {
             level = .floating
         } else{
             level = .normal

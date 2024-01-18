@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MessageEditor: View {
     @State var text: String = ""
+    @Binding var floating:Bool
     @Binding var image: NSImage?
     @Binding var isLoading: Bool
     @ObservedObject var shiftController: KeyPressedController = .init()
@@ -19,21 +20,31 @@ struct MessageEditor: View {
     var body: some View {
         VStack(spacing: 0) {
             content
-            HStack {
+            HStack(spacing: 0) {
+                Button(action: {}) {
+                    Image("MicIcon")
+                }.buttonStyle(EditorButton(enabled: .constant(false)))
+                Button(action: {
+                    onClean()
+                }) {
+                    Image("MopIcon")
+                }.buttonStyle(EditorButton(enabled: .constant(false)))
+                Button(action: {
+                    floating.toggle()
+                }) {
+                    Image("PinIcon")
+                }.buttonStyle(EditorButton(enabled: $floating))
                 Spacer()
-                if image != nil {
-                    Image(nsImage: image!).resizable()
-                        .frame(width: 50, height: 50)
-                }
+                
 
                 Group{
                     if !isLoading {
-                        Button("전송") {
+                        Button("Send") {
                             onSend(text)
                             text = ""
                         }.buttonStyle(CommonButton(enabled: text.count > 0))
                     } else {
-                        Button("생성중") {
+                        Button("Generating") {
                         }.buttonStyle(CommonButton(enabled: false))
                     }
                     

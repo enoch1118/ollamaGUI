@@ -9,8 +9,8 @@ import SwiftUI
 
 struct RoomView: View {
     @Binding var rooms: [RoomEntity]
-    var onInsert:()->Void
-    var onDelete:(RoomEntity)->Void
+    var onInsert: () -> Void
+    var onDelete: (RoomEntity) -> Void
 
     var body: some View {
         VStack {
@@ -18,7 +18,8 @@ struct RoomView: View {
                 Text("Chat").font(.title)
                 Spacer()
                 Button(action: onInsert) {
-                    Image(systemName: "plus").resizable().frame(width: 16,height: 16)
+                    Image(systemName: "plus").resizable()
+                        .frame(width: 16, height: 16)
                 }.buttonStyle(SidebarButton())
             }
             .padding(.top, 16)
@@ -27,7 +28,7 @@ struct RoomView: View {
             ScrollView {
                 LazyVStack {
                     ForEach(rooms, id: \.id) { room in
-                        RoomItem(room: room,onDelete:onDelete)
+                        RoomItem(room: room, onDelete: onDelete)
                     }
                 }
             }.frame(maxWidth: .infinity)

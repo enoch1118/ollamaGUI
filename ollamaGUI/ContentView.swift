@@ -16,11 +16,12 @@ struct ContentView: View {
     @State var window: NSWindow?
     @State var rooms: [RoomEntity] = []
     @State var room: RoomEntity? = nil
+    @State var settingLoaded: Bool = false
     @State var sideBar: NavigationSplitViewVisibility = .all
-    let descriptor = FetchDescriptor<RoomEntity>()
+    
     var body: some View {
-        Group{
-            if window != nil{
+        Group {
+            if window != nil && settingLoaded {
                 NavigationSplitView(
                     columnVisibility: $sideBar, sidebar: {
                         ZStack {
@@ -40,7 +41,11 @@ struct ContentView: View {
                             )
                     },
                     detail: {
-                        RoomView(rooms: $rooms, onInsert: onInsert, onDelete: onDelete)
+                        RoomView(
+                            rooms: $rooms,
+                            onInsert: onInsert,
+                            onDelete: onDelete
+                        )
                     }
                 )
                 .navigationSplitViewStyle(.balanced)
@@ -57,26 +62,40 @@ struct ContentView: View {
                 ).onAppear {
                     rooms = container.dataInteractor.fetchRoom(context: context)
                     room = rooms.first!
-                }.onReceive(container.appSetting.publisher, perform: { value in
-                    if value.pin {
-                        sideBar = .detailOnly
-                    } else {
-                        sideBar = .all
+                }.onReceive(
+                    container.appSetting.publisher,
+                    perform: { value in
+                        if value.pin {
+                            sideBar = .detailOnly
+                        } else {
+                            sideBar = .all
+                        }
                     }
-                    
-                })
-            } else{
-                Color.clear
+                ).onReceive(
+                    container.updateTrigger.publisher,
+                    perform: { value in
+                        withAnimation {
+                            if value.newMessage {
+                                rooms = rooms
+                                    .sorted(by: { $0.updatedAt > $1.updatedAt })
+                                container.updateTrigger.newMessageHandled()
+                            }
+                        }
+                    }
+                )
+            } else {
+                EmptyView()
             }
-        }.onChange(of: window) { old,new in
-            guard let win = new else{
-                return;
+        }.onChange(of: window) { _, new in
+            guard let win = new else {
+                return
             }
             win.isReleasedWhenClosed = false
-        }.background{
+        }.onAppear {
+        }
+        .background {
             WindowAccessor(window: $window)
         }
-        
     }
 }
 
@@ -109,7 +128,6 @@ extension ContentView {
                 id == $0.id
             }
         }
-
     }
 }
 

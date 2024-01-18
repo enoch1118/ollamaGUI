@@ -9,32 +9,24 @@ import Foundation
 import Combine
 
 struct AppSetting {
-    var subject = CurrentValueSubject<AppSettingModel, Never>(.init())
-
-    var publisher: AnyPublisher<AppSettingModel, Never> {
-        subject.eraseToAnyPublisher()
-    }
-
-    func togglePin() {
-        var current = subject.value
-        current.pin.toggle()
-        subject.send(current)
+    var entity:AppSettingEntity?
+    
+    
+    func updateBaseUrl(_ url:String)->Void {
+        entity?.baseUrl = url
     }
     
-    func getPin()->Bool {
-        subject.value.pin
+    func updateModel(_ model:String)->Void {
+        entity?.selectedModel = model
     }
-
-}
-
-
-struct AppSettingModel{
-    var pin = false
-}
-
-
-extension AppSettingModel {
-    static fileprivate var `default`:Self{
-        Self.init()
+    
+    var baseUrl:String{
+        entity!.baseUrl
+    }
+    
+    var model:String{
+        entity!.selectedModel
     }
 }
+
+
