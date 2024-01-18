@@ -14,9 +14,11 @@ struct ChatView: View {
 
     @Binding var show: Bool
     @Binding var position: CGPoint
+    @Binding var floating: Bool
 
     var room: RoomEntity
-    @State var background: Material = .ultraThinMaterial
+    @State private var showFloatingToast = false
+    @State var background: Material = .thickMaterial
     @State var chats: [ChatModel] = []
     @State var isLoading: Bool = false
     @State var cancel = Set<AnyCancellable>()
@@ -29,13 +31,12 @@ struct ChatView: View {
     @State var image: NSImage? = nil
     @State var isTargeted: Bool = false
 
-
     var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: 0) {
                 ChatHeader(
                     room: room,
-                    show:$show,
+                    show: $show,
                     onClean: onClean
                 )
                 Color.white.frame(height: 1).opacity(0.1)
@@ -65,10 +66,13 @@ struct ChatView: View {
                     .offset(y: isLoading ? 0 : 20)
                     .animation(.snappy, value: isLoading)
             }
-            MessageEditor(image: $image,
-                          isLoading: $isLoading,
-                          onSend: onSend,
-                          onClean: onClean).background {
+            MessageEditor(
+                floating: $floating,
+                image: $image,
+                isLoading: $isLoading,
+                onSend: onSend,
+                onClean: onClean
+            ).background {
                 Color.white.shadow(radius: 10, y: -5)
             }
         }
@@ -84,7 +88,9 @@ struct ChatView: View {
                 chats.append(value)
             case let .failed(value):
                 isLoading = false
-                print(value)
+                chats.removeLast()
+                let error = ChatModel(text: "please ensure your ollama server is live", role: .assistant)
+                chats.append(error)
             case let .isLoading(last: value):
                 guard var lastChat = value else {
                     return
@@ -109,7 +115,14 @@ struct ChatView: View {
         })
         .background(background)
         .clipShape(RoundedRectangle(cornerRadius: 20))
-        .frame(width: floatingSize.width, height: floatingSize.height)
+        .overlay{
+            if !floating {
+                OverlayToast(text: "this chat window is unpinned")
+            } else{
+                OverlayToast(text: "this chat window is pinned")
+            }
+        }
+        .frame(minWidth: 400,idealWidth: floatingSize.width, minHeight: floatingSize.height,idealHeight: floatingSize.height)
 //        .onDrop(of: [.image], isTargeted: $isTargeted, perform: { items in
 //            guard let item = items.first else {
 //                return false
@@ -140,6 +153,8 @@ extension ChatView {
         )
         chats.append(.init(text: "", role: .assistant))
         room.chats.append(viewModel.toEntity)
+        room.updatedAt = Date.now
+        container.updateTrigger.triggerNewMessage()
         isLoading = true
 
         subject = container.interactor.sendChatStream(
@@ -155,6 +170,9 @@ extension ChatView {
     }
 
     func onClean() {
+        if !cancel.isEmpty {
+            onCancel()
+        }
         chats.removeAll()
         container.dataInteractor.clearRoom(context: context, room: room)
         room.clean()

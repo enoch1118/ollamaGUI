@@ -15,7 +15,7 @@ struct ChatHeader: View {
     var body: some View {
         HStack(spacing: 0){
             Image(systemName: "message.fill").padding(.trailing)
-            Text(room.title ?? "untitled").lineLimit(1)
+            Text((room.title ?? "untitled").removeFirstBreakLine).lineLimit(1)
             Spacer()
             Button(action: {
                 show.toggle()

@@ -27,7 +27,9 @@ struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
     var parameter: U?
 
     var subject = PassthroughSubject<Loadable<T, NetworkError>, Never>()
+    var netWorkSubject = CurrentValueSubject<Bool, Never>(false)
     private var workItem: DispatchWorkItem? = nil
+    private var networkManager: NetworkReachabilityManager?
 
     init(
         baseUrl: String,
@@ -54,6 +56,26 @@ struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
             .store(in: &bag)
     }
 
+    func cancelCheckNetwork(bag: inout Set<AnyCancellable>) {
+        netWorkSubject.handleEvents(receiveCancel: {
+            networkManager?.stopListening()
+        })
+        .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
+        .store(in: &bag)
+    }
+
+    mutating func checkNetwork() {
+        AF.request(baseUrl, method: .get)
+            .response(completionHandler: { [self] res in
+                switch res.result {
+                case .failure:
+                    netWorkSubject.send(false)
+                default:
+                    netWorkSubject.send(true)
+                }
+            })
+    }
+
     mutating func request() {
         let body = parameter?.getDictionary()
         guard let b = body else {
@@ -71,12 +93,20 @@ struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
                 encoding: JSONEncoding.default,
                 headers: header ?? HTTPHeader.default
             )
-            .validate(statusCode: 200 ..< 300)
-            .response {
-                _ in
+            .response { res in
+                switch res.result {
+                case let .failure(error):
+                    print(error)
+                    print("error in this")
+                    subject.send(.failed(.commonError(error: error)))
+                    subject.send(completion:.finished)
+                    return
+                default:
+                    return
+                }
             }
+            .validate(statusCode: 200 ..< 300)
             .responseDecodable(of: T.self, decoder: decoder) { response in
-                print(response)
                 switch response.result {
                 case let .success(data):
                     subject.send(.loaded(data))
@@ -109,18 +139,26 @@ struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
             )
             .validate(statusCode: 200 ..< 300)
             .responseStreamDecodable(of: T.self, using: decoder) { stream in
+                
                 switch stream.event {
                 case let .stream(result):
                     switch result {
                     case let .success(value):
+                        netWorkSubject.send(true)
                         subject.send(.isLoading(last: value))
                     case let .failure(error):
                         subject.send(.failed(.commonError(error: error)))
                         subject.send(completion: .finished)
                     }
                 case let .complete(completion):
-                    print(completion)
-                    subject.send(completion: .finished)
+                    if let error = completion.error {
+                        subject.send(.failed(.commonError(error: error)))
+                        subject.send(completion: .finished)
+                        
+                    }else{
+                        netWorkSubject.send(true)
+                        subject.send(completion: .finished)
+                    }
                 }
             }
         }

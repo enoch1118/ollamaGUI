@@ -23,7 +23,7 @@ struct RoomItem: View {
             VStack {
                 HStack {
                     Image(systemName: "message.fill").font(.headline)
-                    Text(room.title ?? "no title")
+                    Text((room.title ?? "no title").removeFirstBreakLine)
                         .frame(
                             maxWidth: .infinity,
                             minHeight: 48,
@@ -60,12 +60,14 @@ struct RoomItem: View {
                 ChatView(
                     show:$show,
                     position: $position,
+                    floating: $floating,
                     room: room
                 ).environment(\.modelContext, context)
                     
             }
             .contextMenu(ContextMenu(menuItems: {
                 Button(action: {
+                    show = false
                     onDelete(room)
                 }) {
                     Text("delete")

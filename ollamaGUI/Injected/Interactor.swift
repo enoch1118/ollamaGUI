@@ -14,6 +14,9 @@ protocol OllamaInteractor {
     
     func sendChatStream(chat: ChatRequestModel, cancel: inout Set<AnyCancellable>)
         -> PassthroughSubject<Loadable<ChatModel, NetworkError>, Never>
+    
+    
+    func checkNetwork(cancel: inout Set<AnyCancellable>)-> CurrentValueSubject<Bool, Never>
 
 }
 
@@ -38,6 +41,14 @@ struct RealOllamaInteractor: OllamaInteractor {
         helper.request()
         return helper.subject
     }
+    
+    func checkNetwork(cancel: inout Set<AnyCancellable>) -> CurrentValueSubject<Bool, Never> {
+        var helper = RealNetworkHelper<ChatRequestModel,ChatModel>(baseUrl: baseUrl, url: "", method: .get)
+        helper.checkNetwork()
+        helper.cancelCheckNetwork(bag: &cancel)
+        return helper.netWorkSubject
+    }
+    
     
     func sendChatStream(chat: ChatRequestModel,
                   cancel: inout Set<AnyCancellable>)

@@ -26,4 +26,8 @@ extension View {
     func placeHolder<T: View>(_ holder: T, show: Bool) -> some View {
         modifier(PlaceHolder(placeHolder: holder, show: show))
     }
+    
+    var textLeft:some View {
+        self.frame(maxWidth: .infinity,alignment: .leading)
+    }
 }
