@@ -33,7 +33,6 @@ struct RoomView: View {
                 }
             }.frame(maxWidth: .infinity)
         }.ignoresSafeArea().background(.chat)
-            
     }
 }
 

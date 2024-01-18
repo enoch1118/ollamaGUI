@@ -7,6 +7,9 @@
 </p>
 
 
+https://github.com/enoch1118/ollamaGUI/assets/54224095/3420f1ed-e91f-4579-89e8-9ebfb602963a
+
+
 ### Introduction to Ollamagui
 ollama is a lightweight, extensible framework that lets you run powerful LLMs like Llama 2, Code Llama, and others on your own computer. This means you don't need to rely on cloud-based services or have specific hardware requirements.
 

@@ -58,7 +58,6 @@ struct ChatView: View {
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-
             }.overlay(alignment: .bottom) {
                 StopButton(onCancel: onCancel)
                     .padding()
@@ -142,6 +141,7 @@ struct ChatView: View {
 //        })
     }
 }
+
 
 extension ChatView {
     func onSend(text: String) {

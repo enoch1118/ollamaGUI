@@ -30,6 +30,7 @@ struct DIContainer: EnvironmentKey {
     let dataInteractor: DataInteractor
     let appSetting:AppSetting
     let updateTrigger:UpdateTrigger
+
 }
 
 extension EnvironmentValues {

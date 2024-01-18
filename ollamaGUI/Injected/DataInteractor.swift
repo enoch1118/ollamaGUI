@@ -26,7 +26,6 @@ struct RealDataInteractor: DataInteractor {
         context.insert(room)
         return room.id
     }
-
     func fetchRoom(context: ModelContext) -> [RoomEntity] {
         let des = FetchDescriptor<RoomEntity>()
         var rooms = try? context.fetch(des)
