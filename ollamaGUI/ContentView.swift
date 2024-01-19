@@ -13,14 +13,15 @@ struct ContentView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.injected) private var container
 
-    @State var window: NSWindow?
-    @State var rooms: [RoomEntity] = []
-    @State var room: RoomEntity? = nil
-    @State var sideBar: NavigationSplitViewVisibility = .all
+    @State private var window: NSWindow?
+    @State private var rooms: [RoomEntity] = []
+    @State private var room: RoomEntity? = nil
+    @State private var sideBar: NavigationSplitViewVisibility = .all
+    @State private var settingLoaded: Bool = false
 
     var body: some View {
         Group {
-            if window != nil {
+            if window != nil && settingLoaded {
                 NavigationSplitView(
                     columnVisibility: $sideBar, sidebar: {
                         ZStack {
@@ -81,6 +82,12 @@ struct ContentView: View {
                 return
             }
             win.isReleasedWhenClosed = false
+        }
+        .onAppear {
+            let setting = container.dataInteractor
+                .fetchSetting(context: context)
+            container.appSetting.updateSetting(setting)
+            settingLoaded = true
         }
         .background {
             WindowAccessor(window: $window)

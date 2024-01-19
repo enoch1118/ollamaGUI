@@ -30,4 +30,12 @@ extension View {
     var textLeft:some View {
         self.frame(maxWidth: .infinity,alignment: .leading)
     }
+    
+    var flexTL:some View{
+        self.frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .topLeading)
+    }
+    var flexC:some View{
+        self.frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .center)
+    }
+    
 }

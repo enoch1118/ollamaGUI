@@ -12,25 +12,26 @@ struct DIContainer: EnvironmentKey {
     static var defaultValue: Self { Self.default }
     static var previewValue: Self { Self.preview }
 
-    private static let `default` = Self(
-        interactor: RealOllamaInteractor(baseUrl: "http://localhost:11434/api/"),
-        dataInteractor: RealDataInteractor(),
-//        appSetting: .init(),
-        updateTrigger: .init()
-    )
-    
-    private static let preview = Self(
-        interactor: RealOllamaInteractor(baseUrl: "http://localhost:11434/api/"),
-        dataInteractor: StubDataInteractor(),
-//        appSetting: .init(),
-        updateTrigger: .init()
-    )
+    private static let `default` =
+        Self(
+            interactor: RealOllamaInteractor(),
+            dataInteractor: RealDataInteractor(),
+            appSetting: .init(),
+            updateTrigger: .init()
+        )
+
+    private static let preview =
+        Self(
+            interactor: RealOllamaInteractor(),
+            dataInteractor: StubDataInteractor(),
+            appSetting: .init(),
+            updateTrigger: .init()
+        )
 
     let interactor: OllamaInteractor
     let dataInteractor: DataInteractor
-//    let appSetting:AppSetting
-    let updateTrigger:UpdateTrigger
-
+    let appSetting: AppSetting
+    let updateTrigger: UpdateTrigger
 }
 
 extension EnvironmentValues {

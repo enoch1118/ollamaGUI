@@ -14,6 +14,7 @@ protocol NetworkHelper {
     var url: String { get }
     var baseUrl: String { get }
     var header: HTTPHeaders? { get }
+    var isTest: Bool { get }
 }
 
 struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
@@ -24,10 +25,12 @@ struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
     var url: String
     var method: HTTPMethod
     var header: HTTPHeaders?
+    var isTest: Bool
     var parameter: U?
 
     var subject = PassthroughSubject<Loadable<T, NetworkError>, Never>()
     var netWorkSubject = CurrentValueSubject<Bool, Never>(false)
+    var testNetworkSubject = CurrentValueSubject<Bool, Never>(false)
     private var workItem: DispatchWorkItem? = nil
     private var networkManager: NetworkReachabilityManager?
 
@@ -36,13 +39,15 @@ struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
         url: String,
         method: HTTPMethod,
         header: HTTPHeaders? = .default,
-        parameter: U? = nil
+        parameter: U? = nil,
+        isTest: Bool = false
     ) {
         self.baseUrl = baseUrl
         self.url = url
         self.method = method
         self.header = header
         self.parameter = parameter
+        self.isTest = isTest
     }
 
     func cancel(bag: inout Set<AnyCancellable>) {
@@ -69,20 +74,33 @@ struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
             .response(completionHandler: { [self] res in
                 switch res.result {
                 case .failure:
-                    netWorkSubject.send(false)
+                    if !isTest {
+                        netWorkSubject.send(false)
+                    } else {
+                        testNetworkSubject.send(false)
+                    }
                 default:
-                    netWorkSubject.send(true)
+                    if !isTest {
+                        netWorkSubject.send(true)
+                    } else {
+                        testNetworkSubject.send(true)
+                    }
                 }
             })
     }
 
     mutating func request() {
         let body = parameter?.getDictionary()
-        guard let b = body else {
-            subject.send(.failed(.jsonEncodeError))
-            subject.send(completion: .finished)
-            return
+        var b: [String: Any]?
+        if parameter != nil {
+            guard let bodyTemp = body else {
+                subject.send(.failed(.jsonEncodeError))
+                subject.send(completion: .finished)
+                return
+            }
+            b = bodyTemp
         }
+
         workItem = DispatchWorkItem { [self] in
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .customISO8601
@@ -99,7 +117,7 @@ struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
                     print(error)
                     print("error in this")
                     subject.send(.failed(.commonError(error: error)))
-                    subject.send(completion:.finished)
+                    subject.send(completion: .finished)
                     return
                 default:
                     return
@@ -139,7 +157,7 @@ struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
             )
             .validate(statusCode: 200 ..< 300)
             .responseStreamDecodable(of: T.self, using: decoder) { stream in
-                
+
                 switch stream.event {
                 case let .stream(result):
                     switch result {
@@ -154,8 +172,8 @@ struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
                     if let error = completion.error {
                         subject.send(.failed(.commonError(error: error)))
                         subject.send(completion: .finished)
-                        
-                    }else{
+
+                    } else {
                         netWorkSubject.send(true)
                         subject.send(completion: .finished)
                     }

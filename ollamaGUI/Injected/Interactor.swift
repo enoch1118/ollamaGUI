@@ -9,56 +9,95 @@ import Combine
 import Foundation
 
 protocol OllamaInteractor {
-    func sendChat(chat: ChatRequestModel, cancel: inout Set<AnyCancellable>)
+    func sendChat(
+        chat: ChatRequestModel,
+        cancel: inout Set<AnyCancellable>,
+        setting: AppSetting
+    )
         -> PassthroughSubject<Loadable<ChatModel, NetworkError>, Never>
-    
-    func sendChatStream(chat: ChatRequestModel, cancel: inout Set<AnyCancellable>)
-        -> PassthroughSubject<Loadable<ChatModel, NetworkError>, Never>
-    
-    
-    func checkNetwork(cancel: inout Set<AnyCancellable>)-> CurrentValueSubject<Bool, Never>
 
+    func sendChatStream(
+        chat: ChatRequestModel,
+        cancel: inout Set<AnyCancellable>,
+        setting: AppSetting
+    )
+        -> PassthroughSubject<Loadable<ChatModel, NetworkError>, Never>
+
+    func checkNetwork(
+        cancel: inout Set<AnyCancellable>,
+        setting: AppSetting,
+        baseUrl: String?,
+        isTest: Bool
+    )
+        -> CurrentValueSubject<Bool, Never>
+
+    func getModels(
+        cancel: inout Set<AnyCancellable>,
+            setting: AppSetting
+     )-> PassthroughSubject<Loadable<ModelList, NetworkError>, Never>
 }
 
 struct RealOllamaInteractor: OllamaInteractor {
-    var baseUrl: String
-    
-    
-    init(baseUrl: String) {
-        self.baseUrl = baseUrl
-    }
-
-    func sendChat(chat: ChatRequestModel,
-                  cancel: inout Set<AnyCancellable>)
-        -> PassthroughSubject<Loadable<ChatModel, NetworkError>, Never>
-    {
+    func getModels(cancel: inout Set<AnyCancellable>, setting: AppSetting) -> PassthroughSubject<Loadable<ModelList, NetworkError>, Never> {
         var helper =
-            RealNetworkHelper<ChatRequestModel, ChatModel>(baseUrl: baseUrl,
-                                                    url: "chat",
-                                                    method: .post,
-                                                    parameter: chat)
+            RealNetworkHelper<ChatRequestModel, ModelList>(baseUrl: setting
+                .baseUrl,
+                url: "/api/tags",
+                method: .get,
+                parameter: nil)
         helper.cancel(bag: &cancel)
         helper.request()
         return helper.subject
     }
     
-    func checkNetwork(cancel: inout Set<AnyCancellable>) -> CurrentValueSubject<Bool, Never> {
-        var helper = RealNetworkHelper<ChatRequestModel,ChatModel>(baseUrl: baseUrl, url: "", method: .get)
-        helper.checkNetwork()
-        helper.cancelCheckNetwork(bag: &cancel)
-        return helper.netWorkSubject
-    }
-    
-    
-    func sendChatStream(chat: ChatRequestModel,
-                  cancel: inout Set<AnyCancellable>)
+    func sendChat(chat: ChatRequestModel,
+                  cancel: inout Set<AnyCancellable>,
+                  setting: AppSetting)
         -> PassthroughSubject<Loadable<ChatModel, NetworkError>, Never>
     {
+        var chatModel = chat
+        chatModel.model = setting.model
         var helper =
-            RealNetworkHelper<ChatRequestModel, ChatModel>(baseUrl: baseUrl,
-                                                    url: "chat",
-                                                    method: .post,
-                                                    parameter: chat)
+            RealNetworkHelper<ChatRequestModel, ChatModel>(baseUrl: setting
+                .baseUrl,
+                url: "/api/chat",
+                method: .post,
+                parameter: chatModel)
+        helper.cancel(bag: &cancel)
+        helper.request()
+        return helper.subject
+    }
+
+    func checkNetwork(cancel: inout Set<AnyCancellable>,
+                      setting: AppSetting,
+                      baseUrl: String?,
+                      isTest: Bool = false) -> CurrentValueSubject<Bool, Never>
+    {
+        var helper = RealNetworkHelper<ChatRequestModel,
+            ChatModel>(
+            baseUrl: baseUrl ?? setting.baseUrl,
+            url: "",
+            method: .get,
+            isTest: isTest
+        )
+        helper.checkNetwork()
+        helper.cancelCheckNetwork(bag: &cancel)
+        return isTest ? helper.testNetworkSubject : helper.netWorkSubject
+    }
+
+    func sendChatStream(chat: ChatRequestModel,
+                        cancel: inout Set<AnyCancellable>,
+                        setting: AppSetting)
+        -> PassthroughSubject<Loadable<ChatModel, NetworkError>, Never>
+    {
+        var chatModel = chat
+        chatModel.model = setting.model
+        var helper =
+            RealNetworkHelper<ChatRequestModel, ChatModel>(baseUrl: setting
+                .baseUrl,
+                url: "/api/chat",
+                method: .post,
+                parameter: chatModel)
         helper.cancel(bag: &cancel)
         helper.requestStream()
         return helper.subject
