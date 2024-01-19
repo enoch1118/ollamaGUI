@@ -16,12 +16,11 @@ struct ContentView: View {
     @State var window: NSWindow?
     @State var rooms: [RoomEntity] = []
     @State var room: RoomEntity? = nil
-    @State var settingLoaded: Bool = false
     @State var sideBar: NavigationSplitViewVisibility = .all
-    
+
     var body: some View {
         Group {
-            if window != nil && settingLoaded {
+            if window != nil {
                 NavigationSplitView(
                     columnVisibility: $sideBar, sidebar: {
                         ZStack {
@@ -63,15 +62,6 @@ struct ContentView: View {
                     rooms = container.dataInteractor.fetchRoom(context: context)
                     room = rooms.first!
                 }.onReceive(
-                    container.appSetting.publisher,
-                    perform: { value in
-                        if value.pin {
-                            sideBar = .detailOnly
-                        } else {
-                            sideBar = .all
-                        }
-                    }
-                ).onReceive(
                     container.updateTrigger.publisher,
                     perform: { value in
                         withAnimation {
@@ -91,7 +81,6 @@ struct ContentView: View {
                 return
             }
             win.isReleasedWhenClosed = false
-        }.onAppear {
         }
         .background {
             WindowAccessor(window: $window)

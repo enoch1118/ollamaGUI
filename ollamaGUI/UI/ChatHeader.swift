@@ -18,16 +18,7 @@ struct ChatHeader: View {
             Text((room.title ?? "untitled").removeFirstBreakLine).lineLimit(1)
             Spacer()
             Button(action:{
-                if !container.appSetting.getPin() {
-                    for window in NSApplication.shared.windows {
-                        window.level = .floating
-                    }
-                }else{
-                    for window in NSApplication.shared.windows {
-                        window.level = .normal
-                    }
-                }
-                container.appSetting.togglePin()
+                
             }){
                 Image(systemName: "pin")
             }.buttonStyle(ClearButton())
