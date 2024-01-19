@@ -8,24 +8,38 @@
 import Foundation
 import Combine
 
-struct AppSetting {
-    var entity:AppSettingEntity?
+class AppSetting {
+    private var subject = CurrentValueSubject<AppSettingEntity?,Never>(nil)
     
+    private var entity:AppSettingEntity {
+        subject.value!
+    }
     
     func updateBaseUrl(_ url:String)->Void {
-        entity?.baseUrl = url
+        let entity = entity
+        entity.baseUrl = url
+        subject.send(entity)
     }
     
     func updateModel(_ model:String)->Void {
-        entity?.selectedModel = model
+        let entity = entity
+        entity.selectedModel = model
+        subject.send(entity)
+    }
+    
+    func updateSetting(_ entity:AppSettingEntity) -> Void{
+        print("setting setted")
+        print(entity.baseUrl)
+        subject.send(entity)
     }
     
     var baseUrl:String{
-        entity!.baseUrl
+        entity.baseUrl
     }
     
+    
     var model:String{
-        entity!.selectedModel
+        entity.selectedModel
     }
 }
 

@@ -159,7 +159,8 @@ extension ChatView {
 
         subject = container.interactor.sendChatStream(
             chat: requestModel,
-            cancel: &cancel
+            cancel: &cancel,
+            setting:container.appSetting
         )
         print(cancel.count)
     }

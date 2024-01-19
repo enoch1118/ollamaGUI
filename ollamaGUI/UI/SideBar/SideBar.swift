@@ -45,7 +45,12 @@ struct SideBar: View {
             Spacer().frame(height: 35)
 
         }.onAppear {
-            subject = container.interactor.checkNetwork(cancel: &cancel)
+            subject = container.interactor.checkNetwork(
+                cancel: &cancel,
+                setting: container.appSetting,
+                baseUrl: nil,
+                isTest: false
+            )
         }.onReceive(subject, perform: { status in
             self.status = status
         })

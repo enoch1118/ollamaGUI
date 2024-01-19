@@ -51,6 +51,9 @@
 		AC842E7B2B4FE3C200F9EC3F /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E7A2B4FE3C200F9EC3F /* NetworkError.swift */; };
 		AC97DE422B543FF200A4508B /* KeyPressedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC97DE412B543FF200A4508B /* KeyPressedController.swift */; };
 		ACB566AA2B591F98009EF2B2 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB566A92B591F98009EF2B2 /* SettingView.swift */; };
+		ACDCFDD02B5A6D3200DAB674 /* ModelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDCFDCF2B5A6D3200DAB674 /* ModelList.swift */; };
+		ACDCFDD22B5A6D3B00DAB674 /* ModelInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDCFDD12B5A6D3B00DAB674 /* ModelInfoModel.swift */; };
+		ACDCFDD42B5A761F00DAB674 /* ModelManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDCFDD32B5A761F00DAB674 /* ModelManagerView.swift */; };
 		ACF5C0092B5563CD00861735 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5C0082B5563CD00861735 /* ClearButton.swift */; };
 		ACF5C00D2B5564C300861735 /* ChatHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5C00C2B5564C300861735 /* ChatHeader.swift */; };
 		ACF5C00F2B55704800861735 /* StopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5C00E2B55704800861735 /* StopButton.swift */; };
@@ -104,6 +107,9 @@
 		AC842E7A2B4FE3C200F9EC3F /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		AC97DE412B543FF200A4508B /* KeyPressedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPressedController.swift; sourceTree = "<group>"; };
 		ACB566A92B591F98009EF2B2 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		ACDCFDCF2B5A6D3200DAB674 /* ModelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelList.swift; sourceTree = "<group>"; };
+		ACDCFDD12B5A6D3B00DAB674 /* ModelInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelInfoModel.swift; sourceTree = "<group>"; };
+		ACDCFDD32B5A761F00DAB674 /* ModelManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManagerView.swift; sourceTree = "<group>"; };
 		ACF5C0082B5563CD00861735 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
 		ACF5C00C2B5564C300861735 /* ChatHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHeader.swift; sourceTree = "<group>"; };
 		ACF5C00E2B55704800861735 /* StopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopButton.swift; sourceTree = "<group>"; };
@@ -209,6 +215,7 @@
 		AC842E472B4D190200F9EC3F /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				ACDCFDD52B5A762400DAB674 /* Manager */,
 				ACB566A82B591F8F009EF2B2 /* Setting */,
 				AC36BCA22B57B0D500AD8BD2 /* Room */,
 				AC842E542B4E6ED800F9EC3F /* Chat */,
@@ -279,6 +286,8 @@
 				AC229F832B5526570033143C /* ChatModel.swift */,
 				AC725C2E2B5125BB00B3E266 /* ChatRequestModel.swift */,
 				AC725C322B517A0D00B3E266 /* MessageModel.swift */,
+				ACDCFDCF2B5A6D3200DAB674 /* ModelList.swift */,
+				ACDCFDD12B5A6D3B00DAB674 /* ModelInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -339,6 +348,14 @@
 				ACB566A92B591F98009EF2B2 /* SettingView.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		ACDCFDD52B5A762400DAB674 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				ACDCFDD32B5A761F00DAB674 /* ModelManagerView.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		C496E79C72A612FD73E80721 /* Frameworks */ = {
@@ -488,6 +505,7 @@
 				AC842E562B4E6EE300F9EC3F /* ChatView.swift in Sources */,
 				AC842E4A2B4D191800F9EC3F /* HomeView.swift in Sources */,
 				AC97DE422B543FF200A4508B /* KeyPressedController.swift in Sources */,
+				ACDCFDD42B5A761F00DAB674 /* ModelManagerView.swift in Sources */,
 				AC842E6B2B4FC7F000F9EC3F /* MessageEditor.swift in Sources */,
 				AC842E652B4E81D700F9EC3F /* BubbleShape.swift in Sources */,
 				AC842E762B4FE20700F9EC3F /* Loadable.swift in Sources */,
@@ -498,10 +516,12 @@
 				AC842E3B2B4D16F700F9EC3F /* ContentView.swift in Sources */,
 				ACF5C00D2B5564C300861735 /* ChatHeader.swift in Sources */,
 				AC40BBE32B55066900AA7D1C /* MarkdownTheme.swift in Sources */,
+				ACDCFDD22B5A6D3B00DAB674 /* ModelInfoModel.swift in Sources */,
 				AC7C8AE52B58DA4E0031FEF1 /* EditorButton.swift in Sources */,
 				AC40BBFA2B551D1700AA7D1C /* MessageEntity.swift in Sources */,
 				AC40BBFC2B551DA500AA7D1C /* ChatEntity.swift in Sources */,
 				AC7C8AEB2B58FDE90031FEF1 /* OverlayToast.swift in Sources */,
+				ACDCFDD02B5A6D3200DAB674 /* ModelList.swift in Sources */,
 				AC842E5E2B4E6F8000F9EC3F /* RoleEnum.swift in Sources */,
 				AC725C332B517A0D00B3E266 /* MessageModel.swift in Sources */,
 				AC40BBFE2B551EBC00AA7D1C /* RoomEntity.swift in Sources */,
