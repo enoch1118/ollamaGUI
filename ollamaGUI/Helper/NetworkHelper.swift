@@ -17,7 +17,7 @@ protocol NetworkHelper {
     var isTest: Bool { get }
 }
 
-struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
+struct RealNetworkHelper<U, T>: NetworkHelper where
     U: DictionaryEncodable,
     U: Encodable
 {
@@ -31,7 +31,7 @@ struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
     var subject = PassthroughSubject<Loadable<T, NetworkError>, Never>()
     var netWorkSubject = CurrentValueSubject<Bool, Never>(false)
     var testNetworkSubject = CurrentValueSubject<Bool, Never>(false)
-    private var workItem: DispatchWorkItem? = nil
+    private var workItem: DispatchWorkItem?
     private var networkManager: NetworkReachabilityManager?
 
     init(
@@ -88,7 +88,31 @@ struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
                 }
             })
     }
+}
 
+extension RealNetworkHelper where T == String {
+    mutating func getModels() {
+        AF.request(baseUrl + url, method: .get)
+            .response(completionHandler: { [self] res in
+                switch res.result {
+                case let .failure(error):
+                    subject.send(.failed(.commonError(error: error)))
+                    subject.send(completion: .finished)
+                    return
+                case let .success(data):
+                    guard let d = data else {
+                        subject.send(.failed(.jsonEncodeError))
+                        subject.send(completion: .finished)
+                        return
+                    }
+                    subject.send(.loaded(String(data: d, encoding: .utf8)!))
+                    subject.send(completion: .finished)
+                }
+            })
+    }
+}
+
+extension RealNetworkHelper where T: Decodable {
     mutating func request() {
         let body = parameter?.getDictionary()
         var b: [String: Any]?
@@ -138,12 +162,6 @@ struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
     }
 
     mutating func requestStream() {
-//        let body = parameter?.getDictionary()
-//        guard let b = body else {
-//            subject.send(.failed(.jsonEncodeError))
-//            subject.send(completion: .finished)
-//            return
-//        }
         subject.send(.isLoading(last: nil))
         workItem = DispatchWorkItem { [self] in
             let decoder = JSONDecoder()

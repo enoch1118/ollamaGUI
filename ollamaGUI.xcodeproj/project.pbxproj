@@ -54,6 +54,8 @@
 		ACDCFDD02B5A6D3200DAB674 /* ModelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDCFDCF2B5A6D3200DAB674 /* ModelList.swift */; };
 		ACDCFDD22B5A6D3B00DAB674 /* ModelInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDCFDD12B5A6D3B00DAB674 /* ModelInfoModel.swift */; };
 		ACDCFDD42B5A761F00DAB674 /* ModelManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDCFDD32B5A761F00DAB674 /* ModelManagerView.swift */; };
+		ACDCFDD82B5AD21F00DAB674 /* ModelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDCFDD72B5AD21F00DAB674 /* ModelListView.swift */; };
+		ACDCFDDA2B5AD36F00DAB674 /* IntHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDCFDD92B5AD36F00DAB674 /* IntHelper.swift */; };
 		ACF5C0092B5563CD00861735 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5C0082B5563CD00861735 /* ClearButton.swift */; };
 		ACF5C00D2B5564C300861735 /* ChatHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5C00C2B5564C300861735 /* ChatHeader.swift */; };
 		ACF5C00F2B55704800861735 /* StopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5C00E2B55704800861735 /* StopButton.swift */; };
@@ -110,6 +112,8 @@
 		ACDCFDCF2B5A6D3200DAB674 /* ModelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelList.swift; sourceTree = "<group>"; };
 		ACDCFDD12B5A6D3B00DAB674 /* ModelInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelInfoModel.swift; sourceTree = "<group>"; };
 		ACDCFDD32B5A761F00DAB674 /* ModelManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManagerView.swift; sourceTree = "<group>"; };
+		ACDCFDD72B5AD21F00DAB674 /* ModelListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelListView.swift; sourceTree = "<group>"; };
+		ACDCFDD92B5AD36F00DAB674 /* IntHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntHelper.swift; sourceTree = "<group>"; };
 		ACF5C0082B5563CD00861735 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
 		ACF5C00C2B5564C300861735 /* ChatHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHeader.swift; sourceTree = "<group>"; };
 		ACF5C00E2B55704800861735 /* StopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopButton.swift; sourceTree = "<group>"; };
@@ -254,6 +258,7 @@
 				AC36BCA82B57B25200AD8BD2 /* RandomGenerator.swift */,
 				AC7C8ADE2B57C7640031FEF1 /* DateHelper.swift */,
 				AC7C8AE22B5828970031FEF1 /* WindowHelper.swift */,
+				ACDCFDD92B5AD36F00DAB674 /* IntHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -353,9 +358,18 @@
 		ACDCFDD52B5A762400DAB674 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				ACDCFDD62B5AD20C00DAB674 /* Components */,
 				ACDCFDD32B5A761F00DAB674 /* ModelManagerView.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		ACDCFDD62B5AD20C00DAB674 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				ACDCFDD72B5AD21F00DAB674 /* ModelListView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		C496E79C72A612FD73E80721 /* Frameworks */ = {
@@ -487,6 +501,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC40BC002B55221000AA7D1C /* DataInteractor.swift in Sources */,
+				ACDCFDDA2B5AD36F00DAB674 /* IntHelper.swift in Sources */,
 				ACB566AA2B591F98009EF2B2 /* SettingView.swift in Sources */,
 				AC7C8ADF2B57C7640031FEF1 /* DateHelper.swift in Sources */,
 				AC842E6E2B4FCA4800F9EC3F /* DIContainer.swift in Sources */,
@@ -508,6 +523,7 @@
 				ACDCFDD42B5A761F00DAB674 /* ModelManagerView.swift in Sources */,
 				AC842E6B2B4FC7F000F9EC3F /* MessageEditor.swift in Sources */,
 				AC842E652B4E81D700F9EC3F /* BubbleShape.swift in Sources */,
+				ACDCFDD82B5AD21F00DAB674 /* ModelListView.swift in Sources */,
 				AC842E762B4FE20700F9EC3F /* Loadable.swift in Sources */,
 				AC725C312B51304000B3E266 /* DictionaryEncoder.swift in Sources */,
 				AC842E782B4FE2EA00F9EC3F /* DescribableEnum.swift in Sources */,

@@ -61,6 +61,7 @@ struct RealDataInteractor: DataInteractor {
         }
         return setting!.first!
     }
+    
 }
 
 struct StubDataInteractor: DataInteractor {

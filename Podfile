@@ -8,5 +8,6 @@ target 'ollamaGUI' do
   # Pods for ollamaGUI
   pod 'SwiftUIIntrospect', '~> 1.0'
   pod 'Alamofire'
+  pod 'SwiftSoup'
 
 end

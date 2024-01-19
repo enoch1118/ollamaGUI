@@ -76,17 +76,17 @@ extension SettingView {
                     }
                 }
             }
-//            HStack {
-//                Spacer()
-//                Button(
-//                    action:  {
-//                        openModelManager.toggle()
-//                    },
-//                    label: {
-//                        Text("model manager")
-//                    }
-//                )
-//            }
+            HStack {
+                Spacer()
+                Button(
+                    action:  {
+                        openModelManager.toggle()
+                    },
+                    label: {
+                        Text("model manager")
+                    }
+                )
+            }
             Spacer()
         }.onReceive(modelSubject, perform: { value in
             switch value {
