@@ -21,7 +21,7 @@ struct ModelListView: View {
             HStack {
                 Spacer()
                 Text(model.size.getSize)
-                Button("update") {}.disabled(true)
+                Button("remove") {}.disabled(true)
             }
 
         }.padding(.vertical).padding(.horizontal,0).frame(height: 80)

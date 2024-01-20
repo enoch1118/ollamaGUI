@@ -12,6 +12,7 @@ struct ModelManagerView: View {
     @Environment(\.injected) private var container
 
     @State var models: [ModelInfoModel] = []
+    @State var libraryModels : [OllamaModel] = []
     @State var modelSubject = PassthroughSubject<Loadable<ModelList,
         NetworkError>, Never>(
     )
@@ -43,6 +44,7 @@ struct ModelManagerView: View {
                 }.flexTL
                 VStack {
                     Text("Library").font(.title2).textLeft
+                    library
                 }.flexTL
             }.flexTL
 
@@ -67,6 +69,20 @@ extension ModelManagerView {
         }
         .clipped()
         .frame(maxWidth: .infinity)
+    }
+    
+    @ViewBuilder
+    var library: some View{
+        List {
+            ForEach(libraryModels, id: \.id) { model in
+                LibraryModelListView(model: model,installed: $models)
+                    .listRowInsets(EdgeInsets(top: 10, leading: -10, bottom: 10,
+                                              trailing: -10))
+            }
+        }
+        .clipped()
+        .frame(maxWidth: .infinity)
+        
     }
 }
 
@@ -97,7 +113,7 @@ extension ModelManagerView {
     {
         switch value {
         case let .loaded(data):
-            print(data)
+            libraryModels = data.getModelsFromOllama()
             return
         default:
             return

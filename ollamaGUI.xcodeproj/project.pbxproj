@@ -19,6 +19,10 @@
 		AC40BBFC2B551DA500AA7D1C /* ChatEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40BBFB2B551DA500AA7D1C /* ChatEntity.swift */; };
 		AC40BBFE2B551EBC00AA7D1C /* RoomEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40BBFD2B551EBC00AA7D1C /* RoomEntity.swift */; };
 		AC40BC002B55221000AA7D1C /* DataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40BBFF2B55221000AA7D1C /* DataInteractor.swift */; };
+		AC64593B2B5BEF800039B26E /* OllmaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC64593A2B5BEF800039B26E /* OllmaModel.swift */; };
+		AC64593E2B5BF2980039B26E /* LibraryModelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC64593D2B5BF2980039B26E /* LibraryModelListView.swift */; };
+		AC6459412B5BF5440039B26E /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6459402B5BF5440039B26E /* TagsView.swift */; };
+		AC6459432B5BFBCD0039B26E /* OllamaTagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6459422B5BFBCD0039B26E /* OllamaTagModel.swift */; };
 		AC67ECA22B5943580081FA1A /* AppSettingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC67ECA12B5943580081FA1A /* AppSettingEntity.swift */; };
 		AC725C2D2B511D3200B3E266 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC725C2C2B511D3200B3E266 /* Interactor.swift */; };
 		AC725C2F2B5125BB00B3E266 /* ChatRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC725C2E2B5125BB00B3E266 /* ChatRequestModel.swift */; };
@@ -56,6 +60,7 @@
 		ACDCFDD42B5A761F00DAB674 /* ModelManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDCFDD32B5A761F00DAB674 /* ModelManagerView.swift */; };
 		ACDCFDD82B5AD21F00DAB674 /* ModelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDCFDD72B5AD21F00DAB674 /* ModelListView.swift */; };
 		ACDCFDDA2B5AD36F00DAB674 /* IntHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDCFDD92B5AD36F00DAB674 /* IntHelper.swift */; };
+		ACDCFDDC2B5ADF4700DAB674 /* HtmlHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDCFDDB2B5ADF4700DAB674 /* HtmlHelper.swift */; };
 		ACF5C0092B5563CD00861735 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5C0082B5563CD00861735 /* ClearButton.swift */; };
 		ACF5C00D2B5564C300861735 /* ChatHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5C00C2B5564C300861735 /* ChatHeader.swift */; };
 		ACF5C00F2B55704800861735 /* StopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5C00E2B55704800861735 /* StopButton.swift */; };
@@ -75,6 +80,11 @@
 		AC40BBFB2B551DA500AA7D1C /* ChatEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEntity.swift; sourceTree = "<group>"; };
 		AC40BBFD2B551EBC00AA7D1C /* RoomEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomEntity.swift; sourceTree = "<group>"; };
 		AC40BBFF2B55221000AA7D1C /* DataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInteractor.swift; sourceTree = "<group>"; };
+		AC64593A2B5BEF800039B26E /* OllmaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OllmaModel.swift; sourceTree = "<group>"; };
+		AC64593C2B5BF0C50039B26E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		AC64593D2B5BF2980039B26E /* LibraryModelListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryModelListView.swift; sourceTree = "<group>"; };
+		AC6459402B5BF5440039B26E /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
+		AC6459422B5BFBCD0039B26E /* OllamaTagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OllamaTagModel.swift; sourceTree = "<group>"; };
 		AC67ECA12B5943580081FA1A /* AppSettingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingEntity.swift; sourceTree = "<group>"; };
 		AC725C2C2B511D3200B3E266 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		AC725C2E2B5125BB00B3E266 /* ChatRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestModel.swift; sourceTree = "<group>"; };
@@ -114,6 +124,7 @@
 		ACDCFDD32B5A761F00DAB674 /* ModelManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManagerView.swift; sourceTree = "<group>"; };
 		ACDCFDD72B5AD21F00DAB674 /* ModelListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelListView.swift; sourceTree = "<group>"; };
 		ACDCFDD92B5AD36F00DAB674 /* IntHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntHelper.swift; sourceTree = "<group>"; };
+		ACDCFDDB2B5ADF4700DAB674 /* HtmlHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlHelper.swift; sourceTree = "<group>"; };
 		ACF5C0082B5563CD00861735 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
 		ACF5C00C2B5564C300861735 /* ChatHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHeader.swift; sourceTree = "<group>"; };
 		ACF5C00E2B55704800861735 /* StopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopButton.swift; sourceTree = "<group>"; };
@@ -171,6 +182,14 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		AC64593F2B5BF5390039B26E /* Tags */ = {
+			isa = PBXGroup;
+			children = (
+				AC6459402B5BF5440039B26E /* TagsView.swift */,
+			);
+			path = Tags;
+			sourceTree = "<group>";
+		};
 		AC842E2C2B4D16F700F9EC3F = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +211,7 @@
 		AC842E372B4D16F700F9EC3F /* ollamaGUI */ = {
 			isa = PBXGroup;
 			children = (
+				AC64593C2B5BF0C50039B26E /* Info.plist */,
 				AC40BBE42B550D5C00AA7D1C /* Data */,
 				AC842E792B4FE3B300F9EC3F /* Core */,
 				AC842E6C2B4FCA3000F9EC3F /* Injected */,
@@ -219,6 +239,7 @@
 		AC842E472B4D190200F9EC3F /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				AC64593F2B5BF5390039B26E /* Tags */,
 				ACDCFDD52B5A762400DAB674 /* Manager */,
 				ACB566A82B591F8F009EF2B2 /* Setting */,
 				AC36BCA22B57B0D500AD8BD2 /* Room */,
@@ -259,6 +280,7 @@
 				AC7C8ADE2B57C7640031FEF1 /* DateHelper.swift */,
 				AC7C8AE22B5828970031FEF1 /* WindowHelper.swift */,
 				ACDCFDD92B5AD36F00DAB674 /* IntHelper.swift */,
+				ACDCFDDB2B5ADF4700DAB674 /* HtmlHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -293,6 +315,8 @@
 				AC725C322B517A0D00B3E266 /* MessageModel.swift */,
 				ACDCFDCF2B5A6D3200DAB674 /* ModelList.swift */,
 				ACDCFDD12B5A6D3B00DAB674 /* ModelInfoModel.swift */,
+				AC64593A2B5BEF800039B26E /* OllmaModel.swift */,
+				AC6459422B5BFBCD0039B26E /* OllamaTagModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -368,6 +392,7 @@
 			isa = PBXGroup;
 			children = (
 				ACDCFDD72B5AD21F00DAB674 /* ModelListView.swift */,
+				AC64593D2B5BF2980039B26E /* LibraryModelListView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -506,6 +531,8 @@
 				AC7C8ADF2B57C7640031FEF1 /* DateHelper.swift in Sources */,
 				AC842E6E2B4FCA4800F9EC3F /* DIContainer.swift in Sources */,
 				AC725C2F2B5125BB00B3E266 /* ChatRequestModel.swift in Sources */,
+				AC6459432B5BFBCD0039B26E /* OllamaTagModel.swift in Sources */,
+				ACDCFDDC2B5ADF4700DAB674 /* HtmlHelper.swift in Sources */,
 				AC842E502B4D1BE000F9EC3F /* ViewHelper.swift in Sources */,
 				AC725C2D2B511D3200B3E266 /* Interactor.swift in Sources */,
 				ACF5C00F2B55704800861735 /* StopButton.swift in Sources */,
@@ -517,6 +544,8 @@
 				AC67ECA22B5943580081FA1A /* AppSettingEntity.swift in Sources */,
 				ACF5C0112B557BBC00861735 /* AppSetting.swift in Sources */,
 				AC7C8AE32B5828970031FEF1 /* WindowHelper.swift in Sources */,
+				AC64593B2B5BEF800039B26E /* OllmaModel.swift in Sources */,
+				AC64593E2B5BF2980039B26E /* LibraryModelListView.swift in Sources */,
 				AC842E562B4E6EE300F9EC3F /* ChatView.swift in Sources */,
 				AC842E4A2B4D191800F9EC3F /* HomeView.swift in Sources */,
 				AC97DE422B543FF200A4508B /* KeyPressedController.swift in Sources */,
@@ -531,6 +560,7 @@
 				AC842E532B4D3A5000F9EC3F /* SidebarButton.swift in Sources */,
 				AC842E3B2B4D16F700F9EC3F /* ContentView.swift in Sources */,
 				ACF5C00D2B5564C300861735 /* ChatHeader.swift in Sources */,
+				AC6459412B5BF5440039B26E /* TagsView.swift in Sources */,
 				AC40BBE32B55066900AA7D1C /* MarkdownTheme.swift in Sources */,
 				ACDCFDD22B5A6D3B00DAB674 /* ModelInfoModel.swift in Sources */,
 				AC7C8AE52B58DA4E0031FEF1 /* EditorButton.swift in Sources */,
@@ -691,6 +721,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ollamaGUI/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -720,6 +751,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ollamaGUI/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

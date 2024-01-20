@@ -35,12 +35,30 @@ protocol OllamaInteractor {
         cancel: inout Set<AnyCancellable>,
         setting: AppSetting
     ) -> PassthroughSubject<Loadable<ModelList, NetworkError>, Never>
-    
+
     func fetchModels(cancel _: inout Set<AnyCancellable>)
-        -> PassthroughSubject<Loadable<String,NetworkError>,Never>
+        -> PassthroughSubject<Loadable<String, NetworkError>, Never>
+
+    func fetchTags(cancel _: inout Set<AnyCancellable>, model: OllamaModel)
+        -> PassthroughSubject<Loadable<String, NetworkError>, Never>
 }
 
 struct RealOllamaInteractor: OllamaInteractor {
+    func fetchTags(cancel: inout Set<AnyCancellable>,
+                   model: OllamaModel)
+        -> PassthroughSubject<Loadable<String, NetworkError>, Never>
+    {
+        var helper = RealNetworkHelper<ChatRequestModel, String>(
+            baseUrl: "https://ollama.ai",
+            url: "/library/\(model.title)/tags",
+            method: .get
+        )
+
+        helper.cancel(bag: &cancel)
+        helper.getModels()
+        return helper.subject
+    }
+
     func getModels(cancel: inout Set<AnyCancellable>,
                    setting: AppSetting)
         -> PassthroughSubject<Loadable<ModelList, NetworkError>, Never>
@@ -57,14 +75,14 @@ struct RealOllamaInteractor: OllamaInteractor {
     }
 
     func fetchModels(cancel: inout Set<AnyCancellable>)
-        -> PassthroughSubject<Loadable<String,NetworkError>,Never>
+        -> PassthroughSubject<Loadable<String, NetworkError>, Never>
     {
         var helper = RealNetworkHelper<ChatRequestModel, String>(
             baseUrl: "https://ollama.ai",
             url: "/library",
             method: .get
         )
-        
+
         helper.cancel(bag: &cancel)
         helper.getModels()
         return helper.subject
