@@ -26,6 +26,8 @@ struct SettingView: View {
         Loadable<ModelList, NetworkError>,
         Never
     >()
+    @State private var updateSubject = CurrentValueSubject<TriggerModel,
+        Never>(.init())
     @State private var bag = Set<AnyCancellable>()
 
     var body: some View {
@@ -50,6 +52,7 @@ struct SettingView: View {
             .onReceive(networkSubject, perform: { val in
                 networkPassed = val
             }).onAppear {
+                updateSubject = container.updateTrigger.subject
                 selectedModel = container.appSetting.model
                 savedUrl = container.appSetting.baseUrl
                 modelSubject = container.interactor.getModels(
@@ -58,6 +61,15 @@ struct SettingView: View {
                 )
             }.sheet(isPresented: $openModelManager, content: {
                 ModelManagerView(openModelManager: $openModelManager)
+            }).onReceive(updateSubject, perform: { value in
+                if value.newModel {
+                    modelSubject = container.interactor.getModels(
+                        cancel: &bag,
+                        setting: container.appSetting
+                    )
+                    container.updateTrigger.newModelHandled()
+                }
+
             })
     }
 }
@@ -76,17 +88,17 @@ extension SettingView {
                     }
                 }
             }
-//            HStack {
-//                Spacer()
-//                Button(
-//                    action:  {
-//                        openModelManager.toggle()
-//                    },
-//                    label: {
-//                        Text("model manager")
-//                    }
-//                )
-//            }
+            HStack {
+                Spacer()
+                Button(
+                    action: {
+                        openModelManager.toggle()
+                    },
+                    label: {
+                        Text("model manager")
+                    }
+                )
+            }
             Spacer()
         }.onReceive(modelSubject, perform: { value in
             switch value {

@@ -85,13 +85,19 @@ struct ChatView: View {
             switch value {
             case let .loaded(value):
                 chats.append(value)
-            case let .failed(value):
+            case .failed:
                 isLoading = false
                 chats.removeLast()
-                let error = ChatModel(text: "please ensure your ollama server is live", role: .assistant)
+                let error = ChatModel(text: "please ensure your ollama server is live or selected any model", role: .assistant)
                 chats.append(error)
             case let .isLoading(last: value):
                 guard var lastChat = value else {
+                    return
+                }
+                guard var _ = lastChat.message else{
+                    chats.removeLast()
+                    let error = ChatModel(text: "please ensure you have select any model", role: .assistant)
+                    chats.append(error)
                     return
                 }
                 let chat = chats.removeLast()

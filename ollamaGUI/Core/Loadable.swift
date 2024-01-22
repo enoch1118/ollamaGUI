@@ -12,6 +12,7 @@ enum Loadable<U, E> where E: Error {
     case isLoading(last: U?)
     case loaded(U)
     case cancelled
+    case finished
     case failed(E)
 
     var value: U? {
@@ -35,6 +36,8 @@ enum Loadable<U, E> where E: Error {
                                                   comment: "")
         case .isLoading: return NSLocalizedString("is loading",
                                                   comment: "")
+        case .finished: return NSLocalizedString("complete",
+                                                 comment: "")
         case .cancelled: return NSLocalizedString("user cancelled", comment: "")
         case .loaded: return NSLocalizedString("loaded", comment: "")
         case let .failed(error): return error.localizedDescription

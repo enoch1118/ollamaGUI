@@ -7,24 +7,39 @@
 
 import Foundation
 
-struct ModelInfoModel:Decodable,Hashable {
-    var id:UUID
-    var name:String
+struct ModelInfoModel: Decodable, Hashable {
+    var id: UUID
+    var name: String
     var modifiedAt: Date
-    var size:Int64
-    
-    enum CodingKeys: String,CodingKey {
+    var size: Int
+
+    enum CodingKeys: String, CodingKey {
         case name
         case modifiedAt = "modified_at"
         case size
     }
-    
-    
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = UUID()
-        self.name = try container.decode(String.self, forKey: .name)
-        self.modifiedAt = try container.decode(Date.self, forKey: .modifiedAt)
-        self.size = try container.decode(Int64.self, forKey: .size)
+        id = UUID()
+        name = try container.decode(String.self, forKey: .name)
+        modifiedAt = try container.decode(Date.self, forKey: .modifiedAt)
+        size = try container.decode(Int.self, forKey: .size)
+    }
+
+    init(name: String, modifiedAt: Date, size: Int) {
+        id = UUID()
+        self.name = name
+        self.modifiedAt = modifiedAt
+        self.size = size
     }
 }
+
+#if DEBUG
+    extension ModelInfoModel {
+        static var preview: ModelInfoModel {
+            Self(name: "testModel", modifiedAt: .now, size: 123_242_425)
+        }
+    }
+
+#endif

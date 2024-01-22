@@ -17,8 +17,7 @@ protocol NetworkHelper {
     var isTest: Bool { get }
 }
 
-struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
-    U: DictionaryEncodable,
+struct RealNetworkHelper<U, T>: NetworkHelper where
     U: Encodable
 {
     var baseUrl: String
@@ -29,9 +28,10 @@ struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
     var parameter: U?
 
     var subject = PassthroughSubject<Loadable<T, NetworkError>, Never>()
+    var voidPassThrough = PassthroughSubject<Bool, Never>()
     var netWorkSubject = CurrentValueSubject<Bool, Never>(false)
     var testNetworkSubject = CurrentValueSubject<Bool, Never>(false)
-    private var workItem: DispatchWorkItem? = nil
+    private var workItem: DispatchWorkItem?
     private var networkManager: NetworkReachabilityManager?
 
     init(
@@ -88,7 +88,107 @@ struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
                 }
             })
     }
+}
 
+extension RealNetworkHelper where T == Void, U == String {
+    mutating func deleteModels() {
+        var b: [String: Any] = [:]
+        b["name"] = parameter
+
+        print(b)
+        AF.request(
+            baseUrl + url,
+            method: .delete,
+            parameters: b,
+            encoding: JSONEncoding.default
+        )
+        .validate(statusCode: 200 ..< 300)
+        .response(completionHandler: { [self] res in
+            switch res.result {
+            case .success:
+                voidPassThrough.send(true)
+                voidPassThrough.send(completion: .finished)
+                return
+            case let .failure(error):
+                print(error)
+                voidPassThrough.send(false)
+                voidPassThrough.send(completion: .finished)
+                return
+            }
+
+        })
+    }
+}
+
+extension RealNetworkHelper where T == String {
+    mutating func getModels() {
+        AF.request(baseUrl + url, method: .get)
+            .response(completionHandler: { [self] res in
+                switch res.result {
+                case let .failure(error):
+                    subject.send(.failed(.commonError(error: error)))
+                    subject.send(completion: .finished)
+                    return
+                case let .success(data):
+                    guard let d = data else {
+                        subject.send(.failed(.jsonEncodeError))
+                        subject.send(completion: .finished)
+                        return
+                    }
+                    subject.send(.loaded(String(data: d, encoding: .utf8)!))
+                    subject.send(completion: .finished)
+                }
+            })
+    }
+}
+
+extension RealNetworkHelper where T: Decodable, U == String {
+    mutating func pullModel() {
+        var model = PullRequestModel(name:parameter!)
+        workItem = DispatchWorkItem { [self] in
+            AF.streamRequest(
+                baseUrl + url,
+                method: method,
+                parameters:model,
+                encoder: JSONParameterEncoder.default,
+                headers: header ?? HTTPHeaders.default
+            )
+            .validate(statusCode: 200 ..< 300)
+            .responseStream{ response in
+                print(response)
+                
+            }
+            .responseStreamDecodable(of: T.self) { stream in
+                switch stream.event {
+                case let .stream(result):
+                    print(result)
+                    switch result {
+                    case let .success(value):
+                        netWorkSubject.send(true)
+                        subject.send(.isLoading(last: value))
+                    case let .failure(error):
+                        subject.send(.failed(.commonError(error: error)))
+                        subject.send(completion: .finished)
+                    }
+                case let .complete(completion):
+                    if let error = completion.error {
+                        subject.send(.failed(.commonError(error: error)))
+                        subject.send(completion: .finished)
+
+                    } else {
+                        netWorkSubject.send(true)
+                        subject.send(.finished)
+                        subject.send(completion: .finished)
+                    }
+                }
+            }
+        }
+        DispatchQueue.global().async(execute: workItem!)
+        
+    }
+}
+
+extension RealNetworkHelper where T: Decodable, U: DictionaryEncodable {
     mutating func request() {
         let body = parameter?.getDictionary()
         var b: [String: Any]?
@@ -138,12 +238,6 @@ struct RealNetworkHelper<U, T>: NetworkHelper where T: Decodable,
     }
 
     mutating func requestStream() {
-//        let body = parameter?.getDictionary()
-//        guard let b = body else {
-//            subject.send(.failed(.jsonEncodeError))
-//            subject.send(completion: .finished)
-//            return
-//        }
         subject.send(.isLoading(last: nil))
         workItem = DispatchWorkItem { [self] in
             let decoder = JSONDecoder()

@@ -17,11 +17,6 @@ struct ChatHeader: View {
             Image(systemName: "message.fill").padding(.trailing)
             Text((room.title ?? "untitled").removeFirstBreakLine).lineLimit(1)
             Spacer()
-            Button(action:{
-                
-            }){
-                Image(systemName: "pin")
-            }.buttonStyle(ClearButton())
             Button(action: {
                 show.toggle()
             }, label: {
