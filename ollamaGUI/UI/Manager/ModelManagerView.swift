@@ -62,7 +62,7 @@ extension ModelManagerView {
     var installed: some View {
         List {
             ForEach(models, id: \.id) { model in
-                ModelListView(model: model)
+                ModelListView(model: model,fetchModel:fetchModels)
                     .listRowInsets(EdgeInsets(top: 10, leading: -10, bottom: 10,
                                               trailing: -10))
             }
@@ -75,7 +75,7 @@ extension ModelManagerView {
     var library: some View{
         List {
             ForEach(libraryModels, id: \.id) { model in
-                LibraryModelListView(model: model,installed: $models)
+                LibraryModelListView(model: model,installed: $models,onUpdate:onUpdate)
                     .listRowInsets(EdgeInsets(top: 10, leading: -10, bottom: 10,
                                               trailing: -10))
             }
@@ -87,6 +87,10 @@ extension ModelManagerView {
 }
 
 extension ModelManagerView {
+    func onUpdate() {
+        fetchModels()
+        container.updateTrigger.triggerNewModel()
+    }
     func fetchModels() {
         modelSubject = container.interactor.getModels(
             cancel: &bag,

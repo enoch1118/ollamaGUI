@@ -55,6 +55,10 @@
 		AC842E7B2B4FE3C200F9EC3F /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E7A2B4FE3C200F9EC3F /* NetworkError.swift */; };
 		AC97DE422B543FF200A4508B /* KeyPressedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC97DE412B543FF200A4508B /* KeyPressedController.swift */; };
 		ACB566AA2B591F98009EF2B2 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB566A92B591F98009EF2B2 /* SettingView.swift */; };
+		ACD176292B5E5BAB0020A15E /* TagListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD176282B5E5BAB0020A15E /* TagListItem.swift */; };
+		ACD1762D2B5E60A00020A15E /* XProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD1762C2B5E60A00020A15E /* XProgressView.swift */; };
+		ACD1762F2B5E69630020A15E /* PullResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD1762E2B5E69630020A15E /* PullResponseModel.swift */; };
+		ACD176312B5E758A0020A15E /* PullRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD176302B5E758A0020A15E /* PullRequestModel.swift */; };
 		ACDCFDD02B5A6D3200DAB674 /* ModelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDCFDCF2B5A6D3200DAB674 /* ModelList.swift */; };
 		ACDCFDD22B5A6D3B00DAB674 /* ModelInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDCFDD12B5A6D3B00DAB674 /* ModelInfoModel.swift */; };
 		ACDCFDD42B5A761F00DAB674 /* ModelManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDCFDD32B5A761F00DAB674 /* ModelManagerView.swift */; };
@@ -119,6 +123,10 @@
 		AC842E7A2B4FE3C200F9EC3F /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		AC97DE412B543FF200A4508B /* KeyPressedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPressedController.swift; sourceTree = "<group>"; };
 		ACB566A92B591F98009EF2B2 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		ACD176282B5E5BAB0020A15E /* TagListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListItem.swift; sourceTree = "<group>"; };
+		ACD1762C2B5E60A00020A15E /* XProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XProgressView.swift; sourceTree = "<group>"; };
+		ACD1762E2B5E69630020A15E /* PullResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullResponseModel.swift; sourceTree = "<group>"; };
+		ACD176302B5E758A0020A15E /* PullRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestModel.swift; sourceTree = "<group>"; };
 		ACDCFDCF2B5A6D3200DAB674 /* ModelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelList.swift; sourceTree = "<group>"; };
 		ACDCFDD12B5A6D3B00DAB674 /* ModelInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelInfoModel.swift; sourceTree = "<group>"; };
 		ACDCFDD32B5A761F00DAB674 /* ModelManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManagerView.swift; sourceTree = "<group>"; };
@@ -185,7 +193,9 @@
 		AC64593F2B5BF5390039B26E /* Tags */ = {
 			isa = PBXGroup;
 			children = (
+				ACD176272B5E5B9F0020A15E /* Componets */,
 				AC6459402B5BF5440039B26E /* TagsView.swift */,
+				ACD176282B5E5BAB0020A15E /* TagListItem.swift */,
 			);
 			path = Tags;
 			sourceTree = "<group>";
@@ -294,6 +304,7 @@
 				ACF5C0082B5563CD00861735 /* ClearButton.swift */,
 				AC7C8AE02B57CA0C0031FEF1 /* FloatingWindow.swift */,
 				AC7C8AE42B58DA4E0031FEF1 /* EditorButton.swift */,
+				ACD1762C2B5E60A00020A15E /* XProgressView.swift */,
 			);
 			path = Commen;
 			sourceTree = "<group>";
@@ -317,6 +328,8 @@
 				ACDCFDD12B5A6D3B00DAB674 /* ModelInfoModel.swift */,
 				AC64593A2B5BEF800039B26E /* OllmaModel.swift */,
 				AC6459422B5BFBCD0039B26E /* OllamaTagModel.swift */,
+				ACD1762E2B5E69630020A15E /* PullResponseModel.swift */,
+				ACD176302B5E758A0020A15E /* PullRequestModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -377,6 +390,13 @@
 				ACB566A92B591F98009EF2B2 /* SettingView.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		ACD176272B5E5B9F0020A15E /* Componets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Componets;
 			sourceTree = "<group>";
 		};
 		ACDCFDD52B5A762400DAB674 /* Manager */ = {
@@ -541,6 +561,7 @@
 				AC7C8AE12B57CA0C0031FEF1 /* FloatingWindow.swift in Sources */,
 				AC842E632B4E784300F9EC3F /* ChatBubble.swift in Sources */,
 				ACF5C0092B5563CD00861735 /* ClearButton.swift in Sources */,
+				ACD176292B5E5BAB0020A15E /* TagListItem.swift in Sources */,
 				AC67ECA22B5943580081FA1A /* AppSettingEntity.swift in Sources */,
 				ACF5C0112B557BBC00861735 /* AppSetting.swift in Sources */,
 				AC7C8AE32B5828970031FEF1 /* WindowHelper.swift in Sources */,
@@ -556,8 +577,10 @@
 				AC842E762B4FE20700F9EC3F /* Loadable.swift in Sources */,
 				AC725C312B51304000B3E266 /* DictionaryEncoder.swift in Sources */,
 				AC842E782B4FE2EA00F9EC3F /* DescribableEnum.swift in Sources */,
+				ACD176312B5E758A0020A15E /* PullRequestModel.swift in Sources */,
 				AC36BCA42B57B0E200AD8BD2 /* RoomView.swift in Sources */,
 				AC842E532B4D3A5000F9EC3F /* SidebarButton.swift in Sources */,
+				ACD1762F2B5E69630020A15E /* PullResponseModel.swift in Sources */,
 				AC842E3B2B4D16F700F9EC3F /* ContentView.swift in Sources */,
 				ACF5C00D2B5564C300861735 /* ChatHeader.swift in Sources */,
 				AC6459412B5BF5440039B26E /* TagsView.swift in Sources */,
@@ -577,6 +600,7 @@
 				AC36BCA72B57B0FE00AD8BD2 /* RoomItem.swift in Sources */,
 				AC36BCA92B57B25200AD8BD2 /* RandomGenerator.swift in Sources */,
 				AC842E392B4D16F700F9EC3F /* ollamaGUIApp.swift in Sources */,
+				ACD1762D2B5E60A00020A15E /* XProgressView.swift in Sources */,
 				AC1978B02B55009B0091EE4F /* StringHelper.swift in Sources */,
 				AC842E7B2B4FE3C200F9EC3F /* NetworkError.swift in Sources */,
 			);

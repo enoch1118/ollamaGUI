@@ -28,8 +28,23 @@ struct UpdateTrigger {
         subject.send(current)
     }
     
+    func triggerNewModel(){
+        var current = subject.value
+        current.newModel = true
+        subject.send(current)
+    }
+    
+    func newModelHandled(){
+        var current = subject.value
+        current.newModel = false
+        subject.send(current)
+    }
+    
     var hasNewMessage:Bool {
         subject.value.newMessage
+    }
+    var hasNewModel:Bool {
+        subject.value.newModel
     }
     
 }
@@ -38,6 +53,7 @@ struct UpdateTrigger {
 
 struct TriggerModel{
     var newMessage = false
+    var newModel = false
 }
 
 

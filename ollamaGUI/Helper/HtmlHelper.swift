@@ -9,9 +9,8 @@ import Foundation
 import SwiftSoup
 
 extension String {
-    
-    func getTagsFromOllama()->[OllamaTagModel]{
-        var tags:[OllamaTagModel] = []
+    func getTagsFromOllama(parent:String) -> [OllamaTagModel] {
+        var tags: [OllamaTagModel] = []
         let docN = try? SwiftSoup.parse(self)
         guard let doc = docN else {
             return []
@@ -21,12 +20,25 @@ extension String {
             return []
         }
         for li in lis {
-            let titleN =
+            let titleN = try? li.select("div>.group>div").first()?.text()
+            guard let title = titleN else { continue }
+            let descN = try? li.select("div>.group>div").last()?.select("span")
+                .first()?.text()
+            guard let desc = descN else { continue }
+            let list = desc.split(separator: " • ").map { String($0) }
+            let tag = OllamaTagModel.guardedInit(
+                title: title,
+                size: list[0],
+                sha: list[1],
+                updatedAt: list[2],
+                parent: parent
+            )
+            guard let t = tag else { continue }
+            tags.append(t)
         }
-        
-    
-        
+        return tags
     }
+
     func getModelsFromOllama() -> [OllamaModel] {
         var models: [OllamaModel] = []
         let docN = try? SwiftSoup.parse(self)

@@ -14,6 +14,7 @@ struct TagsView: View {
     @Binding var showTags: Bool
     var model: OllamaModel
     var installed: [ModelInfoModel]
+    var onUpdate:()->Void
 
     @State private var subject = PassthroughSubject<
         Loadable<String, NetworkError>,
@@ -21,9 +22,19 @@ struct TagsView: View {
     >()
     @State private var bag = Set<AnyCancellable>()
 
+    @State var tags: [OllamaTagModel] = []
+
     var body: some View {
         VStack {
             info
+            List {
+                ForEach(tags, id: \.id) { tag in
+                    TagListItem(tag: tag ,onPull:onUpdate)
+                        .listRowInsets(EdgeInsets(top: 10, leading: -10,
+                                                  bottom: 10,
+                                                  trailing: -10))
+                }
+            }
             Spacer()
         }.padding().frame(width: 300, height: 600, alignment: .leading)
             .onAppear(perform: fetch)
@@ -35,7 +46,7 @@ extension TagsView {
     func handleSubject(_ val: Loadable<String, NetworkError>) {
         switch val {
         case let .loaded(data):
-            print(data)
+            tags = data.getTagsFromOllama(parent: model.title)
             return
         default:
             return
@@ -76,15 +87,15 @@ extension TagsView {
                     Spacer()
                 }
 
-            }.padding(.vertical)
+            }.padding(.top)
         }
     }
 }
 
-#Preview {
-    TagsView(
-        showTags: .constant(true),
-        model: .init(),
-        installed: [.preview, .preview]
-    )
-}
+//#Preview {
+//    TagsView(
+//        showTags: .constant(true),
+//        model: .init(),
+//        installed: [.preview, .preview]
+//    )
+//}

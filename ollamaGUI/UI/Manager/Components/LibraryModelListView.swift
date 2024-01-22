@@ -11,6 +11,8 @@ struct LibraryModelListView: View {
     var model: OllamaModel
     @State var showTags = false
     @Binding var installed:[ModelInfoModel]
+    
+    var onUpdate: ()->Void
 
     var body: some View {
         VStack(spacing: 0) {
@@ -32,13 +34,13 @@ struct LibraryModelListView: View {
 
         }.padding(.vertical).padding(.horizontal,0).frame(height: 80)
             .sheet(isPresented: $showTags, content: {
-                TagsView(showTags:$showTags, model: model, installed:installed)
+                TagsView(showTags:$showTags, model: model, installed:installed,onUpdate: onUpdate)
             })
     }
 }
 
-#Preview {
-    List{
-        LibraryModelListView(model: OllamaModel(),installed:.constant([]))
-    }.listStyle(.plain)
-}
+//#Preview {
+//    List{
+//        LibraryModelListView(model: OllamaModel(),installed:.constant([]))
+//    }.listStyle(.plain)
+//}

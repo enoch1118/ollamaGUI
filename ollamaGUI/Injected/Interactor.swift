@@ -41,9 +41,50 @@ protocol OllamaInteractor {
 
     func fetchTags(cancel _: inout Set<AnyCancellable>, model: OllamaModel)
         -> PassthroughSubject<Loadable<String, NetworkError>, Never>
+
+    func deleteModel(
+        cancel _: inout Set<AnyCancellable>,
+        model: ModelInfoModel,
+        setting: AppSetting
+    ) -> PassthroughSubject<Bool, Never>
+
+    func pullModel(
+        cancel _: inout Set<AnyCancellable>,
+        model: OllamaTagModel,
+        setting: AppSetting
+    ) -> PassthroughSubject<Loadable<PullResponseModel, NetworkError>, Never>
 }
 
 struct RealOllamaInteractor: OllamaInteractor {
+    func pullModel(
+        cancel: inout Set<AnyCancellable>,
+        model: OllamaTagModel,
+        setting: AppSetting
+    ) -> PassthroughSubject<Loadable<PullResponseModel, NetworkError>, Never> {
+        var helper = RealNetworkHelper<String, PullResponseModel>(
+            baseUrl: setting.baseUrl, url: "/api/pull", method: .post,
+            parameter: "\(model.parent):\(model.title)"
+        )
+        helper.cancel(bag: &cancel)
+        helper.pullModel()
+        return helper.subject
+    }
+
+    func deleteModel(
+        cancel: inout Set<AnyCancellable>,
+        model: ModelInfoModel,
+        setting: AppSetting
+    ) -> PassthroughSubject<Bool, Never> {
+        var helper = RealNetworkHelper<String, Void>(
+            baseUrl: setting.baseUrl, url: "/api/delete", method: .delete,
+            parameter: model.name
+        )
+
+        helper.cancel(bag: &cancel)
+        helper.deleteModels()
+        return helper.voidPassThrough
+    }
+
     func fetchTags(cancel: inout Set<AnyCancellable>,
                    model: OllamaModel)
         -> PassthroughSubject<Loadable<String, NetworkError>, Never>
