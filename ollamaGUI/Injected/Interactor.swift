@@ -128,7 +128,7 @@ struct RealOllamaInteractor: OllamaInteractor {
         helper.getModels()
         return helper.subject
     }
-
+    
     func sendChat(chat: ChatRequestModel,
                   cancel: inout Set<AnyCancellable>,
                   setting: AppSetting)
