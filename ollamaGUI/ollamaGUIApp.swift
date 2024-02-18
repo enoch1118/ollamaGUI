@@ -24,7 +24,7 @@ struct VisualEffect: NSViewRepresentable {
 struct ollamaGUIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
                 .frame(minWidth: 390,maxWidth: 390, minHeight: 640,idealHeight:640)
                 .inject()
                 .preferredColorScheme(.dark)
