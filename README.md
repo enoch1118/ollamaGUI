@@ -2,12 +2,11 @@
 
 
 <p style="display:flex;justify-content:center;align-items:center"> 
-<img src="./image/png2.png" width="300px" height="500px"/>
-<img src="./image/png3.png" width="300px" height="500px"/>
+<img src="./image/1.1v.png" width="500px" height="500px"/>
 </p>
 
 
-https://github.com/enoch1118/ollamaGUI/assets/54224095/3420f1ed-e91f-4579-89e8-9ebfb602963a
+https://github.com/enoch1118/ollamaGUI/assets/54224095/d056434a-f27e-41a9-940b-be7053f6920c
 
 
 ### Introduction to Ollamagui
