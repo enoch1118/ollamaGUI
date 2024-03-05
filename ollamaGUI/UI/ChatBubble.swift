@@ -46,9 +46,3 @@ struct ChatBubble: View {
     
 }
 
-#Preview {
-    VStack {
-        ChatBubble(chat: .init(type: RoleEnum.user))
-        ChatBubble(chat: .init(type: RoleEnum.assistant))
-    }
-}

@@ -7,7 +7,6 @@
 
 import Foundation
 
-#if DEBUG
     enum RandomGenerator {
         static var randomNames: [String] {
             [
@@ -33,4 +32,3 @@ import Foundation
             }
         
     }
-#endif
