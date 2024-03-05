@@ -21,6 +21,7 @@ class RoomOptionEntity {
          top_k: Int = 40,
          temperature: Float = 0.8
     ) {
+
         self.model = model
         self.system = system
         self.top_p = top_p

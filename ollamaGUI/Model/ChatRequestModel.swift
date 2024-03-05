@@ -72,6 +72,7 @@ struct ChatRequestModel: Encodable, DictionaryEncodable {
         options = OptionModel(top_p: option.top_p, 
                               top_k: option.top_k,
                               temperature: option.temperature)
+
         if let model = option.model {
             self.model = model
         }

@@ -68,7 +68,6 @@ struct SettingSheet: View {
                         Text("reset")
                     }.buttonStyle(CommonButton(enabled: false))
                     Button(action: {
-                        model.apply()
                         roomState.option = model.options
                         showSetting.toggle()
                     }){
