@@ -74,9 +74,4 @@ struct BubbleShape: Shape {
 
 }
 
-#Preview {
-    VStack {
-        ChatBubble(chat: .init(type: RoleEnum.user))
-        ChatBubble(chat: .init(type: RoleEnum.assistant))
-    }
-}
+

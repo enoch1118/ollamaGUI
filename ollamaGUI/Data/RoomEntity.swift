@@ -53,16 +53,14 @@ extension ChatModel {
     }
 }
 
-#if DEBUG
-    extension RoomEntity {
-        static var randomRoom: RoomEntity {
-            let room = RoomEntity()
-            room.title = RandomGenerator.randomNames.randomElement()
-            room.chats = [
-            ]
+extension RoomEntity {
+    static var randomRoom: RoomEntity {
+        let room = RoomEntity()
+        room.title = RandomGenerator.randomNames.randomElement()
+        room.chats = [
+        ]
 
-            room.updatedAt = RandomGenerator.randomDate()
-            return room
-        }
+        room.updatedAt = RandomGenerator.randomDate()
+        return room
     }
-#endif
+}
