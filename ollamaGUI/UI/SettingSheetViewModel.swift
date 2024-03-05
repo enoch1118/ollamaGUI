@@ -12,16 +12,25 @@ class SettingSheetViewModel: ObservableObject {
     @Published var system: String
     @Published var topk: Float
     @Published var topp: Float
+    @Published var temperature: Float
     
     
-    @Published var helpText:String
 
     init() {
         options = nil
         system = ""
-        helpText = ""
         topk = 40
         topp = 0.9
+        temperature = 0.8
+    }
+    
+    
+    func reset() {
+        options = nil
+        system = ""
+        topk = 40
+        topp = 0.9
+        temperature = 0.8
     }
     
 
@@ -34,10 +43,10 @@ class SettingSheetViewModel: ObservableObject {
         }
         options.top_k = Int(topk)
         options.top_p = topp
+        options.temperature = temperature
         if !system.isEmpty {
             options.system = system
         }
-        helpText = "success"
         print("success")
     }
 }

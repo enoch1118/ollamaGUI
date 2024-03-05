@@ -12,11 +12,10 @@ import SwiftUI
 struct SettingSheet: View {
     @ObservedObject var model: SettingSheetViewModel
     @Binding var showSetting: Bool
-   
-    var room:RoomEntity
+    @State var roomState: RoomEntity
     
     init(room: RoomEntity,showSetting: Binding<Bool>) {
-        self.room = room
+        self.roomState = room
         self.model = SettingSheetViewModel()
         self._showSetting = showSetting
         model.system = room.option?.system ?? ""
@@ -51,18 +50,26 @@ struct SettingSheet: View {
                 }
                 Text("Works together with top-k. A higher value (e.g., 0.95) will lead to more diverse text, while a lower value (e.g., 0.5) will generate more focused and conservative text. (Default: 0.9)").font(.caption)
                 Slider(value: $model.topp,in: 0...1)
-                Spacer().frame(height: 16)
                 HStack{
-                    Text(model.helpText).font(.caption)
+                    Text("Temperature").font(.headline)
+                    Spacer()
+                    Text("\(String(format: "%.2f",model.temperature))")
+                }
+                Text("The temperature of the model. Increasing the temperature will make the model answer more creatively. (Default: 0.8)").font(.caption)
+                Slider(value: $model.temperature,in: 0...1)
+                Spacer().frame(height: 16)
+                
+                HStack{
                     Spacer()
                     Button(action: {
-                        
+                        model.reset()
+                        model.apply()
                     }){
                         Text("reset")
                     }.buttonStyle(CommonButton(enabled: false))
                     Button(action: {
                         model.apply()
-                        room.option = model.options
+                        roomState.option = model.options
                         showSetting.toggle()
                     }){
                         Text("apply change")
