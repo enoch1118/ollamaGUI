@@ -57,6 +57,10 @@
 		AC842E762B4FE20700F9EC3F /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E752B4FE20700F9EC3F /* Loadable.swift */; };
 		AC842E782B4FE2EA00F9EC3F /* DescribableEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E772B4FE2EA00F9EC3F /* DescribableEnum.swift */; };
 		AC842E7B2B4FE3C200F9EC3F /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E7A2B4FE3C200F9EC3F /* NetworkError.swift */; };
+		AC88B7AA2B97102200CB02F5 /* RoomOptionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC88B7A92B97102200CB02F5 /* RoomOptionEntity.swift */; };
+		AC88B7AC2B97127500CB02F5 /* OptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC88B7AB2B97127500CB02F5 /* OptionModel.swift */; };
+		AC88B7AE2B9716FC00CB02F5 /* SettingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC88B7AD2B9716FC00CB02F5 /* SettingSheet.swift */; };
+		AC88B7B12B97171400CB02F5 /* SettingSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC88B7B02B97171400CB02F5 /* SettingSheetViewModel.swift */; };
 		AC97DE422B543FF200A4508B /* KeyPressedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC97DE412B543FF200A4508B /* KeyPressedController.swift */; };
 		ACB566AA2B591F98009EF2B2 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB566A92B591F98009EF2B2 /* SettingView.swift */; };
 		ACD176292B5E5BAB0020A15E /* TagListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD176282B5E5BAB0020A15E /* TagListItem.swift */; };
@@ -129,6 +133,10 @@
 		AC842E752B4FE20700F9EC3F /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		AC842E772B4FE2EA00F9EC3F /* DescribableEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribableEnum.swift; sourceTree = "<group>"; };
 		AC842E7A2B4FE3C200F9EC3F /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		AC88B7A92B97102200CB02F5 /* RoomOptionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomOptionEntity.swift; sourceTree = "<group>"; };
+		AC88B7AB2B97127500CB02F5 /* OptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionModel.swift; sourceTree = "<group>"; };
+		AC88B7AD2B9716FC00CB02F5 /* SettingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSheet.swift; sourceTree = "<group>"; };
+		AC88B7B02B97171400CB02F5 /* SettingSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSheetViewModel.swift; sourceTree = "<group>"; };
 		AC97DE412B543FF200A4508B /* KeyPressedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPressedController.swift; sourceTree = "<group>"; };
 		ACB566A92B591F98009EF2B2 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		ACD176282B5E5BAB0020A15E /* TagListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListItem.swift; sourceTree = "<group>"; };
@@ -221,6 +229,7 @@
 				AC40BBFB2B551DA500AA7D1C /* ChatEntity.swift */,
 				AC40BBFD2B551EBC00AA7D1C /* RoomEntity.swift */,
 				AC67ECA12B5943580081FA1A /* AppSettingEntity.swift */,
+				AC88B7A92B97102200CB02F5 /* RoomOptionEntity.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -348,6 +357,7 @@
 		AC842E542B4E6ED800F9EC3F /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				AC88B7AF2B97170500CB02F5 /* ViewModel */,
 				AC842E612B4E783400F9EC3F /* Components */,
 				AC842E552B4E6EE300F9EC3F /* ChatView.swift */,
 			);
@@ -366,6 +376,7 @@
 				AC6459422B5BFBCD0039B26E /* OllamaTagModel.swift */,
 				ACD1762E2B5E69630020A15E /* PullResponseModel.swift */,
 				ACD176302B5E758A0020A15E /* PullRequestModel.swift */,
+				AC88B7AB2B97127500CB02F5 /* OptionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -387,6 +398,7 @@
 				ACF5C00C2B5564C300861735 /* ChatHeader.swift */,
 				ACF5C00E2B55704800861735 /* StopButton.swift */,
 				AC7C8AEA2B58FDE90031FEF1 /* OverlayToast.swift */,
+				AC88B7AD2B9716FC00CB02F5 /* SettingSheet.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -410,6 +422,14 @@
 				AC842E7A2B4FE3C200F9EC3F /* NetworkError.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		AC88B7AF2B97170500CB02F5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AC88B7B02B97171400CB02F5 /* SettingSheetViewModel.swift */,
+			);
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 		AC97DE402B543FDE00A4508B /* Controller */ = {
@@ -603,6 +623,7 @@
 				AC67ECA22B5943580081FA1A /* AppSettingEntity.swift in Sources */,
 				ACF5C0112B557BBC00861735 /* AppSetting.swift in Sources */,
 				AC7C8AE32B5828970031FEF1 /* WindowHelper.swift in Sources */,
+				AC88B7AC2B97127500CB02F5 /* OptionModel.swift in Sources */,
 				AC64593B2B5BEF800039B26E /* OllmaModel.swift in Sources */,
 				AC64593E2B5BF2980039B26E /* LibraryModelListView.swift in Sources */,
 				AC842E562B4E6EE300F9EC3F /* ChatView.swift in Sources */,
@@ -627,7 +648,9 @@
 				ACDCFDD22B5A6D3B00DAB674 /* ModelInfoModel.swift in Sources */,
 				AC7C8AE52B58DA4E0031FEF1 /* EditorButton.swift in Sources */,
 				AC40BBFA2B551D1700AA7D1C /* MessageEntity.swift in Sources */,
+				AC88B7AA2B97102200CB02F5 /* RoomOptionEntity.swift in Sources */,
 				AC40BBFC2B551DA500AA7D1C /* ChatEntity.swift in Sources */,
+				AC88B7AE2B9716FC00CB02F5 /* SettingSheet.swift in Sources */,
 				AC7C8AEB2B58FDE90031FEF1 /* OverlayToast.swift in Sources */,
 				ACDCFDD02B5A6D3200DAB674 /* ModelList.swift in Sources */,
 				AC842E5E2B4E6F8000F9EC3F /* RoleEnum.swift in Sources */,
@@ -643,6 +666,7 @@
 				AC1978B02B55009B0091EE4F /* StringHelper.swift in Sources */,
 				AC2BB8272B8224AA00592D60 /* RootView.swift in Sources */,
 				AC842E7B2B4FE3C200F9EC3F /* NetworkError.swift in Sources */,
+				AC88B7B12B97171400CB02F5 /* SettingSheetViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

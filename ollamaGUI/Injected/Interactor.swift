@@ -19,6 +19,7 @@ protocol OllamaInteractor {
     func sendChatStream(
         chat: ChatRequestModel,
         cancel: inout Set<AnyCancellable>,
+        option: RoomOptionEntity?,
         setting: AppSetting
     )
         -> PassthroughSubject<Loadable<ChatModel, NetworkError>, Never>
@@ -128,7 +129,7 @@ struct RealOllamaInteractor: OllamaInteractor {
         helper.getModels()
         return helper.subject
     }
-    
+
     func sendChat(chat: ChatRequestModel,
                   cancel: inout Set<AnyCancellable>,
                   setting: AppSetting)
@@ -166,11 +167,14 @@ struct RealOllamaInteractor: OllamaInteractor {
 
     func sendChatStream(chat: ChatRequestModel,
                         cancel: inout Set<AnyCancellable>,
+                        option: RoomOptionEntity? = nil,
                         setting: AppSetting)
         -> PassthroughSubject<Loadable<ChatModel, NetworkError>, Never>
     {
         var chatModel = chat
         chatModel.model = setting.model
+        chatModel = chatModel.applyOption(option: option)
+
         var helper =
             RealNetworkHelper<ChatRequestModel, ChatModel>(baseUrl: setting
                 .baseUrl,

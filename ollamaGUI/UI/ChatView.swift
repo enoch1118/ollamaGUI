@@ -18,6 +18,7 @@ struct ChatView: View {
 
     var room: RoomEntity
     @State private var showFloatingToast = false
+    @State private var showSettingSheet = false
     @State var background: Material = .thickMaterial
     @State var chats: [ChatModel] = []
     @State var isLoading: Bool = false
@@ -67,6 +68,7 @@ struct ChatView: View {
             }
             MessageEditor(
                 floating: $floating,
+                showSetting: $showSettingSheet,
                 image: $image,
                 isLoading: $isLoading,
                 onSend: onSend,
@@ -75,6 +77,9 @@ struct ChatView: View {
                 Color.white.shadow(radius: 10, y: -5)
             }
         }
+        .sheet(isPresented: $showSettingSheet, content: {
+            SettingSheet(room: room, showSetting: $showSettingSheet)
+        })
         .ignoresSafeArea()
         .onAppear {
             chats = room.getChatModel
@@ -88,15 +93,21 @@ struct ChatView: View {
             case .failed:
                 isLoading = false
                 chats.removeLast()
-                let error = ChatModel(text: "please ensure your ollama server is live or selected any model", role: .assistant)
+                let error = ChatModel(
+                    text: "please ensure your ollama server is live or selected any model",
+                    role: .assistant
+                )
                 chats.append(error)
             case let .isLoading(last: value):
                 guard var lastChat = value else {
                     return
                 }
-                guard var _ = lastChat.message else{
+                guard var _ = lastChat.message else {
                     chats.removeLast()
-                    let error = ChatModel(text: "please ensure you have select any model", role: .assistant)
+                    let error = ChatModel(
+                        text: "please ensure you have select any model",
+                        role: .assistant
+                    )
                     chats.append(error)
                     return
                 }
@@ -120,14 +131,19 @@ struct ChatView: View {
         })
         .background(background)
         .clipShape(RoundedRectangle(cornerRadius: 20))
-        .overlay{
+        .overlay {
             if !floating {
                 OverlayToast(text: "this chat window is unpinned")
-            } else{
+            } else {
                 OverlayToast(text: "this chat window is pinned")
             }
         }
-        .frame(minWidth: 400,idealWidth: floatingSize.width, minHeight: floatingSize.height,idealHeight: floatingSize.height)
+        .frame(
+            minWidth: 400,
+            idealWidth: floatingSize.width,
+            minHeight: floatingSize.height,
+            idealHeight: floatingSize.height
+        )
 //        .onDrop(of: [.image], isTargeted: $isTargeted, perform: { items in
 //            guard let item = items.first else {
 //                return false
@@ -148,7 +164,6 @@ struct ChatView: View {
     }
 }
 
-
 extension ChatView {
     func onSend(text: String) {
         let viewModel = ChatModel(text: text, role: .user)
@@ -166,7 +181,8 @@ extension ChatView {
         subject = container.interactor.sendChatStream(
             chat: requestModel,
             cancel: &cancel,
-            setting:container.appSetting
+            option: room.option,
+            setting: container.appSetting
         )
         print(cancel.count)
     }

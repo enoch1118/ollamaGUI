@@ -10,6 +10,7 @@ import SwiftUI
 struct MessageEditor: View {
     @State var text: String = ""
     @Binding var floating:Bool
+    @Binding var showSetting:Bool
     @Binding var image: NSImage?
     @Binding var isLoading: Bool
     @ObservedObject var shiftController: KeyPressedController = .init()
@@ -34,6 +35,11 @@ struct MessageEditor: View {
                 }) {
                     Image("PinIcon")
                 }.buttonStyle(EditorButton(enabled: $floating))
+                Button(action: {
+                    showSetting.toggle()
+                }) {
+                    Image("SettingIcon")
+                }.buttonStyle(EditorButton(enabled: .constant(false)))
                 Spacer()
                 
 

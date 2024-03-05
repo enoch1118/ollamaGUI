@@ -10,6 +10,7 @@ import Foundation
 enum RoleEnum:String,Codable{
     case user = "user"
     case assistant = "assistant"
+    case system = "system"
 }
 
 extension RoleEnum {
