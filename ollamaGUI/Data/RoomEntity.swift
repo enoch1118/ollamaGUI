@@ -13,6 +13,8 @@ class RoomEntity {
     var updatedAt: Date
     @Relationship(deleteRule: .cascade) var chats: [ChatEntity]
     var title: String?
+    @Relationship(deleteRule: .cascade) var option: RoomOptionEntity?
+    
 
     init(updatedAt: Date, chats: [ChatEntity], title: String? = nil) {
         self.updatedAt = updatedAt

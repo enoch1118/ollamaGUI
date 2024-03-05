@@ -11,6 +11,7 @@ struct ChatRequestModel: Encodable, DictionaryEncodable {
     var model: String
     var messages: [MessageModel]
     var stream: Bool
+    var options: OptionModel?
 
     init(model: String, messages: [MessageModel], stream: Bool) {
         self.model = model
@@ -22,6 +23,7 @@ struct ChatRequestModel: Encodable, DictionaryEncodable {
         case model
         case messages
         case stream
+        case options
     }
 
     func encode(to encoder: Encoder) throws {
@@ -29,6 +31,7 @@ struct ChatRequestModel: Encodable, DictionaryEncodable {
         try container.encode(model, forKey: .model)
         try container.encode(stream, forKey: .stream)
         try container.encode(messages, forKey: .messages)
+        try container.encodeIfPresent(options, forKey: .options)
     }
 
     func getDictionary() -> [String: Any]? {
@@ -45,6 +48,7 @@ struct ChatRequestModel: Encodable, DictionaryEncodable {
             list.append(val!)
         }
         d["messages"] = list
+        d["options"] = options.getLeafDictionary()
         return d
     }
 
@@ -52,12 +56,26 @@ struct ChatRequestModel: Encodable, DictionaryEncodable {
         model = "llama2"
         self.stream = stream
         messages = [of]
+        options = nil
     }
-    
+
     init(ofList: [MessageModel], stream: Bool = false) {
         model = "llama2"
         self.stream = stream
         messages = ofList
+    }
 
+    mutating func applyOption(option: RoomOptionEntity?) -> ChatRequestModel {
+        guard let option = option else {
+            return self
+        }
+        options = OptionModel(top_p: option.top_p, top_k: option.top_k)
+        if let model = option.model {
+            self.model = model
+        }
+        if let system = option.system {
+            messages.append(MessageModel(text: system, role: .system))
+        }
+        return self
     }
 }
