@@ -39,7 +39,6 @@
 		AC7C8AE72B58E0720031FEF1 /* UpdateTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7C8AE62B58E0720031FEF1 /* UpdateTrigger.swift */; };
 		AC7C8AEB2B58FDE90031FEF1 /* OverlayToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7C8AEA2B58FDE90031FEF1 /* OverlayToast.swift */; };
 		AC842E392B4D16F700F9EC3F /* ollamaGUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E382B4D16F700F9EC3F /* ollamaGUIApp.swift */; };
-		AC842E3B2B4D16F700F9EC3F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E3A2B4D16F700F9EC3F /* ContentView.swift */; };
 		AC842E3D2B4D16F800F9EC3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC842E3C2B4D16F800F9EC3F /* Assets.xcassets */; };
 		AC842E402B4D16F800F9EC3F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC842E3F2B4D16F800F9EC3F /* Preview Assets.xcassets */; };
 		AC842E4A2B4D191800F9EC3F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC842E492B4D191800F9EC3F /* HomeView.swift */; };
@@ -114,7 +113,6 @@
 		AC7C8AEA2B58FDE90031FEF1 /* OverlayToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayToast.swift; sourceTree = "<group>"; };
 		AC842E352B4D16F700F9EC3F /* ollamaGUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ollamaGUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC842E382B4D16F700F9EC3F /* ollamaGUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ollamaGUIApp.swift; sourceTree = "<group>"; };
-		AC842E3A2B4D16F700F9EC3F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AC842E3C2B4D16F800F9EC3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC842E3F2B4D16F800F9EC3F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AC842E412B4D16F800F9EC3F /* ollamaGUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ollamaGUI.entitlements; sourceTree = "<group>"; };
@@ -205,6 +203,13 @@
 			path = SidebarV2;
 			sourceTree = "<group>";
 		};
+		AC3013F72B99F77500B24460 /* LangChain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LangChain;
+			sourceTree = "<group>";
+		};
 		AC36BCA22B57B0D500AD8BD2 /* Room */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +270,7 @@
 		AC842E372B4D16F700F9EC3F /* ollamaGUI */ = {
 			isa = PBXGroup;
 			children = (
+				AC3013F72B99F77500B24460 /* LangChain */,
 				AC64593C2B5BF0C50039B26E /* Info.plist */,
 				AC40BBE42B550D5C00AA7D1C /* Data */,
 				AC842E792B4FE3B300F9EC3F /* Core */,
@@ -275,7 +281,6 @@
 				AC842E472B4D190200F9EC3F /* UI */,
 				AC842E382B4D16F700F9EC3F /* ollamaGUIApp.swift */,
 				AC2BB8242B82245C00592D60 /* UI_v2 */,
-				AC842E3A2B4D16F700F9EC3F /* ContentView.swift */,
 				AC842E3C2B4D16F800F9EC3F /* Assets.xcassets */,
 				AC842E412B4D16F800F9EC3F /* ollamaGUI.entitlements */,
 				AC842E3E2B4D16F800F9EC3F /* Preview Content */,
@@ -640,7 +645,6 @@
 				AC36BCA42B57B0E200AD8BD2 /* RoomView.swift in Sources */,
 				AC842E532B4D3A5000F9EC3F /* SidebarButton.swift in Sources */,
 				ACD1762F2B5E69630020A15E /* PullResponseModel.swift in Sources */,
-				AC842E3B2B4D16F700F9EC3F /* ContentView.swift in Sources */,
 				ACF5C00D2B5564C300861735 /* ChatHeader.swift in Sources */,
 				AC6459412B5BF5440039B26E /* TagsView.swift in Sources */,
 				AC2BB82C2B822B6C00592D60 /* SidebarV2.swift in Sources */,
@@ -802,7 +806,7 @@
 				CODE_SIGN_ENTITLEMENTS = ollamaGUI/ollamaGUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"ollamaGUI/Preview Content\"";
 				DEVELOPMENT_TEAM = D5W99SHK6S;
@@ -815,7 +819,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evnovert.ollamaGUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -832,7 +836,7 @@
 				CODE_SIGN_ENTITLEMENTS = ollamaGUI/ollamaGUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"ollamaGUI/Preview Content\"";
 				DEVELOPMENT_TEAM = D5W99SHK6S;
@@ -845,7 +849,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evnovert.ollamaGUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -112,6 +112,6 @@ var floatingSize: CGSize {
 }
 
 #Preview {
-    ContentView().injectPreview()
+    RootView().injectPreview()
 //    RoomItem(room: .randomRoom)
 }

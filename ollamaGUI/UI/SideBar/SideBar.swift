@@ -61,5 +61,5 @@ struct SideBar: View {
 }
 
 #Preview {
-    ContentView().injectPreview()
+    RootView().injectPreview()
 }

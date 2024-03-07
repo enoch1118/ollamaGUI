@@ -37,5 +37,5 @@ struct RoomView: View {
 }
 
 #Preview {
-    ContentView().injectPreview()
+    RootView().injectPreview()
 }

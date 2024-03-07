@@ -203,5 +203,5 @@ extension ChatView {
 }
 
 #Preview {
-    ContentView().injectPreview()
+    RootView().injectPreview()
 }

@@ -12,10 +12,10 @@ import SwiftUI
 struct SettingSheet: View {
     @ObservedObject var model: SettingSheetViewModel
     @Binding var showSetting: Bool
-    @State var roomState: RoomEntity
+    var room: RoomEntity
     
     init(room: RoomEntity,showSetting: Binding<Bool>) {
-        self.roomState = room
+        self.room = room
         self.model = SettingSheetViewModel()
         self._showSetting = showSetting
         model.system = room.option?.system ?? ""
@@ -68,7 +68,8 @@ struct SettingSheet: View {
                         Text("reset")
                     }.buttonStyle(CommonButton(enabled: false))
                     Button(action: {
-                        roomState.option = model.options
+                        model.apply()
+                        room.option = model.options
                         showSetting.toggle()
                     }){
                         Text("apply change")
