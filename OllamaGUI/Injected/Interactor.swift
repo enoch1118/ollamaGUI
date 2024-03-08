@@ -23,6 +23,7 @@ protocol OllamaInteractor {
         setting: AppSetting
     )
         -> PassthroughSubject<Loadable<ChatModel, NetworkError>, Never>
+    
 
     func checkNetwork(
         cancel: inout Set<AnyCancellable>,
