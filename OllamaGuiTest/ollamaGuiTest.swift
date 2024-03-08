@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import ollamaGUI
 
 final class ollamaGuiTest: XCTestCase {
 

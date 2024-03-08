@@ -144,7 +144,7 @@ extension RealNetworkHelper where T == String {
 
 extension RealNetworkHelper where T: Decodable, U == String {
     mutating func pullModel() {
-        var model = PullRequestModel(name:parameter!)
+        let model = PullRequestModel(name:parameter!)
         workItem = DispatchWorkItem { [self] in
             AF.streamRequest(
                 baseUrl + url,

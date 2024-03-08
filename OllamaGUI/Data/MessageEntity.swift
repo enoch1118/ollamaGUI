@@ -28,7 +28,7 @@ class MessageEntity {
 #if DEBUG
     extension MessageEntity {
         static var randomMessage: MessageEntity {
-            var rols: [RoleEnum] = [.user, .assistant]
+            let rols: [RoleEnum] = [.user, .assistant]
             return MessageEntity(
                 role: rols.randomElement()!,
                 content: RandomGenerator.randomNames.randomElement()!

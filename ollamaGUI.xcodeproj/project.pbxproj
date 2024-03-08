@@ -11,10 +11,29 @@
 		AC1978B02B55009B0091EE4F /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1978AF2B55009B0091EE4F /* StringHelper.swift */; };
 		AC1978B32B5503070091EE4F /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = AC1978B22B5503070091EE4F /* MarkdownUI */; };
 		AC229F842B5526570033143C /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC229F832B5526570033143C /* ChatModel.swift */; };
-		AC2BB8272B8224AA00592D60 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2BB8262B8224AA00592D60 /* RootView.swift */; };
-		AC2BB8292B8224ED00592D60 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2BB8282B8224ED00592D60 /* RootViewModel.swift */; };
-		AC2BB82C2B822B6C00592D60 /* SidebarV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2BB82B2B822B6C00592D60 /* SidebarV2.swift */; };
-		AC2BB82E2B822B8300592D60 /* SidebarV2ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2BB82D2B822B8300592D60 /* SidebarV2ViewModel.swift */; };
+		AC3014392B9AEC6600B24460 /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014272B9AEC6600B24460 /* APICall.swift */; };
+		AC30143A2B9AEC6600B24460 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014282B9AEC6600B24460 /* SessionManager.swift */; };
+		AC30143B2B9AEC6600B24460 /* OllamaDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30142A2B9AEC6600B24460 /* OllamaDatasource.swift */; };
+		AC30143C2B9AEC6600B24460 /* EmbeddingDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30142C2B9AEC6600B24460 /* EmbeddingDto.swift */; };
+		AC30143D2B9AEC6600B24460 /* EmbeddingResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30142D2B9AEC6600B24460 /* EmbeddingResponseDto.swift */; };
+		AC30143E2B9AEC6600B24460 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014302B9AEC6600B24460 /* RootView.swift */; };
+		AC30143F2B9AEC6600B24460 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014312B9AEC6600B24460 /* RootViewModel.swift */; };
+		AC3014402B9AEC6600B24460 /* SidebarV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014332B9AEC6600B24460 /* SidebarV2.swift */; };
+		AC3014412B9AEC6600B24460 /* SidebarV2ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014342B9AEC6600B24460 /* SidebarV2ViewModel.swift */; };
+		AC3014422B9AEC6600B24460 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014372B9AEC6600B24460 /* Core.swift */; };
+		AC3014532B9AED3500B24460 /* OllamaDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014522B9AED3500B24460 /* OllamaDatasource.swift */; };
+		AC3014582B9AF02600B24460 /* EmbedingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014572B9AF02600B24460 /* EmbedingRepository.swift */; };
+		AC30145B2B9AF07800B24460 /* EmbedingRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30145A2B9AF07800B24460 /* EmbedingRepositoryImpl.swift */; };
+		AC30145E2B9AF0BD00B24460 /* LangchainUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30145D2B9AF0BD00B24460 /* LangchainUsecase.swift */; };
+		AC3014602B9AF26600B24460 /* WebDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30145F2B9AF26600B24460 /* WebDatasource.swift */; };
+		AC3014622B9AF36500B24460 /* WebDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014612B9AF36500B24460 /* WebDatasource.swift */; };
+		AC30146B2B9AFC0D00B24460 /* BaseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014642B9AFC0D00B24460 /* BaseLoader.swift */; };
+		AC30146C2B9AFC0D00B24460 /* HTMLLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014652B9AFC0D00B24460 /* HTMLLoader.swift */; };
+		AC30146D2B9AFC0D00B24460 /* TextSplitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014672B9AFC0D00B24460 /* TextSplitter.swift */; };
+		AC30146E2B9AFC0D00B24460 /* LangchainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014692B9AFC0D00B24460 /* LangchainError.swift */; };
+		AC3014702B9AFC6600B24460 /* CrawlingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30146F2B9AFC6600B24460 /* CrawlingRepository.swift */; };
+		AC3014722B9AFC9500B24460 /* CrawlingRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014712B9AFC9500B24460 /* CrawlingRepositoryImpl.swift */; };
+		AC3014772B9AFEDD00B24460 /* LangchainUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014762B9AFEDD00B24460 /* LangchainUsecase.swift */; };
 		AC36BCA42B57B0E200AD8BD2 /* RoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC36BCA32B57B0E200AD8BD2 /* RoomView.swift */; };
 		AC36BCA72B57B0FE00AD8BD2 /* RoomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC36BCA62B57B0FE00AD8BD2 /* RoomItem.swift */; };
 		AC36BCA92B57B25200AD8BD2 /* RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC36BCA82B57B25200AD8BD2 /* RandomGenerator.swift */; };
@@ -78,15 +97,46 @@
 		ACF5C0112B557BBC00861735 /* AppSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5C0102B557BBC00861735 /* AppSetting.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		AC30144B2B9AED0B00B24460 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC842E2D2B4D16F700F9EC3F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC842E342B4D16F700F9EC3F;
+			remoteInfo = ollamaGUI;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		53CA5445BF6B3981C24E69FB /* Pods-ollamaGUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ollamaGUI.debug.xcconfig"; path = "Target Support Files/Pods-ollamaGUI/Pods-ollamaGUI.debug.xcconfig"; sourceTree = "<group>"; };
 		99CC9802010F649185C7EF44 /* Pods_ollamaGUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ollamaGUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC1978AF2B55009B0091EE4F /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		AC229F832B5526570033143C /* ChatModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
-		AC2BB8262B8224AA00592D60 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		AC2BB8282B8224ED00592D60 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
-		AC2BB82B2B822B6C00592D60 /* SidebarV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarV2.swift; sourceTree = "<group>"; };
-		AC2BB82D2B822B8300592D60 /* SidebarV2ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarV2ViewModel.swift; sourceTree = "<group>"; };
+		AC3014272B9AEC6600B24460 /* APICall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
+		AC3014282B9AEC6600B24460 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		AC30142A2B9AEC6600B24460 /* OllamaDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OllamaDatasource.swift; sourceTree = "<group>"; };
+		AC30142C2B9AEC6600B24460 /* EmbeddingDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbeddingDto.swift; sourceTree = "<group>"; };
+		AC30142D2B9AEC6600B24460 /* EmbeddingResponseDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbeddingResponseDto.swift; sourceTree = "<group>"; };
+		AC3014302B9AEC6600B24460 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		AC3014312B9AEC6600B24460 /* RootViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		AC3014332B9AEC6600B24460 /* SidebarV2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarV2.swift; sourceTree = "<group>"; };
+		AC3014342B9AEC6600B24460 /* SidebarV2ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarV2ViewModel.swift; sourceTree = "<group>"; };
+		AC3014372B9AEC6600B24460 /* Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
+		AC3014472B9AED0B00B24460 /* ollamaGuiTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ollamaGuiTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC3014522B9AED3500B24460 /* OllamaDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OllamaDatasource.swift; sourceTree = "<group>"; };
+		AC3014572B9AF02600B24460 /* EmbedingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedingRepository.swift; sourceTree = "<group>"; };
+		AC30145A2B9AF07800B24460 /* EmbedingRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedingRepositoryImpl.swift; sourceTree = "<group>"; };
+		AC30145D2B9AF0BD00B24460 /* LangchainUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangchainUsecase.swift; sourceTree = "<group>"; };
+		AC30145F2B9AF26600B24460 /* WebDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDatasource.swift; sourceTree = "<group>"; };
+		AC3014612B9AF36500B24460 /* WebDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDatasource.swift; sourceTree = "<group>"; };
+		AC3014632B9AF60200B24460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		AC3014642B9AFC0D00B24460 /* BaseLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLoader.swift; sourceTree = "<group>"; };
+		AC3014652B9AFC0D00B24460 /* HTMLLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLLoader.swift; sourceTree = "<group>"; };
+		AC3014672B9AFC0D00B24460 /* TextSplitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextSplitter.swift; sourceTree = "<group>"; };
+		AC3014692B9AFC0D00B24460 /* LangchainError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LangchainError.swift; sourceTree = "<group>"; };
+		AC30146F2B9AFC6600B24460 /* CrawlingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlingRepository.swift; sourceTree = "<group>"; };
+		AC3014712B9AFC9500B24460 /* CrawlingRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlingRepositoryImpl.swift; sourceTree = "<group>"; };
+		AC3014762B9AFEDD00B24460 /* LangchainUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangchainUsecase.swift; sourceTree = "<group>"; };
 		AC36BCA32B57B0E200AD8BD2 /* RoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomView.swift; sourceTree = "<group>"; };
 		AC36BCA62B57B0FE00AD8BD2 /* RoomItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomItem.swift; sourceTree = "<group>"; };
 		AC36BCA82B57B25200AD8BD2 /* RandomGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomGenerator.swift; sourceTree = "<group>"; };
@@ -155,6 +205,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AC3014442B9AED0B00B24460 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AC842E322B4D16F700F9EC3F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -176,38 +233,193 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		AC2BB8242B82245C00592D60 /* UI_v2 */ = {
+		AC3013F72B99F77500B24460 /* LangChain */ = {
 			isa = PBXGroup;
 			children = (
-				AC2BB82A2B822B5800592D60 /* SidebarV2 */,
-				AC2BB8252B82249F00592D60 /* Root */,
+				AC3014662B9AFC0D00B24460 /* DocumentLoader */,
+				AC30146A2B9AFC0D00B24460 /* Error */,
+				AC3014682B9AFC0D00B24460 /* Util */,
 			);
-			path = UI_v2;
+			path = LangChain;
 			sourceTree = "<group>";
 		};
-		AC2BB8252B82249F00592D60 /* Root */ = {
+		AC3014292B9AEC6600B24460 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				AC2BB8262B8224AA00592D60 /* RootView.swift */,
-				AC2BB8282B8224ED00592D60 /* RootViewModel.swift */,
+				AC3014272B9AEC6600B24460 /* APICall.swift */,
+				AC3014282B9AEC6600B24460 /* SessionManager.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		AC30142B2B9AEC6600B24460 /* Datasource */ = {
+			isa = PBXGroup;
+			children = (
+				AC30142A2B9AEC6600B24460 /* OllamaDatasource.swift */,
+				AC30145F2B9AF26600B24460 /* WebDatasource.swift */,
+			);
+			path = Datasource;
+			sourceTree = "<group>";
+		};
+		AC30142E2B9AEC6600B24460 /* Dto */ = {
+			isa = PBXGroup;
+			children = (
+				AC30142C2B9AEC6600B24460 /* EmbeddingDto.swift */,
+				AC30142D2B9AEC6600B24460 /* EmbeddingResponseDto.swift */,
+			);
+			path = Dto;
+			sourceTree = "<group>";
+		};
+		AC30142F2B9AEC6600B24460 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				AC3014592B9AF06B00B24460 /* Repository */,
+				AC30142B2B9AEC6600B24460 /* Datasource */,
+				AC30142E2B9AEC6600B24460 /* Dto */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		AC3014322B9AEC6600B24460 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				AC3014302B9AEC6600B24460 /* RootView.swift */,
+				AC3014312B9AEC6600B24460 /* RootViewModel.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
 		};
-		AC2BB82A2B822B5800592D60 /* SidebarV2 */ = {
+		AC3014352B9AEC6600B24460 /* SidebarV2 */ = {
 			isa = PBXGroup;
 			children = (
-				AC2BB82B2B822B6C00592D60 /* SidebarV2.swift */,
-				AC2BB82D2B822B8300592D60 /* SidebarV2ViewModel.swift */,
+				AC3014332B9AEC6600B24460 /* SidebarV2.swift */,
+				AC3014342B9AEC6600B24460 /* SidebarV2ViewModel.swift */,
 			);
 			path = SidebarV2;
 			sourceTree = "<group>";
 		};
-		AC3013F72B99F77500B24460 /* LangChain */ = {
+		AC3014362B9AEC6600B24460 /* UI_v2 */ = {
 			isa = PBXGroup;
 			children = (
+				AC3014322B9AEC6600B24460 /* Root */,
+				AC3014352B9AEC6600B24460 /* SidebarV2 */,
 			);
-			path = LangChain;
+			path = UI_v2;
+			sourceTree = "<group>";
+		};
+		AC3014382B9AEC6600B24460 /* V2 */ = {
+			isa = PBXGroup;
+			children = (
+				AC3014542B9AEF8100B24460 /* Domain */,
+				AC3014292B9AEC6600B24460 /* Core */,
+				AC30142F2B9AEC6600B24460 /* Data */,
+				AC3014362B9AEC6600B24460 /* UI_v2 */,
+				AC3014372B9AEC6600B24460 /* Core.swift */,
+			);
+			path = V2;
+			sourceTree = "<group>";
+		};
+		AC3014482B9AED0B00B24460 /* ollamaGuiTest */ = {
+			isa = PBXGroup;
+			children = (
+				AC3014632B9AF60200B24460 /* Info.plist */,
+				AC3014742B9AFECD00B24460 /* Domain */,
+				AC3014502B9AED1E00B24460 /* Data */,
+			);
+			path = ollamaGuiTest;
+			sourceTree = "<group>";
+		};
+		AC3014502B9AED1E00B24460 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				AC3014512B9AED2300B24460 /* Datasource */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		AC3014512B9AED2300B24460 /* Datasource */ = {
+			isa = PBXGroup;
+			children = (
+				AC3014522B9AED3500B24460 /* OllamaDatasource.swift */,
+				AC3014612B9AF36500B24460 /* WebDatasource.swift */,
+			);
+			path = Datasource;
+			sourceTree = "<group>";
+		};
+		AC3014542B9AEF8100B24460 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				AC3014562B9AF00100B24460 /* Repository */,
+				AC3014552B9AEF9F00B24460 /* Usecase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		AC3014552B9AEF9F00B24460 /* Usecase */ = {
+			isa = PBXGroup;
+			children = (
+				AC30145D2B9AF0BD00B24460 /* LangchainUsecase.swift */,
+			);
+			path = Usecase;
+			sourceTree = "<group>";
+		};
+		AC3014562B9AF00100B24460 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				AC3014572B9AF02600B24460 /* EmbedingRepository.swift */,
+				AC30146F2B9AFC6600B24460 /* CrawlingRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		AC3014592B9AF06B00B24460 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				AC30145A2B9AF07800B24460 /* EmbedingRepositoryImpl.swift */,
+				AC3014712B9AFC9500B24460 /* CrawlingRepositoryImpl.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		AC3014662B9AFC0D00B24460 /* DocumentLoader */ = {
+			isa = PBXGroup;
+			children = (
+				AC3014642B9AFC0D00B24460 /* BaseLoader.swift */,
+				AC3014652B9AFC0D00B24460 /* HTMLLoader.swift */,
+			);
+			path = DocumentLoader;
+			sourceTree = "<group>";
+		};
+		AC3014682B9AFC0D00B24460 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				AC3014672B9AFC0D00B24460 /* TextSplitter.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		AC30146A2B9AFC0D00B24460 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				AC3014692B9AFC0D00B24460 /* LangchainError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		AC3014742B9AFECD00B24460 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				AC3014752B9AFED400B24460 /* Usecase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		AC3014752B9AFED400B24460 /* Usecase */ = {
+			isa = PBXGroup;
+			children = (
+				AC3014762B9AFEDD00B24460 /* LangchainUsecase.swift */,
+			);
+			path = Usecase;
 			sourceTree = "<group>";
 		};
 		AC36BCA22B57B0D500AD8BD2 /* Room */ = {
@@ -253,6 +465,7 @@
 			isa = PBXGroup;
 			children = (
 				AC842E372B4D16F700F9EC3F /* ollamaGUI */,
+				AC3014482B9AED0B00B24460 /* ollamaGuiTest */,
 				AC842E362B4D16F700F9EC3F /* Products */,
 				875CC7948AB0503FA84A4A6F /* Pods */,
 				C496E79C72A612FD73E80721 /* Frameworks */,
@@ -263,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				AC842E352B4D16F700F9EC3F /* ollamaGUI.app */,
+				AC3014472B9AED0B00B24460 /* ollamaGuiTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -270,6 +484,7 @@
 		AC842E372B4D16F700F9EC3F /* ollamaGUI */ = {
 			isa = PBXGroup;
 			children = (
+				AC3014382B9AEC6600B24460 /* V2 */,
 				AC3013F72B99F77500B24460 /* LangChain */,
 				AC64593C2B5BF0C50039B26E /* Info.plist */,
 				AC40BBE42B550D5C00AA7D1C /* Data */,
@@ -280,7 +495,6 @@
 				AC842E4E2B4D1BD200F9EC3F /* Helper */,
 				AC842E472B4D190200F9EC3F /* UI */,
 				AC842E382B4D16F700F9EC3F /* ollamaGUIApp.swift */,
-				AC2BB8242B82245C00592D60 /* UI_v2 */,
 				AC842E3C2B4D16F800F9EC3F /* Assets.xcassets */,
 				AC842E412B4D16F800F9EC3F /* ollamaGUI.entitlements */,
 				AC842E3E2B4D16F800F9EC3F /* Preview Content */,
@@ -489,6 +703,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AC3014462B9AED0B00B24460 /* ollamaGuiTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC30144D2B9AED0B00B24460 /* Build configuration list for PBXNativeTarget "ollamaGuiTest" */;
+			buildPhases = (
+				AC3014432B9AED0B00B24460 /* Sources */,
+				AC3014442B9AED0B00B24460 /* Frameworks */,
+				AC3014452B9AED0B00B24460 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC30144C2B9AED0B00B24460 /* PBXTargetDependency */,
+			);
+			name = ollamaGuiTest;
+			productName = ollamaGuiTest;
+			productReference = AC3014472B9AED0B00B24460 /* ollamaGuiTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		AC842E342B4D16F700F9EC3F /* ollamaGUI */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC842E442B4D16F800F9EC3F /* Build configuration list for PBXNativeTarget "ollamaGUI" */;
@@ -518,9 +750,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1510;
+				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1510;
 				TargetAttributes = {
+					AC3014462B9AED0B00B24460 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = AC842E342B4D16F700F9EC3F;
+					};
 					AC842E342B4D16F700F9EC3F = {
 						CreatedOnToolsVersion = 15.1;
 					};
@@ -543,11 +779,19 @@
 			projectRoot = "";
 			targets = (
 				AC842E342B4D16F700F9EC3F /* ollamaGUI */,
+				AC3014462B9AED0B00B24460 /* ollamaGuiTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AC3014452B9AED0B00B24460 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AC842E332B4D16F700F9EC3F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -602,59 +846,82 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AC3014432B9AED0B00B24460 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC3014532B9AED3500B24460 /* OllamaDatasource.swift in Sources */,
+				AC3014622B9AF36500B24460 /* WebDatasource.swift in Sources */,
+				AC3014772B9AFEDD00B24460 /* LangchainUsecase.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AC842E312B4D16F700F9EC3F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				AC40BC002B55221000AA7D1C /* DataInteractor.swift in Sources */,
+				AC30146B2B9AFC0D00B24460 /* BaseLoader.swift in Sources */,
 				ACDCFDDA2B5AD36F00DAB674 /* IntHelper.swift in Sources */,
 				ACB566AA2B591F98009EF2B2 /* SettingView.swift in Sources */,
 				AC7C8ADF2B57C7640031FEF1 /* DateHelper.swift in Sources */,
+				AC3014602B9AF26600B24460 /* WebDatasource.swift in Sources */,
 				AC842E6E2B4FCA4800F9EC3F /* DIContainer.swift in Sources */,
 				AC725C2F2B5125BB00B3E266 /* ChatRequestModel.swift in Sources */,
+				AC3014582B9AF02600B24460 /* EmbedingRepository.swift in Sources */,
 				AC6459432B5BFBCD0039B26E /* OllamaTagModel.swift in Sources */,
 				ACDCFDDC2B5ADF4700DAB674 /* HtmlHelper.swift in Sources */,
 				AC842E502B4D1BE000F9EC3F /* ViewHelper.swift in Sources */,
 				AC725C2D2B511D3200B3E266 /* Interactor.swift in Sources */,
-				AC2BB8292B8224ED00592D60 /* RootViewModel.swift in Sources */,
 				ACF5C00F2B55704800861735 /* StopButton.swift in Sources */,
 				AC229F842B5526570033143C /* ChatModel.swift in Sources */,
+				AC30145B2B9AF07800B24460 /* EmbedingRepositoryImpl.swift in Sources */,
 				AC842E742B4FDD6A00F9EC3F /* NetworkHelper.swift in Sources */,
+				AC3014392B9AEC6600B24460 /* APICall.swift in Sources */,
 				AC7C8AE12B57CA0C0031FEF1 /* FloatingWindow.swift in Sources */,
 				AC842E632B4E784300F9EC3F /* ChatBubble.swift in Sources */,
 				ACF5C0092B5563CD00861735 /* ClearButton.swift in Sources */,
-				AC2BB82E2B822B8300592D60 /* SidebarV2ViewModel.swift in Sources */,
 				ACD176292B5E5BAB0020A15E /* TagListItem.swift in Sources */,
 				AC67ECA22B5943580081FA1A /* AppSettingEntity.swift in Sources */,
 				ACF5C0112B557BBC00861735 /* AppSetting.swift in Sources */,
 				AC7C8AE32B5828970031FEF1 /* WindowHelper.swift in Sources */,
+				AC30146D2B9AFC0D00B24460 /* TextSplitter.swift in Sources */,
+				AC3014702B9AFC6600B24460 /* CrawlingRepository.swift in Sources */,
 				AC88B7AC2B97127500CB02F5 /* OptionModel.swift in Sources */,
 				AC64593B2B5BEF800039B26E /* OllmaModel.swift in Sources */,
 				AC64593E2B5BF2980039B26E /* LibraryModelListView.swift in Sources */,
+				AC3014402B9AEC6600B24460 /* SidebarV2.swift in Sources */,
+				AC30143B2B9AEC6600B24460 /* OllamaDatasource.swift in Sources */,
 				AC842E562B4E6EE300F9EC3F /* ChatView.swift in Sources */,
 				AC842E4A2B4D191800F9EC3F /* HomeView.swift in Sources */,
 				AC97DE422B543FF200A4508B /* KeyPressedController.swift in Sources */,
 				ACDCFDD42B5A761F00DAB674 /* ModelManagerView.swift in Sources */,
+				AC30143E2B9AEC6600B24460 /* RootView.swift in Sources */,
 				AC842E6B2B4FC7F000F9EC3F /* MessageEditor.swift in Sources */,
 				AC842E652B4E81D700F9EC3F /* BubbleShape.swift in Sources */,
 				ACDCFDD82B5AD21F00DAB674 /* ModelListView.swift in Sources */,
+				AC3014722B9AFC9500B24460 /* CrawlingRepositoryImpl.swift in Sources */,
 				AC842E762B4FE20700F9EC3F /* Loadable.swift in Sources */,
 				AC725C312B51304000B3E266 /* DictionaryEncoder.swift in Sources */,
 				AC842E782B4FE2EA00F9EC3F /* DescribableEnum.swift in Sources */,
 				ACD176312B5E758A0020A15E /* PullRequestModel.swift in Sources */,
 				AC36BCA42B57B0E200AD8BD2 /* RoomView.swift in Sources */,
+				AC30145E2B9AF0BD00B24460 /* LangchainUsecase.swift in Sources */,
 				AC842E532B4D3A5000F9EC3F /* SidebarButton.swift in Sources */,
 				ACD1762F2B5E69630020A15E /* PullResponseModel.swift in Sources */,
 				ACF5C00D2B5564C300861735 /* ChatHeader.swift in Sources */,
 				AC6459412B5BF5440039B26E /* TagsView.swift in Sources */,
-				AC2BB82C2B822B6C00592D60 /* SidebarV2.swift in Sources */,
+				AC30146C2B9AFC0D00B24460 /* HTMLLoader.swift in Sources */,
 				AC40BBE32B55066900AA7D1C /* MarkdownTheme.swift in Sources */,
 				ACDCFDD22B5A6D3B00DAB674 /* ModelInfoModel.swift in Sources */,
+				AC30143C2B9AEC6600B24460 /* EmbeddingDto.swift in Sources */,
 				AC7C8AE52B58DA4E0031FEF1 /* EditorButton.swift in Sources */,
+				AC30143D2B9AEC6600B24460 /* EmbeddingResponseDto.swift in Sources */,
 				AC40BBFA2B551D1700AA7D1C /* MessageEntity.swift in Sources */,
 				AC88B7AA2B97102200CB02F5 /* RoomOptionEntity.swift in Sources */,
 				AC40BBFC2B551DA500AA7D1C /* ChatEntity.swift in Sources */,
 				AC88B7AE2B9716FC00CB02F5 /* SettingSheet.swift in Sources */,
+				AC3014412B9AEC6600B24460 /* SidebarV2ViewModel.swift in Sources */,
 				AC7C8AEB2B58FDE90031FEF1 /* OverlayToast.swift in Sources */,
 				ACDCFDD02B5A6D3200DAB674 /* ModelList.swift in Sources */,
 				AC842E5E2B4E6F8000F9EC3F /* RoleEnum.swift in Sources */,
@@ -662,21 +929,72 @@
 				AC40BBFE2B551EBC00AA7D1C /* RoomEntity.swift in Sources */,
 				AC842E4D2B4D1AFB00F9EC3F /* SideBar.swift in Sources */,
 				AC7C8AE72B58E0720031FEF1 /* UpdateTrigger.swift in Sources */,
+				AC3014422B9AEC6600B24460 /* Core.swift in Sources */,
 				AC842E692B4FC4A700F9EC3F /* CommonButton.swift in Sources */,
 				AC36BCA72B57B0FE00AD8BD2 /* RoomItem.swift in Sources */,
 				AC36BCA92B57B25200AD8BD2 /* RandomGenerator.swift in Sources */,
 				AC842E392B4D16F700F9EC3F /* ollamaGUIApp.swift in Sources */,
+				AC30146E2B9AFC0D00B24460 /* LangchainError.swift in Sources */,
 				ACD1762D2B5E60A00020A15E /* XProgressView.swift in Sources */,
 				AC1978B02B55009B0091EE4F /* StringHelper.swift in Sources */,
-				AC2BB8272B8224AA00592D60 /* RootView.swift in Sources */,
+				AC30143A2B9AEC6600B24460 /* SessionManager.swift in Sources */,
 				AC842E7B2B4FE3C200F9EC3F /* NetworkError.swift in Sources */,
+				AC30143F2B9AEC6600B24460 /* RootViewModel.swift in Sources */,
 				AC88B7B12B97171400CB02F5 /* SettingSheetViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		AC30144C2B9AED0B00B24460 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC842E342B4D16F700F9EC3F /* ollamaGUI */;
+			targetProxy = AC30144B2B9AED0B00B24460 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		AC30144E2B9AED0B00B24460 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D5W99SHK6S;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ollamaGuiTest/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 14.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.evnovert.ollamaGuiTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ollamaGUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ollamaGUI";
+			};
+			name = Debug;
+		};
+		AC30144F2B9AED0B00B24460 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D5W99SHK6S;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ollamaGuiTest/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 14.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.evnovert.ollamaGuiTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ollamaGUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ollamaGUI";
+			};
+			name = Release;
+		};
 		AC842E422B4D16F800F9EC3F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -860,6 +1178,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AC30144D2B9AED0B00B24460 /* Build configuration list for PBXNativeTarget "ollamaGuiTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC30144E2B9AED0B00B24460 /* Debug */,
+				AC30144F2B9AED0B00B24460 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AC842E302B4D16F700F9EC3F /* Build configuration list for PBXProject "ollamaGUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

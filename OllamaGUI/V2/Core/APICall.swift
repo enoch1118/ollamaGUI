@@ -52,6 +52,44 @@ struct APICall<U, T> where T: Decodable {
     }
 }
 
+extension APICall where T == String {
+    func callWithoutDecode() -> AnyPublisher<T, NetworkError> {
+        var request = URLRequest(url: getUrl)
+        request.httpMethod = method.method
+        print(getUrl)
+        return session.dataTaskPublisher(for: request)
+            .tryMap { element -> String in
+                guard let httpResponse = element.response as? HTTPURLResponse,
+                      (200 ..< 400).contains(httpResponse.statusCode)
+                else {
+                    throw URLError(.badServerResponse)
+                }
+                var encoding: String.Encoding!
+                switch httpResponse.textEncodingName {
+                case "euc-kr":
+                    encoding = String
+                        .Encoding(
+                            rawValue: CFStringConvertEncodingToNSStringEncoding(
+                                0x0422
+                            )
+                        )
+                default:
+                    encoding = .utf8
+                }
+                guard let ret = String(
+                    data: element.data,
+                    encoding: encoding
+                )
+                else {
+                    throw URLError(.badServerResponse)
+                }
+                return ret
+            }
+            .mapError { error in NetworkError.badRequest(error: error) }
+            .eraseToAnyPublisher()
+    }
+}
+
 extension APICall where U: Encodable {
     func call(data: U) -> AnyPublisher<T, NetworkError> {
         var request = URLRequest(url: getUrl)

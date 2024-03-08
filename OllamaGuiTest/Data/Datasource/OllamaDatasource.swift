@@ -5,31 +5,43 @@
 //  Created by 배상휘 on 3/8/24.
 //
 
+@testable import ollamaGUI
 import XCTest
 
-final class OllamaDatasource: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+final class OllamaDatasourceTest: XCTestCase {
+    var manager: SessionManager!
+    var datasource: OllamaDatasource!
+    
+    override func setUp() {
+        manager = SessionManager()
+        datasource = OllamaDatasourceImpl(
+            baseUrl: "http://localhost:11434",
+            session: manager.session
+        )
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    override func tearDown() {
+        manager = nil
+        datasource = nil
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func test_임베딩() {
+        let expectation = expectation(description: "get embeded")
+        var res:[Float] = []
+        let cancel = datasource.getEmbedding(prompt: "hello hi", model: "mistral")
+            .sink(receiveCompletion: {
+                switch $0 {
+                case .finished:
+                    expectation.fulfill()
+                    XCTAssert(true,"success with \(res)")
+                case let .failure(error):
+                    XCTAssert(false, "error with \(error.localizedDescription)")
+                }
+            }, receiveValue: { value in
+                res = value
+                
+            })
+        
+        waitForExpectations(timeout: 20)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

@@ -21,9 +21,6 @@ struct Document: Equatable {
 class BaseLoader {
     public func load() async -> [Document] {
         let type = type()
-        let reqId = UUID().uuidString
-        var cost = 0.0
-        let now = Date.now.timeIntervalSince1970
         do {
             let docs = try await _load()
             return docs
