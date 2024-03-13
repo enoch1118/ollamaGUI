@@ -175,6 +175,7 @@ struct RealOllamaInteractor: OllamaInteractor {
         var chatModel = chat
         chatModel.model = setting.model
         chatModel = chatModel.applyOption(option: option)
+        print(chatModel.messages.map{$0.role})
 
         var helper =
             RealNetworkHelper<ChatRequestModel, ChatModel>(baseUrl: setting

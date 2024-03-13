@@ -93,6 +93,8 @@ extension APICall where T == String {
 extension APICall where U: Encodable {
     func call(data: U) -> AnyPublisher<T, NetworkError> {
         var request = URLRequest(url: getUrl)
+        var decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .customISO8601
         request.httpMethod = method.method
         request.httpBody = try? JSONEncoder().encode(data)
         return session.dataTaskPublisher(for: request)
@@ -105,8 +107,11 @@ extension APICall where U: Encodable {
                 }
                 return element.data
             }
-            .decode(type: T.self, decoder: JSONDecoder())
+            .decode(type: T.self, decoder: decoder)
             .mapError { error in NetworkError.badRequest(error: error) }
             .eraseToAnyPublisher()
     }
 }
+
+
+

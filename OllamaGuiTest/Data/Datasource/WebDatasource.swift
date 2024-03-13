@@ -27,7 +27,7 @@ final class WebDatasourceTest: XCTestCase {
     func test_크롤링테스트() {
         let expectation = expectation(description: "crawling google")
         var res = ""
-        let cancel = datasource.crawlingWeb(for: "https://google.com")
+        _ = datasource.crawlingWeb(for: "https://google.com")
             .sink(receiveCompletion: {
                 switch $0 {
                 case .finished:
@@ -49,7 +49,7 @@ final class WebDatasourceTest: XCTestCase {
     func test_크롤링테스트2() {
         let expectation = expectation(description: "crawling wiki")
         var res = ""
-        let cancel = datasource.crawlingWeb(for: "https://en.wikipedia.org/wiki/Palworld")
+        _ = datasource.crawlingWeb(for: "https://en.wikipedia.org/wiki/Palworld")
             .sink(receiveCompletion: {
                 switch $0 {
                 case .finished:

@@ -58,12 +58,13 @@ struct ChatRequestModel: Encodable, DictionaryEncodable {
         messages = [of]
         options = nil
     }
-
+    
     init(ofList: [MessageModel], stream: Bool = false) {
         model = "llama2"
         self.stream = stream
         messages = ofList
     }
+    
 
     mutating func applyOption(option: RoomOptionEntity?) -> ChatRequestModel {
         guard let option = option else {
@@ -75,9 +76,6 @@ struct ChatRequestModel: Encodable, DictionaryEncodable {
 
         if let model = option.model {
             self.model = model
-        }
-        if let system = option.system {
-            messages.append(MessageModel(text: system, role: .system))
         }
         return self
     }

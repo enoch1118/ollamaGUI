@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
-protocol EmbedingRepository {
+protocol OllamaRepository {
     func getEmbeding(prompt: String,model:String)->AnyPublisher<[Float],NetworkError>
+    func chat(req:ChatRequestModel)->AnyPublisher<ChatModel,NetworkError>
 }

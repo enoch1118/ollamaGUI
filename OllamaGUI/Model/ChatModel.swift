@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ChatModel: Codable, Hashable,Equatable {
+struct ChatModel: Codable, Hashable, Equatable {
     let id: UUID
 
     var message: MessageModel?
@@ -16,7 +16,7 @@ struct ChatModel: Codable, Hashable,Equatable {
     let createdAt: Date?
     let images: [String]?
     let model: String?
-    
+
     let totalDuration: Int?
     let loadDuration: Int?
     let promptEvalCount: Int?
@@ -94,10 +94,8 @@ struct ChatModel: Codable, Hashable,Equatable {
     }
 }
 
-
-
 extension ChatModel {
-    static func ==(lhs:Self,rhs:Self) ->Bool{
+    static func == (lhs: Self, rhs: Self) -> Bool {
         return lhs.id == rhs.id
     }
 }
@@ -108,8 +106,12 @@ extension ChatModel {
         message?.role == .user
     }
 
-    init(text: String,role: RoleEnum) {
-        message = MessageModel(text: text,role: role)
+    var isSystem: Bool {
+        message?.role == .system
+    }
+
+    init(text: String, role: RoleEnum) {
+        message = MessageModel(text: text, role: role)
         id = UUID()
         done = nil
         images = nil
@@ -123,11 +125,14 @@ extension ChatModel {
         model = nil
         stream = nil
     }
-    
-    
-    init(entity:ChatEntity) {
+
+    mutating func appendMessage(text: String) {
+        message!.content = message!.content + text
+    }
+
+    init(entity: ChatEntity) {
         let me = entity.message ?? MessageEntity(role: .user, content: "error")
-        message = MessageModel(text: me.content,role: me.role,images: [])
+        message = MessageModel(text: me.content, role: me.role, images: [])
         createdAt = entity.createdAt
         id = UUID()
         done = nil

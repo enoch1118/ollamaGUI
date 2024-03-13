@@ -167,6 +167,23 @@ struct ChatView: View {
 extension ChatView {
     func onSend(text: String) {
         let viewModel = ChatModel(text: text, role: .user)
+        if let system = room.option?.system {
+            let prevSystem = room.chats.filter{$0.message?.role == .system}
+            let systemViewmodel = ChatModel(text: system, role: .system)
+            if prevSystem.isEmpty {
+                print("prev system is Empty?")
+                chats.append(systemViewmodel)
+                room.chats.append(systemViewmodel.toEntity)
+            }
+            else if prevSystem.first!.message?.content != system {
+                print("remove system?")
+                chats.removeAll(where: {$0.message?.role == .system})
+                room.chats.removeAll(where: {$0.message?.role == .system})
+                chats.append(systemViewmodel)
+                room.chats.append(systemViewmodel.toEntity)
+            }
+            
+        }
         chats.append(viewModel)
         let requestModel = ChatRequestModel(
             ofList: chats.map { $0.message! },

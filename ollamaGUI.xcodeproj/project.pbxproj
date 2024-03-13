@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1D8D5FBE0BCFC2D861ECE9F8 /* Pods_ollamaGUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99CC9802010F649185C7EF44 /* Pods_ollamaGUI.framework */; };
+		AC06AAE12B9DE464009CC380 /* USearchUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC06AAE02B9DE464009CC380 /* USearchUtil.swift */; };
 		AC1978B02B55009B0091EE4F /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1978AF2B55009B0091EE4F /* StringHelper.swift */; };
-		AC1978B32B5503070091EE4F /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = AC1978B22B5503070091EE4F /* MarkdownUI */; };
 		AC229F842B5526570033143C /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC229F832B5526570033143C /* ChatModel.swift */; };
 		AC3014392B9AEC6600B24460 /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014272B9AEC6600B24460 /* APICall.swift */; };
 		AC30143A2B9AEC6600B24460 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014282B9AEC6600B24460 /* SessionManager.swift */; };
@@ -22,8 +22,8 @@
 		AC3014412B9AEC6600B24460 /* SidebarV2ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014342B9AEC6600B24460 /* SidebarV2ViewModel.swift */; };
 		AC3014422B9AEC6600B24460 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014372B9AEC6600B24460 /* Core.swift */; };
 		AC3014532B9AED3500B24460 /* OllamaDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014522B9AED3500B24460 /* OllamaDatasource.swift */; };
-		AC3014582B9AF02600B24460 /* EmbedingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014572B9AF02600B24460 /* EmbedingRepository.swift */; };
-		AC30145B2B9AF07800B24460 /* EmbedingRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30145A2B9AF07800B24460 /* EmbedingRepositoryImpl.swift */; };
+		AC3014582B9AF02600B24460 /* OllamaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014572B9AF02600B24460 /* OllamaRepository.swift */; };
+		AC30145B2B9AF07800B24460 /* OllmaRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30145A2B9AF07800B24460 /* OllmaRepositoryImpl.swift */; };
 		AC30145E2B9AF0BD00B24460 /* LangchainUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30145D2B9AF0BD00B24460 /* LangchainUsecase.swift */; };
 		AC3014602B9AF26600B24460 /* WebDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30145F2B9AF26600B24460 /* WebDatasource.swift */; };
 		AC3014622B9AF36500B24460 /* WebDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014612B9AF36500B24460 /* WebDatasource.swift */; };
@@ -42,6 +42,17 @@
 		AC40BBFC2B551DA500AA7D1C /* ChatEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40BBFB2B551DA500AA7D1C /* ChatEntity.swift */; };
 		AC40BBFE2B551EBC00AA7D1C /* RoomEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40BBFD2B551EBC00AA7D1C /* RoomEntity.swift */; };
 		AC40BC002B55221000AA7D1C /* DataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40BBFF2B55221000AA7D1C /* DataInteractor.swift */; };
+		AC57038F2B9EDF6500248D45 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = AC57038E2B9EDF6500248D45 /* MarkdownUI */; };
+		AC5703912B9EDF6700248D45 /* USearch in Frameworks */ = {isa = PBXBuildFile; productRef = AC5703902B9EDF6700248D45 /* USearch */; };
+		AC5703952B9F030C00248D45 /* ChatUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5703942B9F030C00248D45 /* ChatUsecase.swift */; };
+		AC5703972B9F051700248D45 /* ChatUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5703962B9F051700248D45 /* ChatUsecase.swift */; };
+		AC5703992BA02AA400248D45 /* Langchain+ChatUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5703982BA02AA400248D45 /* Langchain+ChatUsecase.swift */; };
+		AC5703A02BA02C9200248D45 /* LangchainBloc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC57039F2BA02C9200248D45 /* LangchainBloc.swift */; };
+		AC5703A22BA02C9D00248D45 /* LangchainEvent+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5703A12BA02C9D00248D45 /* LangchainEvent+State.swift */; };
+		AC5703A52BA02DA100248D45 /* Embeddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5703A42BA02DA100248D45 /* Embeddings.swift */; };
+		AC5703A82BA0355100248D45 /* BaseBloc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5703A72BA0355100248D45 /* BaseBloc.swift */; };
+		AC5703AB2BA03A0600248D45 /* MuseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5703AA2BA03A0600248D45 /* MuseError.swift */; };
+		AC5703AD2BA16BCD00248D45 /* LangchainBloc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5703AC2BA16BCD00248D45 /* LangchainBloc.swift */; };
 		AC64593B2B5BEF800039B26E /* OllmaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC64593A2B5BEF800039B26E /* OllmaModel.swift */; };
 		AC64593E2B5BF2980039B26E /* LibraryModelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC64593D2B5BF2980039B26E /* LibraryModelListView.swift */; };
 		AC6459412B5BF5440039B26E /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6459402B5BF5440039B26E /* TagsView.swift */; };
@@ -110,6 +121,7 @@
 /* Begin PBXFileReference section */
 		53CA5445BF6B3981C24E69FB /* Pods-ollamaGUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ollamaGUI.debug.xcconfig"; path = "Target Support Files/Pods-ollamaGUI/Pods-ollamaGUI.debug.xcconfig"; sourceTree = "<group>"; };
 		99CC9802010F649185C7EF44 /* Pods_ollamaGUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ollamaGUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC06AAE02B9DE464009CC380 /* USearchUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USearchUtil.swift; sourceTree = "<group>"; };
 		AC1978AF2B55009B0091EE4F /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		AC229F832B5526570033143C /* ChatModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		AC3014272B9AEC6600B24460 /* APICall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
@@ -124,8 +136,8 @@
 		AC3014372B9AEC6600B24460 /* Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		AC3014472B9AED0B00B24460 /* ollamaGuiTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ollamaGuiTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC3014522B9AED3500B24460 /* OllamaDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OllamaDatasource.swift; sourceTree = "<group>"; };
-		AC3014572B9AF02600B24460 /* EmbedingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedingRepository.swift; sourceTree = "<group>"; };
-		AC30145A2B9AF07800B24460 /* EmbedingRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedingRepositoryImpl.swift; sourceTree = "<group>"; };
+		AC3014572B9AF02600B24460 /* OllamaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OllamaRepository.swift; sourceTree = "<group>"; };
+		AC30145A2B9AF07800B24460 /* OllmaRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OllmaRepositoryImpl.swift; sourceTree = "<group>"; };
 		AC30145D2B9AF0BD00B24460 /* LangchainUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangchainUsecase.swift; sourceTree = "<group>"; };
 		AC30145F2B9AF26600B24460 /* WebDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDatasource.swift; sourceTree = "<group>"; };
 		AC3014612B9AF36500B24460 /* WebDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDatasource.swift; sourceTree = "<group>"; };
@@ -145,6 +157,15 @@
 		AC40BBFB2B551DA500AA7D1C /* ChatEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEntity.swift; sourceTree = "<group>"; };
 		AC40BBFD2B551EBC00AA7D1C /* RoomEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomEntity.swift; sourceTree = "<group>"; };
 		AC40BBFF2B55221000AA7D1C /* DataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInteractor.swift; sourceTree = "<group>"; };
+		AC5703942B9F030C00248D45 /* ChatUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsecase.swift; sourceTree = "<group>"; };
+		AC5703962B9F051700248D45 /* ChatUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsecase.swift; sourceTree = "<group>"; };
+		AC5703982BA02AA400248D45 /* Langchain+ChatUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Langchain+ChatUsecase.swift"; sourceTree = "<group>"; };
+		AC57039F2BA02C9200248D45 /* LangchainBloc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangchainBloc.swift; sourceTree = "<group>"; };
+		AC5703A12BA02C9D00248D45 /* LangchainEvent+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LangchainEvent+State.swift"; sourceTree = "<group>"; };
+		AC5703A42BA02DA100248D45 /* Embeddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Embeddings.swift; sourceTree = "<group>"; };
+		AC5703A72BA0355100248D45 /* BaseBloc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBloc.swift; sourceTree = "<group>"; };
+		AC5703AA2BA03A0600248D45 /* MuseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseError.swift; sourceTree = "<group>"; };
+		AC5703AC2BA16BCD00248D45 /* LangchainBloc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangchainBloc.swift; sourceTree = "<group>"; };
 		AC64593A2B5BEF800039B26E /* OllmaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OllmaModel.swift; sourceTree = "<group>"; };
 		AC64593C2B5BF0C50039B26E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AC64593D2B5BF2980039B26E /* LibraryModelListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryModelListView.swift; sourceTree = "<group>"; };
@@ -216,8 +237,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC5703912B9EDF6700248D45 /* USearch in Frameworks */,
 				1D8D5FBE0BCFC2D861ECE9F8 /* Pods_ollamaGUI.framework in Frameworks */,
-				AC1978B32B5503070091EE4F /* MarkdownUI in Frameworks */,
+				AC57038F2B9EDF6500248D45 /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,9 +255,18 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		AC06AADF2B9DE450009CC380 /* VectorStore */ = {
+			isa = PBXGroup;
+			children = (
+				AC06AAE02B9DE464009CC380 /* USearchUtil.swift */,
+			);
+			path = VectorStore;
+			sourceTree = "<group>";
+		};
 		AC3013F72B99F77500B24460 /* LangChain */ = {
 			isa = PBXGroup;
 			children = (
+				AC06AADF2B9DE450009CC380 /* VectorStore */,
 				AC3014662B9AFC0D00B24460 /* DocumentLoader */,
 				AC30146A2B9AFC0D00B24460 /* Error */,
 				AC3014682B9AFC0D00B24460 /* Util */,
@@ -246,6 +277,8 @@
 		AC3014292B9AEC6600B24460 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				AC5703A92BA03A0000248D45 /* Error */,
+				AC5703A62BA0354700248D45 /* Protocol */,
 				AC3014272B9AEC6600B24460 /* APICall.swift */,
 				AC3014282B9AEC6600B24460 /* SessionManager.swift */,
 			);
@@ -301,6 +334,8 @@
 		AC3014362B9AEC6600B24460 /* UI_v2 */ = {
 			isa = PBXGroup;
 			children = (
+				AC5703A32BA02D8B00248D45 /* model */,
+				AC57039A2BA02C2D00248D45 /* Chat */,
 				AC3014322B9AEC6600B24460 /* Root */,
 				AC3014352B9AEC6600B24460 /* SidebarV2 */,
 			);
@@ -323,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				AC3014632B9AF60200B24460 /* Info.plist */,
+				AC57039B2BA02C5B00248D45 /* UI */,
 				AC3014742B9AFECD00B24460 /* Domain */,
 				AC3014502B9AED1E00B24460 /* Data */,
 			);
@@ -359,6 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				AC30145D2B9AF0BD00B24460 /* LangchainUsecase.swift */,
+				AC5703942B9F030C00248D45 /* ChatUsecase.swift */,
 			);
 			path = Usecase;
 			sourceTree = "<group>";
@@ -366,7 +403,7 @@
 		AC3014562B9AF00100B24460 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				AC3014572B9AF02600B24460 /* EmbedingRepository.swift */,
+				AC3014572B9AF02600B24460 /* OllamaRepository.swift */,
 				AC30146F2B9AFC6600B24460 /* CrawlingRepository.swift */,
 			);
 			path = Repository;
@@ -375,7 +412,7 @@
 		AC3014592B9AF06B00B24460 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				AC30145A2B9AF07800B24460 /* EmbedingRepositoryImpl.swift */,
+				AC30145A2B9AF07800B24460 /* OllmaRepositoryImpl.swift */,
 				AC3014712B9AFC9500B24460 /* CrawlingRepositoryImpl.swift */,
 			);
 			path = Repository;
@@ -418,6 +455,8 @@
 			isa = PBXGroup;
 			children = (
 				AC3014762B9AFEDD00B24460 /* LangchainUsecase.swift */,
+				AC5703962B9F051700248D45 /* ChatUsecase.swift */,
+				AC5703982BA02AA400248D45 /* Langchain+ChatUsecase.swift */,
 			);
 			path = Usecase;
 			sourceTree = "<group>";
@@ -449,6 +488,71 @@
 				AC88B7A92B97102200CB02F5 /* RoomOptionEntity.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		AC57039A2BA02C2D00248D45 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				AC57039E2BA02C8100248D45 /* Bloc */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		AC57039B2BA02C5B00248D45 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				AC57039C2BA02C6200248D45 /* Chat */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		AC57039C2BA02C6200248D45 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				AC57039D2BA02C6600248D45 /* Bloc */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		AC57039D2BA02C6600248D45 /* Bloc */ = {
+			isa = PBXGroup;
+			children = (
+				AC5703AC2BA16BCD00248D45 /* LangchainBloc.swift */,
+			);
+			path = Bloc;
+			sourceTree = "<group>";
+		};
+		AC57039E2BA02C8100248D45 /* Bloc */ = {
+			isa = PBXGroup;
+			children = (
+				AC57039F2BA02C9200248D45 /* LangchainBloc.swift */,
+				AC5703A12BA02C9D00248D45 /* LangchainEvent+State.swift */,
+			);
+			path = Bloc;
+			sourceTree = "<group>";
+		};
+		AC5703A32BA02D8B00248D45 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				AC5703A42BA02DA100248D45 /* Embeddings.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		AC5703A62BA0354700248D45 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				AC5703A72BA0355100248D45 /* BaseBloc.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		AC5703A92BA03A0000248D45 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				AC5703AA2BA03A0600248D45 /* MuseError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		AC64593F2B5BF5390039B26E /* Tags */ = {
@@ -737,7 +841,8 @@
 			);
 			name = ollamaGUI;
 			packageProductDependencies = (
-				AC1978B22B5503070091EE4F /* MarkdownUI */,
+				AC57038E2B9EDF6500248D45 /* MarkdownUI */,
+				AC5703902B9EDF6700248D45 /* USearch */,
 			);
 			productName = ollamaGUI;
 			productReference = AC842E352B4D16F700F9EC3F /* ollamaGUI.app */;
@@ -772,7 +877,8 @@
 			);
 			mainGroup = AC842E2C2B4D16F700F9EC3F;
 			packageReferences = (
-				AC1978B12B5503070091EE4F /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
+				AC57038C2B9EDF2700248D45 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
+				AC57038D2B9EDF3600248D45 /* XCRemoteSwiftPackageReference "usearch" */,
 			);
 			productRefGroup = AC842E362B4D16F700F9EC3F /* Products */;
 			projectDirPath = "";
@@ -851,8 +957,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC3014532B9AED3500B24460 /* OllamaDatasource.swift in Sources */,
+				AC5703AD2BA16BCD00248D45 /* LangchainBloc.swift in Sources */,
+				AC5703972B9F051700248D45 /* ChatUsecase.swift in Sources */,
 				AC3014622B9AF36500B24460 /* WebDatasource.swift in Sources */,
 				AC3014772B9AFEDD00B24460 /* LangchainUsecase.swift in Sources */,
+				AC5703992BA02AA400248D45 /* Langchain+ChatUsecase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -868,14 +977,15 @@
 				AC3014602B9AF26600B24460 /* WebDatasource.swift in Sources */,
 				AC842E6E2B4FCA4800F9EC3F /* DIContainer.swift in Sources */,
 				AC725C2F2B5125BB00B3E266 /* ChatRequestModel.swift in Sources */,
-				AC3014582B9AF02600B24460 /* EmbedingRepository.swift in Sources */,
+				AC3014582B9AF02600B24460 /* OllamaRepository.swift in Sources */,
 				AC6459432B5BFBCD0039B26E /* OllamaTagModel.swift in Sources */,
 				ACDCFDDC2B5ADF4700DAB674 /* HtmlHelper.swift in Sources */,
+				AC5703A82BA0355100248D45 /* BaseBloc.swift in Sources */,
 				AC842E502B4D1BE000F9EC3F /* ViewHelper.swift in Sources */,
 				AC725C2D2B511D3200B3E266 /* Interactor.swift in Sources */,
 				ACF5C00F2B55704800861735 /* StopButton.swift in Sources */,
 				AC229F842B5526570033143C /* ChatModel.swift in Sources */,
-				AC30145B2B9AF07800B24460 /* EmbedingRepositoryImpl.swift in Sources */,
+				AC30145B2B9AF07800B24460 /* OllmaRepositoryImpl.swift in Sources */,
 				AC842E742B4FDD6A00F9EC3F /* NetworkHelper.swift in Sources */,
 				AC3014392B9AEC6600B24460 /* APICall.swift in Sources */,
 				AC7C8AE12B57CA0C0031FEF1 /* FloatingWindow.swift in Sources */,
@@ -885,8 +995,10 @@
 				AC67ECA22B5943580081FA1A /* AppSettingEntity.swift in Sources */,
 				ACF5C0112B557BBC00861735 /* AppSetting.swift in Sources */,
 				AC7C8AE32B5828970031FEF1 /* WindowHelper.swift in Sources */,
+				AC5703952B9F030C00248D45 /* ChatUsecase.swift in Sources */,
 				AC30146D2B9AFC0D00B24460 /* TextSplitter.swift in Sources */,
 				AC3014702B9AFC6600B24460 /* CrawlingRepository.swift in Sources */,
+				AC06AAE12B9DE464009CC380 /* USearchUtil.swift in Sources */,
 				AC88B7AC2B97127500CB02F5 /* OptionModel.swift in Sources */,
 				AC64593B2B5BEF800039B26E /* OllmaModel.swift in Sources */,
 				AC64593E2B5BF2980039B26E /* LibraryModelListView.swift in Sources */,
@@ -899,6 +1011,7 @@
 				AC30143E2B9AEC6600B24460 /* RootView.swift in Sources */,
 				AC842E6B2B4FC7F000F9EC3F /* MessageEditor.swift in Sources */,
 				AC842E652B4E81D700F9EC3F /* BubbleShape.swift in Sources */,
+				AC5703A22BA02C9D00248D45 /* LangchainEvent+State.swift in Sources */,
 				ACDCFDD82B5AD21F00DAB674 /* ModelListView.swift in Sources */,
 				AC3014722B9AFC9500B24460 /* CrawlingRepositoryImpl.swift in Sources */,
 				AC842E762B4FE20700F9EC3F /* Loadable.swift in Sources */,
@@ -909,6 +1022,7 @@
 				AC30145E2B9AF0BD00B24460 /* LangchainUsecase.swift in Sources */,
 				AC842E532B4D3A5000F9EC3F /* SidebarButton.swift in Sources */,
 				ACD1762F2B5E69630020A15E /* PullResponseModel.swift in Sources */,
+				AC5703AB2BA03A0600248D45 /* MuseError.swift in Sources */,
 				ACF5C00D2B5564C300861735 /* ChatHeader.swift in Sources */,
 				AC6459412B5BF5440039B26E /* TagsView.swift in Sources */,
 				AC30146C2B9AFC0D00B24460 /* HTMLLoader.swift in Sources */,
@@ -922,6 +1036,7 @@
 				AC40BBFC2B551DA500AA7D1C /* ChatEntity.swift in Sources */,
 				AC88B7AE2B9716FC00CB02F5 /* SettingSheet.swift in Sources */,
 				AC3014412B9AEC6600B24460 /* SidebarV2ViewModel.swift in Sources */,
+				AC5703A52BA02DA100248D45 /* Embeddings.swift in Sources */,
 				AC7C8AEB2B58FDE90031FEF1 /* OverlayToast.swift in Sources */,
 				ACDCFDD02B5A6D3200DAB674 /* ModelList.swift in Sources */,
 				AC842E5E2B4E6F8000F9EC3F /* RoleEnum.swift in Sources */,
@@ -929,6 +1044,7 @@
 				AC40BBFE2B551EBC00AA7D1C /* RoomEntity.swift in Sources */,
 				AC842E4D2B4D1AFB00F9EC3F /* SideBar.swift in Sources */,
 				AC7C8AE72B58E0720031FEF1 /* UpdateTrigger.swift in Sources */,
+				AC5703A02BA02C9200248D45 /* LangchainBloc.swift in Sources */,
 				AC3014422B9AEC6600B24460 /* Core.swift in Sources */,
 				AC842E692B4FC4A700F9EC3F /* CommonButton.swift in Sources */,
 				AC36BCA72B57B0FE00AD8BD2 /* RoomItem.swift in Sources */,
@@ -1208,21 +1324,34 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AC1978B12B5503070091EE4F /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
+		AC57038C2B9EDF2700248D45 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
+			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.3.0;
 			};
 		};
+		AC57038D2B9EDF3600248D45 /* XCRemoteSwiftPackageReference "usearch" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/unum-cloud/usearch.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AC1978B22B5503070091EE4F /* MarkdownUI */ = {
+		AC57038E2B9EDF6500248D45 /* MarkdownUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AC1978B12B5503070091EE4F /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
+			package = AC57038C2B9EDF2700248D45 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
 			productName = MarkdownUI;
+		};
+		AC5703902B9EDF6700248D45 /* USearch */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC57038D2B9EDF3600248D45 /* XCRemoteSwiftPackageReference "usearch" */;
+			productName = USearch;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

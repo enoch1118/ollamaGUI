@@ -9,11 +9,11 @@ import Combine
 import Foundation
 
 class LangchainUsecase {
-    var embedingRepository: EmbedingRepository
+    var embedingRepository: OllamaRepository
     var crawlingRepository: CrawlingRepository
 
     init(
-        embedingRepository: EmbedingRepository,
+        embedingRepository: OllamaRepository,
         crawlingRepository: CrawlingRepository
     ) {
         self.embedingRepository = embedingRepository
@@ -33,12 +33,19 @@ class LangchainUsecase {
                 let doc = await loader.load()
                 let spliter = RecursiveCharacterTextSplitter(
                     chunkSize: 2000,
-                    chunkOverlap: 200
+                    chunkOverlap: 400
                 )
                 let splited = spliter.splitDocument(document: doc)
                 promise(.success(splited))
             }
         }.eraseToAnyPublisher()
+    }
+
+    func getEmbeddings(for text: String,
+                       model: String) -> AnyPublisher<[Float], NetworkError>
+    {
+        embedingRepository.getEmbeding(prompt: text, model: model)
+            .eraseToAnyPublisher()
     }
 
     func toEmbeddings(for docs: [Document],
@@ -52,15 +59,17 @@ class LangchainUsecase {
             subject.sink(receiveValue: { val in
                 if count == val {
                     promise(.success(res))
-                }
-                else{
+                    bag.removeAll()
+                } else {
                     print("\(val)/\(count)")
                     self?.embedingRepository.getEmbeding(
                         prompt: docs[val].page_content,
                         model: model
                     )
                     .sink(
-                        receiveCompletion: { _ in subject.send(subject.value + 1) },
+                        receiveCompletion: { _ in
+                            subject.send(subject.value + 1)
+                        },
                         receiveValue: {
                             res.append($0)
                         }
@@ -79,5 +88,52 @@ class LangchainUsecase {
                 }
             ).store(in: &bag)
         }.eraseToAnyPublisher()
+    }
+
+    func embedding(for doc: Document,
+                   model: String) -> Future<[Float], NetworkError>
+    {
+        return Future { promise in
+            var bag = Set<AnyCancellable>()
+            self.embedingRepository.getEmbeding(
+                prompt: doc.page_content,
+                model: model
+            )
+            .sink(receiveCompletion: { comp in
+                      if case let .failure(error) = comp {
+                          promise(.failure(error))
+                      }
+                      bag.removeAll()
+                  },
+                  receiveValue: { val in
+                      promise(.success(val))
+                      bag.removeAll()
+
+                  }).store(in: &bag)
+        }
+    }
+    
+    
+    func embedding(for doc: String,
+                   model: String) -> Future<[Float], NetworkError>
+    {
+        return Future { promise in
+            var bag = Set<AnyCancellable>()
+            self.embedingRepository.getEmbeding(
+                prompt: doc,
+                model: model
+            )
+            .sink(receiveCompletion: { comp in
+                      if case let .failure(error) = comp {
+                          promise(.failure(error))
+                      }
+                      bag.removeAll()
+                  },
+                  receiveValue: { val in
+                      promise(.success(val))
+                      bag.removeAll()
+
+                  }).store(in: &bag)
+        }
     }
 }

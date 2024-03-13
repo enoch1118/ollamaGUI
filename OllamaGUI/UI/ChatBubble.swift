@@ -12,15 +12,22 @@ struct ChatBubble: View {
     var chat: ChatModel
 
     var body: some View {
-        HStack {
-            if chat.isMe {
-                Spacer()
+        Group{
+            if chat.isSystem {
+                EmptyView()
             }
-            content.clipShape(BubbleShape(role: chat.message?.role ?? .user))
-            if !chat.isMe {
-                Spacer()
+            else {
+                HStack {
+                if chat.isMe {
+                    Spacer()
+                }
+                content.clipShape(BubbleShape(role: chat.message?.role ?? .user))
+                if !chat.isMe {
+                    Spacer()
+                }
+                }.frame(maxWidth: .infinity)
             }
-        }.frame(maxWidth: .infinity)
+        }
     }
 
     @ViewBuilder

@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class EmbedingRepositoryImpl: EmbedingRepository {
+class OllamaRepositoryImpl: OllamaRepository {
     var dataSource: OllamaDatasource
 
     init(dataSource: OllamaDatasource) {
@@ -19,5 +19,9 @@ class EmbedingRepositoryImpl: EmbedingRepository {
                      model: String) -> AnyPublisher<[Float], NetworkError>
     {
         dataSource.getEmbedding(prompt: prompt, model: model)
+    }
+    
+    func chat(req: ChatRequestModel) -> AnyPublisher<ChatModel, NetworkError> {
+        dataSource.chat(req: req)
     }
 }
