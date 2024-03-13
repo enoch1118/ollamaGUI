@@ -103,7 +103,7 @@ class LangchainUsecaseTest: XCTestCase {
 
         var documentsResult:[Document] = []
         var bag = Set<AnyCancellable>()
-        var usearch = USearchUtil()
+        let usearch = USearchUtil()
         let html = PassthroughSubject<String, Never>()
         let document = PassthroughSubject<[Document], Never>()
         let result = PassthroughSubject<[[Float]], Never>()
@@ -213,16 +213,12 @@ class LangchainUsecaseTest: XCTestCase {
         var usearch = USearchUtil()
         usearch.buildIndex([[1.0,2.0]], document: [Document(page_content: "hello", metadata: ["hey":"hey"])])
         print(usearch.saveVector(name: name))
-        print(usearch.document)
-        print(usearch.vector)
         
         
         
         usearch = USearchUtil()
         
         print(usearch.loadVector(name: name,dimensions: 2))
-        print(usearch.document)
-        print(usearch.vector)
     }
     
     

@@ -25,14 +25,15 @@ class LangChainChatUsecaseTest: XCTestCase {
             configurations: config)
 
         let sessionManager = SessionManager()
-        appSetting = AppSetting()
-        appSetting
-            .updateSetting(.init(baseUrl: "http://localhost:11434",
-                                 selectedModel: "mistral"))
+        
         let ollamaDataSource = OllamaDatasourceImpl(
             baseUrl: appSetting.baseUrl,
             session: sessionManager.session
         )
+        appSetting = AppSetting(ollamaDs: ollamaDataSource)
+        appSetting
+            .updateSetting(.init(baseUrl: "http://localhost:11434",
+                                 selectedModel: "mistral"))
         let webDataSource = WebDatasourceImpl(session: sessionManager.session)
         let ollamaRepository =
             OllamaRepositoryImpl(dataSource: ollamaDataSource)

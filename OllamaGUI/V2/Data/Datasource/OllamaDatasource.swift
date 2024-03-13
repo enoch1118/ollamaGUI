@@ -69,9 +69,9 @@ class OllamaDatasourceImpl: OllamaDatasource {
     
     
     func chat(req: ChatRequestModel) -> AnyPublisher<ChatModel, NetworkError> {
-        let api = APICall<ChatRequestModel,ChatModel>(
+        var api = APICall<ChatRequestModel,ChatModel>(
             session: session, baseUrl: baseUrl, url: "/api/chat", method: .post)
         
-        return api.call(data: req).eraseToAnyPublisher()
+        return api.callStream(data: req).eraseToAnyPublisher()
     }
 }

@@ -17,8 +17,10 @@ struct ChatView: View {
     @Binding var floating: Bool
 
     var room: RoomEntity
+    @ObservedObject var chatViewModel = ChatViewModel()
     @State private var showFloatingToast = false
     @State private var showSettingSheet = false
+    @State private var showLangchainSheet = false
     @State var background: Material = .thickMaterial
     @State var chats: [ChatModel] = []
     @State var isLoading: Bool = false
@@ -69,6 +71,7 @@ struct ChatView: View {
             MessageEditor(
                 floating: $floating,
                 showSetting: $showSettingSheet,
+                showLangchain: $showLangchainSheet,
                 image: $image,
                 isLoading: $isLoading,
                 onSend: onSend,
@@ -80,10 +83,22 @@ struct ChatView: View {
         .sheet(isPresented: $showSettingSheet, content: {
             SettingSheet(room: room, showSetting: $showSettingSheet)
         })
+        .sheet(isPresented: $showLangchainSheet) {
+            LangchainSheet(
+                room: room,
+                showLangchain: $showLangchainSheet,
+                state: $chatViewModel.state,
+                addEvent: { event in
+                    self.chatViewModel.bloc.addEvent(event: event)
+                }
+            )
+        }
         .ignoresSafeArea()
         .onAppear {
             chats = room.getChatModel
                 .sorted(by: { $0.createdAt! < $1.createdAt! })
+            print("on appear")
+            chatViewModel.ignite(container: container, room: room)
         }
         /// handle combine
         .onReceive(subject, perform: { value in
@@ -168,21 +183,19 @@ extension ChatView {
     func onSend(text: String) {
         let viewModel = ChatModel(text: text, role: .user)
         if let system = room.option?.system {
-            let prevSystem = room.chats.filter{$0.message?.role == .system}
+            let prevSystem = room.chats.filter { $0.message?.role == .system }
             let systemViewmodel = ChatModel(text: system, role: .system)
             if prevSystem.isEmpty {
                 print("prev system is Empty?")
                 chats.append(systemViewmodel)
                 room.chats.append(systemViewmodel.toEntity)
-            }
-            else if prevSystem.first!.message?.content != system {
+            } else if prevSystem.first!.message?.content != system {
                 print("remove system?")
-                chats.removeAll(where: {$0.message?.role == .system})
-                room.chats.removeAll(where: {$0.message?.role == .system})
+                chats.removeAll(where: { $0.message?.role == .system })
+                room.chats.removeAll(where: { $0.message?.role == .system })
                 chats.append(systemViewmodel)
                 room.chats.append(systemViewmodel.toEntity)
             }
-            
         }
         chats.append(viewModel)
         let requestModel = ChatRequestModel(

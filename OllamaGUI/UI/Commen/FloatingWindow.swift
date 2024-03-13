@@ -17,49 +17,45 @@ extension View {
         floating: Binding<Bool>,
         @ViewBuilder content: @escaping () -> Content
     ) -> some View {
-        modifier(FloatingWindowModifier(windowView: content(),
-                                        position: position, show: show,floating: floating))
+        modifier(FloatingWindowModifier(windowView: content,
+                                        position: position, show: show,
+                                        floating: floating))
     }
 }
 
 /// - Floating Window Modifier
 private struct FloatingWindowModifier<WindowView: View>: ViewModifier {
-    var windowView: WindowView
+    var windowView: () -> WindowView
     @Binding var position: CGPoint
     @Binding var show: Bool
     @Binding var floating: Bool
+    @State var view: WindowView?
     @State private var panel: FloatingPanelHelper<WindowView>?
 
     func body(content: Content) -> some View {
         content
-            .onAppear {
-                /// - Creating and Storing Panel for Future View Updates
-                panel = FloatingPanelHelper(
-                    position: $position,
-                    show: $show,
-                    floating: $floating,
-                    content: {
-                        windowView
-                    }
-                )
-                /// - To Place panel at center by default
-                panel?.center()
-            }
-            /// - For SwiftUI View Updation on Panel View
-            .background(content: {
-                ViewUpdater(content: windowView, panel: $panel)
-            })
             /// - Updating Position Dynamically
             .onChange(of: position) { _, newValue in
                 panel?.updatePosition(newValue)
             }
-            .onChange(of: floating, { _, newValue in
+            .onChange(of: floating) { _, newValue in
                 panel?.updateFloading(newValue)
-                
-            })
-            .onChange(of: show) { old, newValue in
+            }
+            .onChange(of: show) { _, newValue in
                 /// - When Ever Show is Toggled Presenting Floating Panel
                 if newValue {
+                    view = windowView()
+                    panel = FloatingPanelHelper(
+                        position: $position,
+                        show: $show,
+                        floating: $floating,
+                        content: {
+                            view!
+                        }
+                    )
+
+                    /// - To Place panel at center by default
+                    panel?.center()
                     panel?.updatePositionWithoutAnimation(position)
                     panel?.orderFront(nil)
                     panel?.makeKey()
@@ -68,7 +64,13 @@ private struct FloatingWindowModifier<WindowView: View>: ViewModifier {
                     panel?.close()
                 }
             }
-            
+            .background(content: {
+                if let view = view {
+                    ViewUpdater(content: view, panel: $panel)
+                }
+
+                EmptyView()
+            })
     }
 }
 
@@ -113,7 +115,7 @@ private class FloatingPanelHelper<Content: View>: NSWindow {
         )
 
         /// - Setting Up Window Properties
-        level = .normal/// - Hiding Out TitleBar
+        level = .normal /// - Hiding Out TitleBar
         titleVisibility = .hidden
         titlebarAppearsTransparent = true
 
@@ -135,7 +137,6 @@ private class FloatingPanelHelper<Content: View>: NSWindow {
     override var canBecomeKey: Bool {
         true
     }
-    
 
     /// - Live Position Update when the window is dragged across the screen
     override func mouseDragged(with _: NSEvent) {
@@ -151,11 +152,11 @@ private class FloatingPanelHelper<Content: View>: NSWindow {
             animate: true
         )
     }
-    
-    func updateFloading(_ to:Bool){
+
+    func updateFloading(_ to: Bool) {
         if to {
             level = .floating
-        } else{
+        } else {
             level = .normal
         }
     }
@@ -164,10 +165,10 @@ private class FloatingPanelHelper<Content: View>: NSWindow {
     func updatePositionWithoutAnimation(_ to: CGPoint) {
         setFrameOrigin(to)
     }
-    
 
     /// - Dynamic Updation when the panel is closed
     override func close() {
+        print("close")
         super.close()
         show = false
     }

@@ -46,13 +46,14 @@
 		AC5703912B9EDF6700248D45 /* USearch in Frameworks */ = {isa = PBXBuildFile; productRef = AC5703902B9EDF6700248D45 /* USearch */; };
 		AC5703952B9F030C00248D45 /* ChatUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5703942B9F030C00248D45 /* ChatUsecase.swift */; };
 		AC5703972B9F051700248D45 /* ChatUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5703962B9F051700248D45 /* ChatUsecase.swift */; };
-		AC5703992BA02AA400248D45 /* Langchain+ChatUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5703982BA02AA400248D45 /* Langchain+ChatUsecase.swift */; };
 		AC5703A02BA02C9200248D45 /* LangchainBloc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC57039F2BA02C9200248D45 /* LangchainBloc.swift */; };
 		AC5703A22BA02C9D00248D45 /* LangchainEvent+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5703A12BA02C9D00248D45 /* LangchainEvent+State.swift */; };
 		AC5703A52BA02DA100248D45 /* Embeddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5703A42BA02DA100248D45 /* Embeddings.swift */; };
 		AC5703A82BA0355100248D45 /* BaseBloc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5703A72BA0355100248D45 /* BaseBloc.swift */; };
 		AC5703AB2BA03A0600248D45 /* MuseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5703AA2BA03A0600248D45 /* MuseError.swift */; };
 		AC5703AD2BA16BCD00248D45 /* LangchainBloc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5703AC2BA16BCD00248D45 /* LangchainBloc.swift */; };
+		AC5703AF2BA1865400248D45 /* LangchainSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5703AE2BA1865400248D45 /* LangchainSheet.swift */; };
+		AC5703B12BA18D6E00248D45 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5703B02BA18D6E00248D45 /* ChatViewModel.swift */; };
 		AC64593B2B5BEF800039B26E /* OllmaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC64593A2B5BEF800039B26E /* OllmaModel.swift */; };
 		AC64593E2B5BF2980039B26E /* LibraryModelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC64593D2B5BF2980039B26E /* LibraryModelListView.swift */; };
 		AC6459412B5BF5440039B26E /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6459402B5BF5440039B26E /* TagsView.swift */; };
@@ -159,13 +160,14 @@
 		AC40BBFF2B55221000AA7D1C /* DataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInteractor.swift; sourceTree = "<group>"; };
 		AC5703942B9F030C00248D45 /* ChatUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsecase.swift; sourceTree = "<group>"; };
 		AC5703962B9F051700248D45 /* ChatUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsecase.swift; sourceTree = "<group>"; };
-		AC5703982BA02AA400248D45 /* Langchain+ChatUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Langchain+ChatUsecase.swift"; sourceTree = "<group>"; };
 		AC57039F2BA02C9200248D45 /* LangchainBloc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangchainBloc.swift; sourceTree = "<group>"; };
 		AC5703A12BA02C9D00248D45 /* LangchainEvent+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LangchainEvent+State.swift"; sourceTree = "<group>"; };
 		AC5703A42BA02DA100248D45 /* Embeddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Embeddings.swift; sourceTree = "<group>"; };
 		AC5703A72BA0355100248D45 /* BaseBloc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBloc.swift; sourceTree = "<group>"; };
 		AC5703AA2BA03A0600248D45 /* MuseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseError.swift; sourceTree = "<group>"; };
 		AC5703AC2BA16BCD00248D45 /* LangchainBloc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangchainBloc.swift; sourceTree = "<group>"; };
+		AC5703AE2BA1865400248D45 /* LangchainSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangchainSheet.swift; sourceTree = "<group>"; };
+		AC5703B02BA18D6E00248D45 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		AC64593A2B5BEF800039B26E /* OllmaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OllmaModel.swift; sourceTree = "<group>"; };
 		AC64593C2B5BF0C50039B26E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AC64593D2B5BF2980039B26E /* LibraryModelListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryModelListView.swift; sourceTree = "<group>"; };
@@ -345,9 +347,9 @@
 		AC3014382B9AEC6600B24460 /* V2 */ = {
 			isa = PBXGroup;
 			children = (
+				AC30142F2B9AEC6600B24460 /* Data */,
 				AC3014542B9AEF8100B24460 /* Domain */,
 				AC3014292B9AEC6600B24460 /* Core */,
-				AC30142F2B9AEC6600B24460 /* Data */,
 				AC3014362B9AEC6600B24460 /* UI_v2 */,
 				AC3014372B9AEC6600B24460 /* Core.swift */,
 			);
@@ -456,7 +458,6 @@
 			children = (
 				AC3014762B9AFEDD00B24460 /* LangchainUsecase.swift */,
 				AC5703962B9F051700248D45 /* ChatUsecase.swift */,
-				AC5703982BA02AA400248D45 /* Langchain+ChatUsecase.swift */,
 			);
 			path = Usecase;
 			sourceTree = "<group>";
@@ -722,6 +723,7 @@
 				ACF5C00E2B55704800861735 /* StopButton.swift */,
 				AC7C8AEA2B58FDE90031FEF1 /* OverlayToast.swift */,
 				AC88B7AD2B9716FC00CB02F5 /* SettingSheet.swift */,
+				AC5703AE2BA1865400248D45 /* LangchainSheet.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -751,6 +753,7 @@
 			isa = PBXGroup;
 			children = (
 				AC88B7B02B97171400CB02F5 /* SettingSheetViewModel.swift */,
+				AC5703B02BA18D6E00248D45 /* ChatViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -961,7 +964,6 @@
 				AC5703972B9F051700248D45 /* ChatUsecase.swift in Sources */,
 				AC3014622B9AF36500B24460 /* WebDatasource.swift in Sources */,
 				AC3014772B9AFEDD00B24460 /* LangchainUsecase.swift in Sources */,
-				AC5703992BA02AA400248D45 /* Langchain+ChatUsecase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -969,6 +971,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC5703AF2BA1865400248D45 /* LangchainSheet.swift in Sources */,
 				AC40BC002B55221000AA7D1C /* DataInteractor.swift in Sources */,
 				AC30146B2B9AFC0D00B24460 /* BaseLoader.swift in Sources */,
 				ACDCFDDA2B5AD36F00DAB674 /* IntHelper.swift in Sources */,
@@ -1056,6 +1059,7 @@
 				AC30143A2B9AEC6600B24460 /* SessionManager.swift in Sources */,
 				AC842E7B2B4FE3C200F9EC3F /* NetworkError.swift in Sources */,
 				AC30143F2B9AEC6600B24460 /* RootViewModel.swift in Sources */,
+				AC5703B12BA18D6E00248D45 /* ChatViewModel.swift in Sources */,
 				AC88B7B12B97171400CB02F5 /* SettingSheetViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

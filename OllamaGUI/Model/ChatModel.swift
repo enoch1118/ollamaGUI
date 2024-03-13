@@ -126,8 +126,8 @@ extension ChatModel {
         stream = nil
     }
 
-    mutating func appendMessage(text: String) {
-        message!.content = message!.content + text
+    mutating func appendMessage(text: String?) {
+        message!.content = message!.content + (text ?? "")
     }
 
     init(entity: ChatEntity) {

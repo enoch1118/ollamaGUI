@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RoomItem: View {
     @Environment(\.modelContext) private var context
+    @Environment(\.injected) private var container
 
     @State var color: Color = .clear
     @State var position: CGPoint = .zero
@@ -62,8 +63,7 @@ struct RoomItem: View {
                     position: $position,
                     floating: $floating,
                     room: room
-                ).environment(\.modelContext, context)
-                    
+                ).inject(container)
             }
             .contextMenu(ContextMenu(menuItems: {
                 Button(action: {

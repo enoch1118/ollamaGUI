@@ -11,6 +11,7 @@ struct MessageEditor: View {
     @State var text: String = ""
     @Binding var floating:Bool
     @Binding var showSetting:Bool
+    @Binding var showLangchain:Bool
     @Binding var image: NSImage?
     @Binding var isLoading: Bool
     @ObservedObject var shiftController: KeyPressedController = .init()
@@ -22,9 +23,6 @@ struct MessageEditor: View {
         VStack(spacing: 0) {
             content
             HStack(spacing: 0) {
-                Button(action: {}) {
-                    Image("MicIcon")
-                }.buttonStyle(EditorButton(enabled: .constant(false)))
                 Button(action: {
                     onClean()
                 }) {
@@ -39,6 +37,11 @@ struct MessageEditor: View {
                     showSetting.toggle()
                 }) {
                     Image("SettingIcon")
+                }.buttonStyle(EditorButton(enabled: .constant(false)))
+                Button(action: {
+                    showLangchain.toggle()
+                }) {
+                    Image("ChainIcon")
                 }.buttonStyle(EditorButton(enabled: .constant(false)))
                 Spacer()
                 

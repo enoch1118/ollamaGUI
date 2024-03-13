@@ -11,12 +11,14 @@ struct ChatRequestModel: Encodable, DictionaryEncodable {
     var model: String
     var messages: [MessageModel]
     var stream: Bool
+    var format: String
     var options: OptionModel?
 
     init(model: String, messages: [MessageModel], stream: Bool) {
         self.model = model
         self.messages = messages
         self.stream = stream
+        self.format = "json"
     }
 
     enum CodingKeys: CodingKey {
@@ -57,12 +59,14 @@ struct ChatRequestModel: Encodable, DictionaryEncodable {
         self.stream = stream
         messages = [of]
         options = nil
+        format = "json"
     }
     
     init(ofList: [MessageModel], stream: Bool = false) {
         model = "llama2"
         self.stream = stream
         messages = ofList
+        format = "json"
     }
     
 

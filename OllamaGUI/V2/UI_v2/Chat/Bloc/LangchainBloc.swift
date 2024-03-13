@@ -13,25 +13,39 @@ class LangchainBloc: BaseBloc<LangchainEvent, LangchainState> {
     var langchainUsecase: LangchainUsecase
     var chatUsecase: ChatUsecase
     var appSetting: AppSetting
+    var roomOption: RoomOptionEntity?
 
     var eventBag = Set<AnyCancellable>()
 
-    init(langchainUsecase: LangchainUsecase, chatUsecase: ChatUsecase,appSetting: AppSetting) {
+    init(
+        langchainUsecase: LangchainUsecase,
+        chatUsecase: ChatUsecase,
+        appSetting: AppSetting,
+        roomOption: RoomOptionEntity?
+    ) {
         self.langchainUsecase = langchainUsecase
         self.chatUsecase = chatUsecase
         self.appSetting = appSetting
+        self.roomOption = roomOption
         super.init()
         _ignite()
+    }
+
+    var model: String {
+        roomOption?.model ?? appSetting.model
     }
 
     override func _registerEvent(event: LangchainEvent) {
         super._registerEvent(event: event)
         switch event {
         case let .GET_DOCUMENT_WEB(url):
-            onCheckDocument(url: url)
+            onCheckDocument(url: url, re: false)
             return
         case let .GENERATE_EMBEDDING(prompt: prompt):
             generateEmbedding(prompt: prompt)
+            return
+        case let .REGENERATE_DOCUMENT(url: url):
+            onCheckDocument(url: url, re: true)
             return
         case .GET_ANSWER:
             getAnswer()
@@ -40,6 +54,7 @@ class LangchainBloc: BaseBloc<LangchainEvent, LangchainState> {
     }
 
     private func getAnswer() {
+        print("model by \(model)")
         guard case let .readyToAsk(embedding, util, context,
                                    prompt) = stateSubject.value
         else {
@@ -58,10 +73,13 @@ class LangchainBloc: BaseBloc<LangchainEvent, LangchainState> {
             util: util,
             answer: .isLoading(last: .init(text: "", role: .assistant))
         ))
-        let contextReq = ChatRequestModel(ofList: [contextMessage, askMessage])
+        let contextReq = ChatRequestModel(
+            ofList: [contextMessage, askMessage],
+            stream: true
+        )
         chatUsecase.chatV2(req: contextReq, appSetting: appSetting, option: nil)
             .sink(receiveCompletion: { [weak self] comp in
-                var state = self?.stateSubject.value
+                let state = self?.stateSubject.value
                 guard case let .answer(embedding, util, answer) = state else {
                     self?.eventBag.removeAll()
                     return
@@ -74,9 +92,10 @@ class LangchainBloc: BaseBloc<LangchainEvent, LangchainState> {
                                              answer: .loaded(
                                                  answer.value!
                                              )))
+                    self?.eventBag.removeAll()
                     return
                 case let .failure(error):
-                        print("error occur! \(error)")
+                    print("error occur! \(error)")
                     self?
                         .emit(state: .answer(embedding: embedding,
                                              util: util,
@@ -85,7 +104,7 @@ class LangchainBloc: BaseBloc<LangchainEvent, LangchainState> {
                 }
 
             }, receiveValue: { [weak self] value in
-                var state = self?.stateSubject.value
+                let state = self?.stateSubject.value
                 guard case let .answer(embedding, util, answer) = state else {
                     self?.eventBag.removeAll()
                     return
@@ -94,7 +113,7 @@ class LangchainBloc: BaseBloc<LangchainEvent, LangchainState> {
                     self?.eventBag.removeAll()
                     return
                 }
-                model?.appendMessage(text: value.message!.content)
+                model?.appendMessage(text: value.message?.content)
                 self?.emit(state: .answer(
                     embedding: embedding,
                     util: util,
@@ -105,6 +124,7 @@ class LangchainBloc: BaseBloc<LangchainEvent, LangchainState> {
     }
 
     private func onGetDocument(embedding: WebEmbeddings) {
+        self.emit(state: .generating)
         langchainUsecase.crawlingWeb(for: embedding.url)
             .sink(receiveCompletion: { [weak self] val in
                       if case .failure = val {
@@ -115,6 +135,7 @@ class LangchainBloc: BaseBloc<LangchainEvent, LangchainState> {
                   receiveValue: { [weak self] value in
                       print("get document")
                       var emb = embedding
+                      print(emb.html)
                       emb.html = value
                       self?.splitDocument(embedding: emb)
                   }).store(in: &eventBag)
@@ -136,14 +157,25 @@ class LangchainBloc: BaseBloc<LangchainEvent, LangchainState> {
 
     private func generateEmbedding(prompt: String) {
         let state = stateSubject.value
-        guard case let .idle(embeding, util) = state else {
+        var embeding: Embeddings
+        var util: USearchUtil
+        switch state {
+        case let .answer(em, ut, _):
+            embeding = em
+            util = ut
+        case let .idle(em, ut):
+            embeding = em
+            util = ut
+        default:
             return
         }
+        emit(state: .generating)
+
         var vector: [Float] = []
-        langchainUsecase.embedding(for: prompt, model: appSetting.model)
+        langchainUsecase.embedding(for: prompt, model: model)
             .sink(
                 receiveCompletion: { [weak self] _ in
-                    var docs = util.searchIndex(vector)
+                    let docs = util.searchIndex(vector)
                     self?
                         .emit(
                             state: .readyToAsk(embedding: embeding, util: util,
@@ -165,11 +197,12 @@ class LangchainBloc: BaseBloc<LangchainEvent, LangchainState> {
         else {
             return
         }
-        langchainUsecase.embedding(for: doc[prog], model: appSetting.model)
+        langchainUsecase.embedding(for: doc[prog], model: model)
             .sink(
                 receiveCompletion: { [weak self] _ in
                     if prog + 1 < total {
                         self?.generateEmbedding(embeddings: emb)
+                        return
                     }
                     self?.vectorStore(embeding: emb)
                 },
@@ -189,11 +222,11 @@ class LangchainBloc: BaseBloc<LangchainEvent, LangchainState> {
         emit(state: .idle(embeding: embeding, util: usearch))
     }
 
-    private func onCheckDocument(url: String) {
+    private func onCheckDocument(url: String, re: Bool) {
         let embedding = WebEmbeddings(type: .web, doc: [], url: url)
         let usearch = USearchUtil()
 
-        if usearch.loadVector(name: embedding.name, dimensions: 4096) {
+        if usearch.loadVector(name: embedding.name, dimensions: 4096), !re {
             emit(state: .idle(embeding: embedding, util: usearch))
             return
         }

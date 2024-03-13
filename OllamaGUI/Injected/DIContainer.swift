@@ -12,22 +12,57 @@ struct DIContainer: EnvironmentKey {
     static var defaultValue: Self { Self.default }
     static var previewValue: Self { Self.preview }
 
-    private static let `default` =
-        Self(
+    private static var `default`: DIContainer {
+        let session = SessionManager()
+        let ollamaDs = OllamaDatasourceImpl(baseUrl: "", session: session.session)
+        let ollamaRp = OllamaRepositoryImpl(
+            dataSource: ollamaDs
+        )
+        return Self(
+            ollamaDs: ollamaDs,
+            langchainusecase: .init(
+                embedingRepository: ollamaRp,
+                crawlingRepository: CrawlingRepositoryImpl(
+                    datasource: WebDatasourceImpl(session: session.session)
+                )
+            ),
+            chatusecase: .init(ollamaRepository: ollamaRp),
             interactor: RealOllamaInteractor(),
             dataInteractor: RealDataInteractor(),
-            appSetting: .init(),
+            appSetting: .init(ollamaDs: ollamaDs),
             updateTrigger: .init()
         )
+    }
 
-    private static let preview =
-        Self(
+    private static var preview: DIContainer {
+        let session = SessionManager()
+        let ollamaDs = OllamaDatasourceImpl(baseUrl: "", session: session.session)
+        let ollamaRp = OllamaRepositoryImpl(
+            dataSource: OlamaDatasourceStub(
+                baseUrl: "",
+                session: session.session
+            )
+        )
+        return Self(
+            ollamaDs: ollamaDs,
+            langchainusecase: .init(
+                embedingRepository: ollamaRp,
+                crawlingRepository: CrawlingRepositoryImpl(
+                    datasource: WebDatasourceStub()
+                )
+            ),
+
+            chatusecase: .init(ollamaRepository: ollamaRp),
             interactor: RealOllamaInteractor(),
             dataInteractor: StubDataInteractor(),
-            appSetting: .init(),
+            appSetting: .init(ollamaDs: ollamaDs),
             updateTrigger: .init()
         )
+    }
 
+    let ollamaDs: OllamaDatasource
+    let langchainusecase: LangchainUsecase
+    let chatusecase: ChatUsecase
     let interactor: OllamaInteractor
     let dataInteractor: DataInteractor
     let appSetting: AppSetting

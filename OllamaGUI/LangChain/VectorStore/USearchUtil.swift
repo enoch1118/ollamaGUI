@@ -74,7 +74,6 @@ class USearchUtil {
         checkPathIfNotExisetThenCreate(dir)
         let file = dir.appendingPathComponent("\(name).vc")
         let docFile = dir.appendingPathComponent("\(name).dc")
-        let vcFile = dir.appendingPathComponent("\(name).vcr")
 
         if !FileManager.default.fileExists(atPath: file.path) {
             FileManager.default.createFile(atPath: file.path, contents: nil)
