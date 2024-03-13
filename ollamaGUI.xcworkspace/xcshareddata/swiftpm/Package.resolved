@@ -1,4 +1,5 @@
 {
+  "originHash" : "02f0af96540e313ebd0891a4fdfdda56927deee2522081f4e6b08a023c69747a",
   "pins" : [
     {
       "identity" : "networkimage",
@@ -17,7 +18,16 @@
         "revision" : "ae799d015a5374708f7b4c85f3294c05f2a564e2",
         "version" : "2.3.0"
       }
+    },
+    {
+      "identity" : "usearch",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/unum-cloud/usearch.git",
+      "state" : {
+        "revision" : "f79d8180122c717203b74f7a7473964c413cb5c1",
+        "version" : "2.9.2"
+      }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

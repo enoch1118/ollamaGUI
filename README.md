@@ -8,6 +8,16 @@
 
 https://github.com/enoch1118/ollamaGUI/assets/54224095/d056434a-f27e-41a9-940b-be7053f6920c
 
+### Now can test langchain in ollama GUI
+<p style="display:flex;justify-content:center;align-items:center"> 
+<img src="./image/langchain.png" width="290px" height="500px"/>
+</p>
+
+This feature is completely native and does not require an API key.
+It's a bit slow so far, but it does provide per-website storage, so once created, website embeds can be reused.
+Since it's still in preview, you can't use it except for the window of the feature.
+
+
 
 ### Introduction to Ollamagui
 ollama is a lightweight, extensible framework that lets you run powerful LLMs like Llama 2, Code Llama, and others on your own computer. This means you don't need to rely on cloud-based services or have specific hardware requirements.
@@ -53,3 +63,7 @@ https://github.com/siteline/swiftui-introspect
 https://github.com/Alamofire/Alamofire
 
 
+--- langchain
+
+4. USearch
+https://github.com/unum-cloud/usearch
