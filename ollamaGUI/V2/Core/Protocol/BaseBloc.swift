@@ -12,12 +12,17 @@ import Foundation
 class BaseBloc<E, S> where S: BaseState {
     var eventListener: PassthroughSubject<E, Never>
     var stateSubject: CurrentValueSubject<S, Never>
+    /// cancel of event
     var cancel: Set<AnyCancellable>
+
+    /// cancel of event handle
+    var eventBag: Set<AnyCancellable>
 
     init() {
         stateSubject = .init(.initState)
         eventListener = .init()
         cancel = Set<AnyCancellable>()
+        eventBag = Set<AnyCancellable>()
     }
 
     func _ignite() {
@@ -29,6 +34,10 @@ class BaseBloc<E, S> where S: BaseState {
         if showLog {
             print(String(describing: event))
         }
+    }
+
+    func cancelEventBag() {
+        eventBag.removeAll()
     }
 
     func addEvent(event: E) {

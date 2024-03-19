@@ -12,7 +12,6 @@ struct MessageEditor: View {
     @Binding var floating:Bool
     @Binding var showSetting:Bool
     @Binding var showLangchain:Bool
-    @Binding var image: NSImage?
     @Binding var isLoading: Bool
     @ObservedObject var shiftController: KeyPressedController = .init()
     @FocusState var focused: Bool?

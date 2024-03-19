@@ -5,16 +5,16 @@
 //  Created by 배상휘 on 3/13/24.
 //
 
+import Combine
 import Foundation
 import SwiftUI
-import Combine
 
 class ChatViewModel: ObservableObject {
     @Published var state: LangchainState = .initState
     @Published var bloc: LangchainBloc!
 
     func ignite(container: DIContainer, room: RoomEntity) {
-        self.bloc = LangchainBloc(
+        bloc = LangchainBloc(
             langchainUsecase: container.langchainusecase,
             chatUsecase: container.chatusecase,
             appSetting: container.appSetting,
@@ -24,3 +24,5 @@ class ChatViewModel: ObservableObject {
         bloc.stateSubject.assign(to: &$state)
     }
 }
+
+

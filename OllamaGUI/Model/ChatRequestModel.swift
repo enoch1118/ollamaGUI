@@ -69,6 +69,7 @@ struct ChatRequestModel: Encodable, DictionaryEncodable {
         format = "json"
     }
     
+    
 
     mutating func applyOption(option: RoomOptionEntity?) -> ChatRequestModel {
         guard let option = option else {

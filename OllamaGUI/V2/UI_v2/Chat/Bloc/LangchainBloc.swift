@@ -15,8 +15,6 @@ class LangchainBloc: BaseBloc<LangchainEvent, LangchainState> {
     var appSetting: AppSetting
     var roomOption: RoomOptionEntity?
 
-    var eventBag = Set<AnyCancellable>()
-
     init(
         langchainUsecase: LangchainUsecase,
         chatUsecase: ChatUsecase,
@@ -124,7 +122,7 @@ class LangchainBloc: BaseBloc<LangchainEvent, LangchainState> {
     }
 
     private func onGetDocument(embedding: WebEmbeddings) {
-        self.emit(state: .generating)
+        emit(state: .generating)
         langchainUsecase.crawlingWeb(for: embedding.url)
             .sink(receiveCompletion: { [weak self] val in
                       if case .failure = val {

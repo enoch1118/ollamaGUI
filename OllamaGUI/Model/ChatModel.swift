@@ -109,6 +109,10 @@ extension ChatModel {
     var isSystem: Bool {
         message?.role == .system
     }
+    
+    var isAssistant: Bool {
+        message?.role == .assistant
+    }
 
     init(text: String, role: RoleEnum) {
         message = MessageModel(text: text, role: role)

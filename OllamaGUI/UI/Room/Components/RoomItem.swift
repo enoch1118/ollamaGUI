@@ -58,7 +58,7 @@ struct RoomItem: View {
                 show: $show,
                 floating: $floating
             ) {
-                ChatView(
+                ChatViewV2(
                     show:$show,
                     position: $position,
                     floating: $floating,

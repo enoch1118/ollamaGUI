@@ -139,7 +139,7 @@ extension LangchainSheet {
                 }
         case let .error(error: error):
             HStack {
-                Text("error with \(error)")
+                Text("error with \(error.localizedDescription)")
                 Button {
                     addEvent(.GENERATE_EMBEDDING(prompt: prompt))
                 } label: {
@@ -147,7 +147,7 @@ extension LangchainSheet {
                 }
             }
         default:
-            Text("\(state)")
+            Text("\(String(describing: state))")
         }
     }
 }

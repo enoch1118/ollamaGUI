@@ -31,7 +31,6 @@ struct ChatView: View {
     >()
 
     /// drag drop var
-    @State var image: NSImage? = nil
     @State var isTargeted: Bool = false
 
     var body: some View {
@@ -72,7 +71,6 @@ struct ChatView: View {
                 floating: $floating,
                 showSetting: $showSettingSheet,
                 showLangchain: $showLangchainSheet,
-                image: $image,
                 isLoading: $isLoading,
                 onSend: onSend,
                 onClean: onClean
