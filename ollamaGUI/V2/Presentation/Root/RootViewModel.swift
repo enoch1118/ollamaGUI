@@ -12,8 +12,8 @@ import SwiftUI
 
 class RootViewModel: ObservableObject {
     @Published var window: NSWindow?
-    @Published var rooms: [RoomEntity] = []
-    @Published var room: RoomEntity? = nil
+    @Published var rooms: [LocalRoomModel] = []
+    @Published var room: LocalRoomModel? = nil
     @Published var sideBar: NavigationSplitViewVisibility = .all
     @Published var settingLoaded: Bool = false
 
@@ -39,7 +39,7 @@ class RootViewModel: ObservableObject {
 }
 
 extension RootViewModel {
-    func onSelect(_ room: RoomEntity) {
+    func onSelect(_ room: LocalRoomModel) {
         if self.room == room {
             return
         }
@@ -47,12 +47,14 @@ extension RootViewModel {
         self.room = room
     }
 
-    func onDelete(_ room: RoomEntity) {
-        withAnimation {
+    func onDelete(_ room: LocalRoomModel) {
+        Task {
             self.room = nil
-            container.dataInteractor.deleteRoom(context: context, room: room)
-            rooms = container.dataInteractor
-                .fetchRoom(context: context)
+            let _ = try? await container.localUsecase.deleteRoom(room: room)
+            let rooms = try! await container.localUsecase.fetchAllRoom()
+            withAnimation {
+                self.rooms = rooms
+            }
             if rooms.isEmpty {
                 onInsert()
             } else {
@@ -62,12 +64,16 @@ extension RootViewModel {
     }
 
     func onInsert() {
-        withAnimation {
-            let id = container.dataInteractor.insertRoom(context: context)
-            rooms = container.dataInteractor
-                .fetchRoom(context: context)
+        Task {
+            let newRoom: LocalRoomModel = .init(updateAt: .now, chats: [])
+            let _ = try? await container.localUsecase
+                .addNewRoom(room: newRoom)
+            let rooms = try! await container.localUsecase.fetchAllRoom()
+            withAnimation {
+                self.rooms = rooms
+            }
             room = rooms.first {
-                id == $0.id
+                newRoom.id == $0.id
             }
         }
     }
@@ -76,13 +82,15 @@ extension RootViewModel {
 private extension RootViewModel {
     // after window setted
     func fetchRoom() {
-        rooms = container.dataInteractor.fetchRoom(context: context)
-        room = rooms.first
+        Task {
+            rooms = try! await container.localUsecase.fetchAllRoom()
+        }
     }
 
     /// need init when appear
     func fetchSetting() {
         let setting = container.dataInteractor.fetchSetting(context: context)
+        container.localUsecase.ignite(context: context)
         container.appSetting.updateSetting(setting)
         settingLoaded = true
     }
@@ -90,15 +98,11 @@ private extension RootViewModel {
     func subscribe() {
         container.updateTrigger.publisher.sink(receiveValue: { value in
             if value.newModel {
-                self.fetchMessage()
+                self.fetchRoom()
             }
         }).store(in: &bag)
     }
 
-    func fetchMessage() {
-        rooms = rooms.sorted(by: { $0.updatedAt > $1.updatedAt })
-        container.updateTrigger.newModelHandled()
-    }
 
     func subscribeWindow() {
         $window.sink { value in

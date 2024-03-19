@@ -9,6 +9,8 @@ import Foundation
 
 enum LocalDataError: Error {
     case unknown
+    case error(error: Error)
+    case nodata
 }
 
 extension LocalDataError {
@@ -16,6 +18,10 @@ extension LocalDataError {
         switch self {
         case .unknown:
             return "some error occur"
+        case let .error(error):
+            return "some error occur: \(error)"
+        case .nodata:
+            return "no data found"
         }
     }
 }

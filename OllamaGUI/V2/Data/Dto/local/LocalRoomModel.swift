@@ -11,15 +11,25 @@ import SwiftData
 @Model
 class LocalRoomModel {
     var updateAt: Date
-    @Relationship(deleteRule: .cascade) var chats: [LocalChatModel]
-    var title: String?
-    @Relationship(deleteRule: .cascade) var option: LocalRoomOptionModel?
+    
+    @Relationship(
+        deleteRule: .cascade,
+        inverse: \LocalChatModel.room
+    ) var chats: [LocalChatModel]
+    
+    @Relationship(
+        deleteRule: .cascade,
+        inverse: \LocalRoomOptionModel.room
+    ) var option: LocalRoomOptionModel?
 
+    
+    var title: String?
+   
     init(
         updateAt: Date,
-        chats: [ChatEntity],
+        chats: [LocalChatModel],
         title: String? = nil,
-        option: RoomOptionEntity? = nil
+        option: LocalRoomOptionModel? = nil
     ) {
         self.updateAt = updateAt
         self.chats = chats

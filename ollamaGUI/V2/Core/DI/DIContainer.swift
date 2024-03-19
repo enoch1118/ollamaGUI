@@ -14,10 +14,14 @@ struct DIContainer: EnvironmentKey {
 
     private static var `default`: DIContainer {
         let session = SessionManager()
-        let ollamaDs = OllamaDatasourceImpl(baseUrl: "", session: session.session)
+        let ollamaDs = OllamaDatasourceImpl(
+            baseUrl: "",
+            session: session.session
+        )
         let ollamaRp = OllamaRepositoryImpl(
             dataSource: ollamaDs
         )
+        let localRp = LocalRepositoryImpl()
         return Self(
             ollamaDs: ollamaDs,
             langchainusecase: .init(
@@ -26,6 +30,7 @@ struct DIContainer: EnvironmentKey {
                     datasource: WebDatasourceImpl(session: session.session)
                 )
             ),
+            localUsecase: .init(repository: localRp),
             chatusecase: .init(ollamaRepository: ollamaRp),
             interactor: RealOllamaInteractor(),
             dataInteractor: RealDataInteractor(),
@@ -36,7 +41,11 @@ struct DIContainer: EnvironmentKey {
 
     private static var preview: DIContainer {
         let session = SessionManager()
-        let ollamaDs = OllamaDatasourceImpl(baseUrl: "", session: session.session)
+        let ollamaDs = OllamaDatasourceImpl(
+            baseUrl: "",
+            session: session.session
+        )
+        let localRp = LocalRepositoryImpl()
         let ollamaRp = OllamaRepositoryImpl(
             dataSource: OlamaDatasourceStub(
                 baseUrl: "",
@@ -51,7 +60,7 @@ struct DIContainer: EnvironmentKey {
                     datasource: WebDatasourceStub()
                 )
             ),
-
+            localUsecase: .init(repository: localRp),
             chatusecase: .init(ollamaRepository: ollamaRp),
             interactor: RealOllamaInteractor(),
             dataInteractor: StubDataInteractor(),
@@ -62,6 +71,7 @@ struct DIContainer: EnvironmentKey {
 
     let ollamaDs: OllamaDatasource
     let langchainusecase: LangchainUsecase
+    let localUsecase: LocalUsecase
     let chatusecase: ChatUsecase
     let interactor: OllamaInteractor
     let dataInteractor: DataInteractor

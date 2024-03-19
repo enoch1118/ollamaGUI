@@ -85,8 +85,8 @@ extension ChatViewModelV2 {
     func onCancel() {}
 
     func onSend(text: String) {
-        chats.append(.init(text: text, role: .user))
-        room.chats = chats.map { $0.toEntity }
-        chatBloc.addEvent(event: .SEND_CHAT(prompt: text, chats: chats))
+//        chats.append(.init(text: text, role: .user))
+//        room.chats = chats.map { $0.toEntity }
+//        chatBloc.addEvent(event: .SEND_CHAT(prompt: text, chats: chats))
     }
 }
