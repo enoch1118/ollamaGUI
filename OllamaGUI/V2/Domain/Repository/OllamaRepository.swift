@@ -11,4 +11,6 @@ import Combine
 protocol OllamaRepository {
     func getEmbeding(prompt: String,model:String)->AnyPublisher<[Float],NetworkError>
     func chat(req:ChatRequestModel)->AnyPublisher<ChatModel,NetworkError>
+    func chatV2(req:ReqChatModel)->AnyPublisher<ResChatModel,NetworkError>
+    func check()->Future<Bool,Never>
 }

@@ -34,4 +34,10 @@ class LocalMessageModel: Encodable {
         self.content = content
         self.images = images
     }
+    
+    init(content: String){
+        self.id = UUID()
+        self.role = .user
+        self.content = content
+    }
 }

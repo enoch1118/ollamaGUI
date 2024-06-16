@@ -45,6 +45,8 @@
 		AC3014702B9AFC6600B24460 /* CrawlingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30146F2B9AFC6600B24460 /* CrawlingRepository.swift */; };
 		AC3014722B9AFC9500B24460 /* CrawlingRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014712B9AFC9500B24460 /* CrawlingRepositoryImpl.swift */; };
 		AC3014772B9AFEDD00B24460 /* LangchainUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3014762B9AFEDD00B24460 /* LangchainUsecase.swift */; };
+		AC3250372BB69E50007FA59E /* TTSUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3250362BB69E50007FA59E /* TTSUtil.swift */; };
+		AC3250392BB6A5D3007FA59E /* ReqOptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3250382BB6A5D3007FA59E /* ReqOptionModel.swift */; };
 		AC36BCA42B57B0E200AD8BD2 /* RoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC36BCA32B57B0E200AD8BD2 /* RoomView.swift */; };
 		AC36BCA72B57B0FE00AD8BD2 /* RoomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC36BCA62B57B0FE00AD8BD2 /* RoomItem.swift */; };
 		AC36BCA92B57B25200AD8BD2 /* RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC36BCA82B57B25200AD8BD2 /* RandomGenerator.swift */; };
@@ -116,6 +118,10 @@
 		ACDCFDD82B5AD21F00DAB674 /* ModelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDCFDD72B5AD21F00DAB674 /* ModelListView.swift */; };
 		ACDCFDDA2B5AD36F00DAB674 /* IntHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDCFDD92B5AD36F00DAB674 /* IntHelper.swift */; };
 		ACDCFDDC2B5ADF4700DAB674 /* HtmlHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDCFDDB2B5ADF4700DAB674 /* HtmlHelper.swift */; };
+		ACEEFB192BA9CB6C0081ADE5 /* NetworkBloc.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEEFB182BA9CB6C0081ADE5 /* NetworkBloc.swift */; };
+		ACEEFB1B2BA9CB7A0081ADE5 /* NetworkEvent+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEEFB1A2BA9CB7A0081ADE5 /* NetworkEvent+State.swift */; };
+		ACEEFB1E2BA9D1100081ADE5 /* RoomListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEEFB1D2BA9D1100081ADE5 /* RoomListView.swift */; };
+		ACEEFB202BA9D1310081ADE5 /* RoomListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEEFB1F2BA9D1310081ADE5 /* RoomListItem.swift */; };
 		ACF5C0092B5563CD00861735 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5C0082B5563CD00861735 /* ClearButton.swift */; };
 		ACF5C00D2B5564C300861735 /* ChatHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5C00C2B5564C300861735 /* ChatHeader.swift */; };
 		ACF5C00F2B55704800861735 /* StopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5C00E2B55704800861735 /* StopButton.swift */; };
@@ -174,6 +180,8 @@
 		AC30146F2B9AFC6600B24460 /* CrawlingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlingRepository.swift; sourceTree = "<group>"; };
 		AC3014712B9AFC9500B24460 /* CrawlingRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlingRepositoryImpl.swift; sourceTree = "<group>"; };
 		AC3014762B9AFEDD00B24460 /* LangchainUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangchainUsecase.swift; sourceTree = "<group>"; };
+		AC3250362BB69E50007FA59E /* TTSUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSUtil.swift; sourceTree = "<group>"; };
+		AC3250382BB6A5D3007FA59E /* ReqOptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqOptionModel.swift; sourceTree = "<group>"; };
 		AC36BCA32B57B0E200AD8BD2 /* RoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomView.swift; sourceTree = "<group>"; };
 		AC36BCA62B57B0FE00AD8BD2 /* RoomItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomItem.swift; sourceTree = "<group>"; };
 		AC36BCA82B57B25200AD8BD2 /* RandomGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomGenerator.swift; sourceTree = "<group>"; };
@@ -246,6 +254,10 @@
 		ACDCFDD72B5AD21F00DAB674 /* ModelListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelListView.swift; sourceTree = "<group>"; };
 		ACDCFDD92B5AD36F00DAB674 /* IntHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntHelper.swift; sourceTree = "<group>"; };
 		ACDCFDDB2B5ADF4700DAB674 /* HtmlHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlHelper.swift; sourceTree = "<group>"; };
+		ACEEFB182BA9CB6C0081ADE5 /* NetworkBloc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkBloc.swift; sourceTree = "<group>"; };
+		ACEEFB1A2BA9CB7A0081ADE5 /* NetworkEvent+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkEvent+State.swift"; sourceTree = "<group>"; };
+		ACEEFB1D2BA9D1100081ADE5 /* RoomListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListView.swift; sourceTree = "<group>"; };
+		ACEEFB1F2BA9D1310081ADE5 /* RoomListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListItem.swift; sourceTree = "<group>"; };
 		ACF5C0082B5563CD00861735 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
 		ACF5C00C2B5564C300861735 /* ChatHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHeader.swift; sourceTree = "<group>"; };
 		ACF5C00E2B55704800861735 /* StopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopButton.swift; sourceTree = "<group>"; };
@@ -309,6 +321,7 @@
 				AC30142D2B9AEC6600B24460 /* EmbeddingResponseDto.swift */,
 				AC174D142BA98FE400FB561F /* ReqChatModel.swift */,
 				AC174D162BA9913600FB561F /* ResChatModel.swift */,
+				AC3250382BB6A5D3007FA59E /* ReqOptionModel.swift */,
 			);
 			path = remote;
 			sourceTree = "<group>";
@@ -316,6 +329,7 @@
 		AC174D1C2BA9938C00FB561F /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				AC3250352BB69E45007FA59E /* Speech */,
 				AC3013F72B99F77500B24460 /* LangChain */,
 				AC3014272B9AEC6600B24460 /* APICall.swift */,
 				AC3014282B9AEC6600B24460 /* SessionManager.swift */,
@@ -395,6 +409,7 @@
 		AC3014322B9AEC6600B24460 /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				ACEEFB1C2BA9D1070081ADE5 /* RoomList */,
 				AC3014302B9AEC6600B24460 /* RootView.swift */,
 				AC3014312B9AEC6600B24460 /* RootViewModel.swift */,
 			);
@@ -404,6 +419,7 @@
 		AC3014352B9AEC6600B24460 /* SidebarV2 */ = {
 			isa = PBXGroup;
 			children = (
+				ACEEFB172BA9CB610081ADE5 /* bloc */,
 				AC3014332B9AEC6600B24460 /* SidebarV2.swift */,
 				AC3014342B9AEC6600B24460 /* SidebarV2ViewModel.swift */,
 			);
@@ -540,6 +556,23 @@
 			path = Usecase;
 			sourceTree = "<group>";
 		};
+		AC3250352BB69E45007FA59E /* Speech */ = {
+			isa = PBXGroup;
+			children = (
+				AC3250362BB69E50007FA59E /* TTSUtil.swift */,
+			);
+			path = Speech;
+			sourceTree = "<group>";
+		};
+		AC32503A2BB6B990007FA59E /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				AC842E622B4E784300F9EC3F /* ChatBubble.swift */,
+				AC842E642B4E81D700F9EC3F /* BubbleShape.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
 		AC36BCA22B57B0D500AD8BD2 /* Room */ = {
 			isa = PBXGroup;
 			children = (
@@ -572,6 +605,7 @@
 		AC57039A2BA02C2D00248D45 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				AC32503A2BB6B990007FA59E /* SubView */,
 				AC57039E2BA02C8100248D45 /* Bloc */,
 				AC174D022BA80DA100FB561F /* ChatViewV2.swift */,
 				AC174D042BA80DAC00FB561F /* ChatViewModelV2.swift */,
@@ -770,8 +804,6 @@
 			isa = PBXGroup;
 			children = (
 				AC842E6A2B4FC7F000F9EC3F /* MessageEditor.swift */,
-				AC842E622B4E784300F9EC3F /* ChatBubble.swift */,
-				AC842E642B4E81D700F9EC3F /* BubbleShape.swift */,
 				ACF5C00C2B5564C300861735 /* ChatHeader.swift */,
 				ACF5C00E2B55704800861735 /* StopButton.swift */,
 				AC7C8AEA2B58FDE90031FEF1 /* OverlayToast.swift */,
@@ -860,6 +892,24 @@
 				AC64593D2B5BF2980039B26E /* LibraryModelListView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		ACEEFB172BA9CB610081ADE5 /* bloc */ = {
+			isa = PBXGroup;
+			children = (
+				ACEEFB182BA9CB6C0081ADE5 /* NetworkBloc.swift */,
+				ACEEFB1A2BA9CB7A0081ADE5 /* NetworkEvent+State.swift */,
+			);
+			path = bloc;
+			sourceTree = "<group>";
+		};
+		ACEEFB1C2BA9D1070081ADE5 /* RoomList */ = {
+			isa = PBXGroup;
+			children = (
+				ACEEFB1D2BA9D1100081ADE5 /* RoomListView.swift */,
+				ACEEFB1F2BA9D1310081ADE5 /* RoomListItem.swift */,
+			);
+			path = RoomList;
 			sourceTree = "<group>";
 		};
 		C496E79C72A612FD73E80721 /* Frameworks */ = {
@@ -1040,6 +1090,8 @@
 				ACDCFDDA2B5AD36F00DAB674 /* IntHelper.swift in Sources */,
 				ACB566AA2B591F98009EF2B2 /* SettingView.swift in Sources */,
 				AC7C8ADF2B57C7640031FEF1 /* DateHelper.swift in Sources */,
+				ACEEFB192BA9CB6C0081ADE5 /* NetworkBloc.swift in Sources */,
+				ACEEFB1E2BA9D1100081ADE5 /* RoomListView.swift in Sources */,
 				AC174D052BA80DAC00FB561F /* ChatViewModelV2.swift in Sources */,
 				AC3014602B9AF26600B24460 /* WebDatasource.swift in Sources */,
 				AC842E6E2B4FCA4800F9EC3F /* DIContainer.swift in Sources */,
@@ -1064,10 +1116,12 @@
 				AC842E632B4E784300F9EC3F /* ChatBubble.swift in Sources */,
 				ACF5C0092B5563CD00861735 /* ClearButton.swift in Sources */,
 				ACD176292B5E5BAB0020A15E /* TagListItem.swift in Sources */,
+				ACEEFB202BA9D1310081ADE5 /* RoomListItem.swift in Sources */,
 				AC67ECA22B5943580081FA1A /* AppSettingEntity.swift in Sources */,
 				ACF5C0112B557BBC00861735 /* AppSetting.swift in Sources */,
 				AC7C8AE32B5828970031FEF1 /* WindowHelper.swift in Sources */,
 				AC5703952B9F030C00248D45 /* ChatUsecase.swift in Sources */,
+				AC3250372BB69E50007FA59E /* TTSUtil.swift in Sources */,
 				AC30146D2B9AFC0D00B24460 /* TextSplitter.swift in Sources */,
 				AC3014702B9AFC6600B24460 /* CrawlingRepository.swift in Sources */,
 				AC06AAE12B9DE464009CC380 /* USearchUtil.swift in Sources */,
@@ -1100,6 +1154,7 @@
 				AC174D102BA98D7E00FB561F /* LocalRoomOptionModel.swift in Sources */,
 				AC30146C2B9AFC0D00B24460 /* HTMLLoader.swift in Sources */,
 				AC40BBE32B55066900AA7D1C /* MarkdownTheme.swift in Sources */,
+				AC3250392BB6A5D3007FA59E /* ReqOptionModel.swift in Sources */,
 				ACDCFDD22B5A6D3B00DAB674 /* ModelInfoModel.swift in Sources */,
 				AC30143C2B9AEC6600B24460 /* EmbeddingDto.swift in Sources */,
 				AC174D0C2BA98CF500FB561F /* LocalRoomModel.swift in Sources */,
@@ -1129,6 +1184,7 @@
 				AC36BCA92B57B25200AD8BD2 /* RandomGenerator.swift in Sources */,
 				AC842E392B4D16F700F9EC3F /* ollamaGUIApp.swift in Sources */,
 				AC30146E2B9AFC0D00B24460 /* LangchainError.swift in Sources */,
+				ACEEFB1B2BA9CB7A0081ADE5 /* NetworkEvent+State.swift in Sources */,
 				AC174D152BA98FE400FB561F /* ReqChatModel.swift in Sources */,
 				ACD1762D2B5E60A00020A15E /* XProgressView.swift in Sources */,
 				AC1978B02B55009B0091EE4F /* StringHelper.swift in Sources */,

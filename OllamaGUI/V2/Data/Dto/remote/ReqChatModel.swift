@@ -11,8 +11,8 @@ struct ReqChatModel: Encodable{
     var model: String
     var messages: [LocalMessageModel]
     var stream: Bool
-    var format: String
-    var options: OptionModel?
+    var format: String?
+    var options: ReqOptionModel?
 
     enum CodingKeys: CodingKey {
         case model
@@ -26,8 +26,8 @@ struct ReqChatModel: Encodable{
         model: String,
         messages: [LocalMessageModel],
         stream: Bool,
-        format: String,
-        options: OptionModel? = nil
+        format: String?,
+        options: ReqOptionModel? = nil
     ) {
         self.model = model
         self.messages = messages
@@ -41,7 +41,22 @@ struct ReqChatModel: Encodable{
         try container.encode(model, forKey: .model)
         try container.encode(messages, forKey: .messages)
         try container.encode(stream, forKey: .stream)
-        try container.encode(format, forKey: .format)
+        try container.encodeIfPresent(format, forKey: .format)
         try container.encodeIfPresent(options, forKey: .options)
+    }
+    
+    
+    init(ofList: [LocalMessageModel], stream: Bool = false){
+        self.model = ""
+        self.stream = stream
+        self.messages = ofList
+        self.options = nil
+    }
+    
+    
+    mutating func applyOption(option: LocalRoomOptionModel?, appSetting: AppSetting) {
+        let option = option ?? LocalRoomOptionModel.init(room: nil)
+        self.options = .init(topP: option.top_p, topK: option.top_k, temperature: option.temperature)
+        self.model = option.model ?? appSetting.model
     }
 }

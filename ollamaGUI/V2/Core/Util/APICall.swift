@@ -59,6 +59,24 @@ struct APICall<U, T> where T: Decodable {
             .mapError { error in NetworkError.badRequest(error: error) }
             .eraseToAnyPublisher()
     }
+    
+    func check() -> AnyPublisher<Bool,NetworkError> {
+        var request = URLRequest(url: getUrl)
+        request.httpMethod = method.method
+        return session.dataTaskPublisher(for: request)
+            .tryMap { element -> Data in
+                guard let httpResponse = element.response as? HTTPURLResponse,
+                      (200 ..< 400).contains(httpResponse.statusCode)
+                else {
+                    throw URLError(.badServerResponse)
+                }
+                return element.data
+            }
+            .decode(type: T.self, decoder: JSONDecoder())
+            .map{ _ in true}
+            .mapError{ error in .disconnected}
+            .eraseToAnyPublisher()
+    }
 }
 
 extension APICall where T == String {
@@ -130,6 +148,9 @@ extension APICall where U: Encodable {
 
     mutating func callStream(data: U) -> AnyPublisher<T, NetworkError> {
         let decoder = JSONDecoder()
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .customISO8601
         let subject = PassthroughSubject<T, NetworkError>()
         workItem = DispatchWorkItem { [self] in
@@ -137,7 +158,7 @@ extension APICall where U: Encodable {
                 getUrl,
                 method: .post,
                 parameters: data,
-                encoder: JSONParameterEncoder.default,
+                encoder: JSONParameterEncoder.init(encoder: encoder),
                 headers: HTTPHeaders.default
             ).validate(statusCode: 200 ..< 300)
                 .responseStreamDecodable(of: T.self, using: decoder) { stream in

@@ -14,12 +14,12 @@ class ChatViewModel: ObservableObject {
     @Published var bloc: LangchainBloc!
 
     func ignite(container: DIContainer, room: RoomEntity) {
-        bloc = LangchainBloc(
-            langchainUsecase: container.langchainusecase,
-            chatUsecase: container.chatusecase,
-            appSetting: container.appSetting,
-            roomOption: room.option
-        )
+//        bloc = LangchainBloc(
+//            langchainUsecase: container.langchainusecase,
+//            chatUsecase: container.chatusecase,
+//            appSetting: container.appSetting,
+//            roomOption: room.option
+//        )
         print("bloc has been created")
         bloc.stateSubject.assign(to: &$state)
     }

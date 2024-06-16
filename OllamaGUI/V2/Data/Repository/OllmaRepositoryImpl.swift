@@ -24,4 +24,11 @@ class OllamaRepositoryImpl: OllamaRepository {
     func chat(req: ChatRequestModel) -> AnyPublisher<ChatModel, NetworkError> {
         dataSource.chat(req: req)
     }
+    
+    func chatV2(req: ReqChatModel) -> AnyPublisher<ResChatModel, NetworkError> {
+        dataSource.chatV2(req: req)
+    }
+    func check() -> Future<Bool, Never> {
+        dataSource.check()
+    }
 }

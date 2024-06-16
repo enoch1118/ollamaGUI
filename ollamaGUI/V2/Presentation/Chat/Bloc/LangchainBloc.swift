@@ -13,14 +13,16 @@ class LangchainBloc: BaseBloc<LangchainEvent, LangchainState> {
     var langchainUsecase: LangchainUsecase
     var chatUsecase: ChatUsecase
     var appSetting: AppSetting
-    var roomOption: RoomOptionEntity?
+    var tts: TTSUtil
+    var roomOption: LocalRoomOptionModel?
 
     init(
         langchainUsecase: LangchainUsecase,
         chatUsecase: ChatUsecase,
         appSetting: AppSetting,
-        roomOption: RoomOptionEntity?
+        roomOption: LocalRoomOptionModel?
     ) {
+        self.tts = .init()
         self.langchainUsecase = langchainUsecase
         self.chatUsecase = chatUsecase
         self.appSetting = appSetting
@@ -84,7 +86,8 @@ class LangchainBloc: BaseBloc<LangchainEvent, LangchainState> {
                 }
                 switch comp {
                 case .finished:
-                    self?
+                        self?.tts.speak(answer.value!.message!.content)
+                        self?
                         .emit(state: .answer(embedding: embedding,
                                              util: util,
                                              answer: .loaded(

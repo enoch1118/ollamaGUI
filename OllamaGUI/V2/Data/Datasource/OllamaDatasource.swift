@@ -15,6 +15,8 @@ protocol OllamaDatasource {
         -> AnyPublisher<[Float], NetworkError>
     
     func chat(req: ChatRequestModel) -> AnyPublisher<ChatModel,NetworkError>
+    func chatV2(req: ReqChatModel) -> AnyPublisher<ResChatModel,NetworkError>
+    func check() -> Future<Bool,Never>
 }
 
 class OlamaDatasourceStub: OllamaDatasource {
@@ -37,6 +39,16 @@ class OlamaDatasourceStub: OllamaDatasource {
     func chat(req: ChatRequestModel) -> AnyPublisher<ChatModel,NetworkError> {
         return Just(.init(entity: ChatEntity(message: .randomMessage, createdAt: .now))).setFailureType(to: NetworkError.self)
             .eraseToAnyPublisher()
+    }
+    
+    func chatV2(req: ReqChatModel) -> AnyPublisher<ResChatModel,NetworkError> {
+        fatalError()
+    }
+    
+    func check() -> Future<Bool, Never> {
+        return Future{
+            $0(.success(true))
+        }
     }
 }
 
@@ -67,6 +79,13 @@ class OllamaDatasourceImpl: OllamaDatasource {
         }.eraseToAnyPublisher()
     }
     
+    func chatV2(req: ReqChatModel) -> AnyPublisher<ResChatModel, NetworkError> {
+        var api = APICall<ReqChatModel,ResChatModel>(
+            session: session, baseUrl: baseUrl, url: "/api/chat", method: .post)
+        
+        return api.callStream(data: req).eraseToAnyPublisher()
+    }
+    
     
     func chat(req: ChatRequestModel) -> AnyPublisher<ChatModel, NetworkError> {
         var api = APICall<ChatRequestModel,ChatModel>(
@@ -74,4 +93,25 @@ class OllamaDatasourceImpl: OllamaDatasource {
         
         return api.callStream(data: req).eraseToAnyPublisher()
     }
+    
+    func check() -> Future<Bool,Never > {
+        let api = APICall<Bool,ChatModel>(session: session, baseUrl: baseUrl, url: "", method: .get)
+        var cancel = Set<AnyCancellable>()
+        return Future { promise in
+            api.call().sink(receiveCompletion: { comp in
+                switch comp {
+                    case .finished:
+                        promise(.success(true))
+                        cancel.removeAll()
+                        
+                    case .failure:
+                        promise(.success(false))
+                        cancel.removeAll()
+                }
+               
+            }, receiveValue: { _ in
+            }).store(in: &cancel)
+        }
+    }
+    
 }

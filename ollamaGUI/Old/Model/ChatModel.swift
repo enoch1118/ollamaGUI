@@ -117,9 +117,10 @@ extension ChatModel {
     init(text: String, role: RoleEnum) {
         message = MessageModel(text: text, role: role)
         id = UUID()
+        
+        createdAt = Date.now
         done = nil
         images = nil
-        createdAt = Date.now
         totalDuration = nil
         loadDuration = nil
         promptEvalCount = nil

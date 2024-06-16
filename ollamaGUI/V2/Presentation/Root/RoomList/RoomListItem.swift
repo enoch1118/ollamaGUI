@@ -1,13 +1,14 @@
 //
-//  RoomItem.swift
+//  RoomListItem.swift
 //  ollamaGUI
 //
-//  Created by 배상휘 on 1/17/24.
+//  Created by 배상휘 on 3/19/24.
 //
 
+import Foundation
 import SwiftUI
 
-struct RoomItem: View {
+struct RoomListItem: View {
     @Environment(\.modelContext) private var context
     @Environment(\.injected) private var container
 
@@ -15,8 +16,8 @@ struct RoomItem: View {
     @State var position: CGPoint = .zero
     @State var show: Bool = false
     @State var floating: Bool = false
-    var room: RoomEntity
-    var onDelete: (RoomEntity) -> Void
+    var room:LocalRoomModel
+    var onDelete: (LocalRoomModel) -> Void
     var body: some View {
         Button(action: {
             show.toggle()
@@ -58,7 +59,7 @@ struct RoomItem: View {
                 show: $show,
                 floating: $floating
             ) {
-                ChatView(
+                ChatViewV2(
                     show:$show,
                     position: $position,
                     floating: $floating,
@@ -86,7 +87,7 @@ struct RoomItem: View {
     }
 }
 
-extension RoomItem {
+extension RoomListItem{
     func setPosition(_ pos: CGPoint) {
         position = pos
     }
@@ -96,9 +97,17 @@ extension RoomItem {
     }
 }
 
+var leftCenter: CGPoint {
+    guard let screen = NSScreen.main?.visibleFrame.size else { return .zero }
+    return .init(x: 20 - 400, y: screen.height / 2 - (screen.height * 0.35))
+}
 
+var bottomRight: CGPoint {
+    guard let screen = NSScreen.main?.visibleFrame.size else { return .zero }
+    return .init(x: screen.width - 220, y: 20)
+}
 
-#Preview {
-    RootView().injectPreview()
-//    RoomItem(room: .randomRoom)
+var floatingSize: CGSize {
+    guard let screen = NSScreen.main?.visibleFrame.size else { return .zero }
+    return .init(width: 500, height: screen.height * 0.7)
 }

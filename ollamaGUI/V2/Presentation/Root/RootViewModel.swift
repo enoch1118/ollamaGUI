@@ -16,6 +16,7 @@ class RootViewModel: ObservableObject {
     @Published var room: LocalRoomModel? = nil
     @Published var sideBar: NavigationSplitViewVisibility = .all
     @Published var settingLoaded: Bool = false
+    @Published var creating: Bool = false
 
     private var container: DIContainer!
     private var context: ModelContext!
@@ -64,6 +65,10 @@ extension RootViewModel {
     }
 
     func onInsert() {
+        if creating {
+            return
+        }
+        creating = true
         Task {
             let newRoom: LocalRoomModel = .init(updateAt: .now, chats: [])
             let _ = try? await container.localUsecase
@@ -73,8 +78,9 @@ extension RootViewModel {
                 self.rooms = rooms
             }
             room = rooms.first {
-                newRoom.id == $0.id
+                newRoom.updatedAt == $0.updatedAt
             }
+            creating = false
         }
     }
 }

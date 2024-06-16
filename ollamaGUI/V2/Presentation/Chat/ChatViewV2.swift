@@ -18,7 +18,7 @@ struct ChatViewV2: View {
     @Environment(\.modelContext) private var context
 
     /// value
-    var room: RoomEntity
+    var room: LocalRoomModel
 
     /// state
     @ObservedObject var chatViewModel = ChatViewModelV2()
@@ -85,22 +85,36 @@ extension ChatViewV2 {
                 Text("Please let me know what you think.")
                     .font(.caption).foregroundColor(.gray)
                 LazyVStack(spacing: 0) {
-                    ForEach(chatViewModel.room.chats, id: \.id) { chat in
-                        ChatBubble(chat: ChatModel(entity: chat))
-                            .padding(.vertical, 12)
-                            .id(chat.id)
+                    if chatViewModel.room == nil {
+                        Color.clear
+                    } else {
+                        ForEach(chatViewModel.chats, id: \.id) { chat in
+                            ChatBubble(chat: chat)
+                                .padding(.vertical, 12)
+                                .id(chat.id)
+                        }
                     }
-                }.onChange(of: chatViewModel.room.chats) { _, _ in
-                    withAnimation {
-                        proxy.scrollTo(
-                            room.chats.last?.id,
-                            anchor: .bottom
-                        )
-                    }
+                    loadingMessage(proxy: proxy)
                 }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    @ViewBuilder
+    func loadingMessage(proxy: ScrollViewProxy) -> some View {
+        let id = UUID()
+        if chatViewModel.chat != nil {
+            ChatBubbleLoading(chat: chatViewModel.chat!).id(id)
+                .onChange(of: chatViewModel.chats) { _, _ in
+                    withAnimation {
+                        proxy.scrollTo(
+                            id,
+                            anchor: .bottom
+                        )
+                    }
+                }
+        }
     }
 
     @ViewBuilder

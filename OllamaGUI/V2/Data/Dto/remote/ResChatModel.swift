@@ -8,12 +8,12 @@
 import Foundation
 
 class ResChatModel: Decodable {
-    let id: UUID
+    var id: UUID
 
     var message: MessageModel?
     let stream: Bool?
     let done: Bool?
-    let createdAt: Date?
+    var createdAt: Date?
     let images: [String]?
     let model: String?
 
@@ -42,7 +42,7 @@ class ResChatModel: Decodable {
 
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        id = try container.decode(UUID.self, forKey: .id)
+        id = UUID()
         message = try container.decodeIfPresent(
             MessageModel.self,
             forKey: .message
@@ -73,5 +73,25 @@ class ResChatModel: Decodable {
             Int.self,
             forKey: .evalDuration
         )
+    }
+
+    init(text: String, role: RoleEnum) {
+        message = .init(text: text, role: role)
+        createdAt = .now
+        id = UUID()
+        done = nil
+        images = nil
+        totalDuration = nil
+        loadDuration = nil
+        promptEvalCount = nil
+        promptEvalDuration = nil
+        evalCount = nil
+        evalDuration = nil
+        model = nil
+        stream = nil
+    }
+
+    func appendMessage(text: String?) {
+        message!.content = message!.content + (text ?? "")
     }
 }

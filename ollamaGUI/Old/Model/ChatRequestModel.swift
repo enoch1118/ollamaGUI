@@ -18,7 +18,7 @@ struct ChatRequestModel: Encodable, DictionaryEncodable {
         self.model = model
         self.messages = messages
         self.stream = stream
-        self.format = "json"
+        format = "json"
     }
 
     enum CodingKeys: CodingKey {
@@ -61,21 +61,36 @@ struct ChatRequestModel: Encodable, DictionaryEncodable {
         options = nil
         format = "json"
     }
-    
+
     init(ofList: [MessageModel], stream: Bool = false) {
         model = "llama2"
         self.stream = stream
         messages = ofList
         format = "json"
     }
-    
-    
+
 
     mutating func applyOption(option: RoomOptionEntity?) -> ChatRequestModel {
         guard let option = option else {
             return self
         }
-        options = OptionModel(top_p: option.top_p, 
+        options = OptionModel(top_p: option.top_p,
+                              top_k: option.top_k,
+                              temperature: option.temperature)
+
+        if let model = option.model {
+            self.model = model
+        }
+        return self
+    }
+
+    mutating func applyOptionV2(option: LocalRoomOptionModel?)
+        -> ChatRequestModel
+    {
+        guard let option = option else {
+            return self
+        }
+        options = OptionModel(top_p: option.top_p,
                               top_k: option.top_k,
                               temperature: option.temperature)
 

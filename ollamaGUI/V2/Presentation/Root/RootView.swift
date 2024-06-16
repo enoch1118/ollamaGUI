@@ -50,16 +50,18 @@ extension RootView {
             .navigationSplitView,
             on: .macOS(.v14, .v13),
             customize: { splitView in
-                (splitView.delegate as? NSSplitViewController)?
-                    .splitViewItems
-                    .first?.canCollapse = false
+                DispatchQueue.main.async {
+                    (splitView.delegate as? NSSplitViewController)?
+                        .splitViewItems
+                        .first?.canCollapse = false
+                }
             }
         )
     }
 
     @ViewBuilder
     private var room: some View {
-        RoomView(
+        RoomListView(
             rooms: $viewModel.rooms,
             onInsert: viewModel.onInsert,
             onDelete: viewModel.onDelete
@@ -70,7 +72,7 @@ extension RootView {
     private var sidebar: some View {
         ZStack {
             Color.sidebar.ignoresSafeArea()
-            SideBar(
+            SidebarV2(
                 rooms: $viewModel.rooms,
                 selected: $viewModel.room,
                 onSelect: viewModel.onSelect,
@@ -85,7 +87,6 @@ extension RootView {
             )
     }
 }
-
 
 #Preview {
     RootView()

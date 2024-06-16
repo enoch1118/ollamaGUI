@@ -29,7 +29,8 @@ struct ollamaGUIApp: App {
                 .inject()
                 .preferredColorScheme(.dark)
                 .modelContainer(
-                    for: [MessageEntity.self, ChatEntity.self, RoomEntity.self,AppSettingEntity.self]
+                    for: [MessageEntity.self, ChatEntity.self, RoomEntity.self,AppSettingEntity.self,LocalChatModel.self,LocalRoomModel.self,LocalMessageModel.self,LocalRoomOptionModel.self
+                         ]
                 )
         }
         .windowStyle(HiddenTitleBarWindowStyle())

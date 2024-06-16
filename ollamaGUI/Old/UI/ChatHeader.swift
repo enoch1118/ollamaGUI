@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ChatHeader: View {
     @Environment(\.injected) var container
-    var room:RoomEntity
+    var room:LocalRoomModel
     @Binding var show:Bool
     var onClean: ()->Void
     var body: some View {

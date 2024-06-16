@@ -10,30 +10,43 @@ import SwiftData
 
 @Model
 class LocalRoomModel {
-    var updateAt: Date
-    
+    var updatedAt: Date
+
     @Relationship(
         deleteRule: .cascade,
         inverse: \LocalChatModel.room
     ) var chats: [LocalChatModel]
-    
+
     @Relationship(
         deleteRule: .cascade,
         inverse: \LocalRoomOptionModel.room
     ) var option: LocalRoomOptionModel?
 
-    
     var title: String?
-   
+
     init(
         updateAt: Date,
         chats: [LocalChatModel],
         title: String? = nil,
         option: LocalRoomOptionModel? = nil
     ) {
-        self.updateAt = updateAt
+        updatedAt = updateAt
         self.chats = chats
         self.title = title
         self.option = option
+    }
+
+    func appendResponse(chat: ResChatModel) {
+        let local = LocalChatModel(
+            message: .init(
+                id: chat.id,
+                role: chat.message?.role ?? .assistant,
+                content: chat.message?.content ?? "error",
+                images: chat.images
+            ),
+            createdAt: .now,
+            room: self
+        )
+        chats.append(local)
     }
 }

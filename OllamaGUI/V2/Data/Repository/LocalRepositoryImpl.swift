@@ -18,7 +18,7 @@ class LocalRepositoryImpl: LocalRepository {
 
     func fetchAllRoom() -> Future<[LocalRoomModel], LocalDataError> {
         return Future { promise in
-            let sort = SortDescriptor<LocalRoomModel>(\.updateAt)
+            let sort = SortDescriptor<LocalRoomModel>(\.updatedAt)
             let disc = FetchDescriptor<LocalRoomModel>(sortBy: [sort])
             do {
                 let res = try self.context.fetch(disc)
@@ -35,7 +35,7 @@ class LocalRepositoryImpl: LocalRepository {
         return Future { promise in
             let sort = SortDescriptor<LocalChatModel>(\.createdAt)
             let id = room.id
-            let predicate = #Predicate<LocalChatModel> { $0.room.id == id }
+            let predicate = #Predicate<LocalChatModel> { $0.room!.id == id }
             let disc = FetchDescriptor<LocalChatModel>(predicate: predicate,
                                                        sortBy: [sort])
             do {
@@ -50,7 +50,7 @@ class LocalRepositoryImpl: LocalRepository {
     func clearRoom(room: LocalRoomModel) -> Future<Bool, LocalDataError> {
         return Future { promise in
             let id = room.id
-            let predicate = #Predicate<LocalChatModel> { $0.room.id == id }
+            let predicate = #Predicate<LocalChatModel> { $0.room!.id == id }
 
             do {
                 try self.context.delete(
@@ -66,17 +66,11 @@ class LocalRepositoryImpl: LocalRepository {
 
     func deleteRoom(room: LocalRoomModel) -> Future<Bool, LocalDataError> {
         return Future { promise in
-            let id = room.id
-            let predicate = #Predicate<LocalRoomModel> { $0.id == id }
-            do {
-                try self.context.delete(
-                    model: LocalRoomModel.self,
-                    where: predicate
+                self.context.delete(
+                     room
                 )
                 promise(.success(true))
-            } catch {
-                promise(.failure(.error(error: error)))
-            }
+            
         }
     }
 
@@ -114,7 +108,7 @@ class LocalRepositoryImpl: LocalRepository {
         Future { promise in
             do {
                 let target = try self.fetchTarget(target: room)
-                target.updateAt = date
+                target.updatedAt = date
                 try self.context.save()
                 promise(.success(true))
             } catch {
