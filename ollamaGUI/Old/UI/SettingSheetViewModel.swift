@@ -8,7 +8,7 @@
 import Foundation
 
 class SettingSheetViewModel: ObservableObject {
-    @Published var options: RoomOptionEntity?
+    @Published var options: LocalRoomOptionModel?
     @Published var system: String
     @Published var topk: Float
     @Published var topp: Float
@@ -36,7 +36,7 @@ class SettingSheetViewModel: ObservableObject {
 
     func apply() {
         if options == nil {
-            options = RoomOptionEntity(model: nil, system: nil)
+            options = LocalRoomOptionModel(model: nil, system: nil)
         }
         guard let options = options else {
             fatalError()

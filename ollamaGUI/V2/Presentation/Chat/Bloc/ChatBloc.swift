@@ -42,12 +42,14 @@ class ChatBloc: BaseBloc<ChatEvent, ChatState> {
         case let .SEND_CHATV2(prompt):
             sendChatV2(prompt)
             return
+                
         }
     }
 }
 
 /// handle function
 extension ChatBloc {
+    
     private func sendChatV2(_ text: String) {
         emit(state: .answerV2(answer: .isLoading(last: .init(text: "",
                                                              role: .assistant))))

@@ -50,6 +50,9 @@ struct ChatViewV2: View {
             idealHeight: floatingSize.height
         )
         .onAppear(perform: onAppear)
+        .sheet(isPresented: $chatViewModel.showSetting, content: {
+            SettingSheet(room: chatViewModel.room, showSetting: $chatViewModel.showSetting)
+        })
     }
 }
 

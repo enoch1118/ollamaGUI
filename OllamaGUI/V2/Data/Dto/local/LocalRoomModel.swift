@@ -18,8 +18,7 @@ class LocalRoomModel {
     ) var chats: [LocalChatModel]
 
     @Relationship(
-        deleteRule: .cascade,
-        inverse: \LocalRoomOptionModel.room
+        deleteRule: .cascade
     ) var option: LocalRoomOptionModel?
 
     var title: String?
@@ -48,5 +47,8 @@ class LocalRoomModel {
             room: self
         )
         chats.append(local)
+        // update title
+        title = chat.message?.content
+        updatedAt = .now
     }
 }

@@ -10,7 +10,6 @@ import SwiftData
 
 @Model
 class LocalRoomOptionModel {
-    var room: LocalRoomModel?
     var model: String?
     var system: String?
     var top_p: Float
@@ -21,14 +20,12 @@ class LocalRoomOptionModel {
         system: String? = nil,
         top_p: Float = 0.9,
         top_k: Int = 40,
-        temperature: Float? = 0.8,
-        room: LocalRoomModel?
+        temperature: Float? = 0.8
     ) {
         self.model = model
         self.system = system
         self.top_p = top_p
         self.top_k = top_k
         self.temperature = temperature
-        self.room = room
     }
 }

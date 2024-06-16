@@ -81,6 +81,7 @@ extension ChatViewModelV2 {
 }
 
 extension ChatViewModelV2 {
+    
     func onClean() {
         room.chats.removeAll()
         Task {

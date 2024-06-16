@@ -35,6 +35,10 @@ class LocalMessageModel: Encodable {
         self.images = images
     }
     
+    static func initSystem(content: String) -> LocalMessageModel{
+        LocalMessageModel(id: UUID(), role: .system, content: content)
+    }
+    
     init(content: String){
         self.id = UUID()
         self.role = .user

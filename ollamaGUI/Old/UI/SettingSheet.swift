@@ -12,9 +12,9 @@ import SwiftUI
 struct SettingSheet: View {
     @ObservedObject var model: SettingSheetViewModel
     @Binding var showSetting: Bool
-    var room: RoomEntity
+    var room: LocalRoomModel
     
-    init(room: RoomEntity,showSetting: Binding<Bool>) {
+    init(room: LocalRoomModel,showSetting: Binding<Bool>) {
         self.room = room
         self.model = SettingSheetViewModel()
         self._showSetting = showSetting
@@ -92,9 +92,6 @@ struct SettingSheet: View {
 }
 
 
-#Preview {
-    SettingSheet(room: .randomRoom,showSetting: .constant(false))
-}
 
 
 

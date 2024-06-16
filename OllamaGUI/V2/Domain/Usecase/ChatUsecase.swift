@@ -28,6 +28,9 @@ class ChatUsecase {
         var dto = req
         dto.model = appSetting.model
         dto.applyOption(option: option,appSetting: appSetting)
+        print(option?.system)
+        dto.applySystem(option: option)
+        print(dto.messages.map{$0.role})
         return ollamaRepository.chatV2(req: dto).eraseToAnyPublisher()
     }
 

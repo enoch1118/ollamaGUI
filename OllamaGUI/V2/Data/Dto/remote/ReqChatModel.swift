@@ -53,9 +53,19 @@ struct ReqChatModel: Encodable{
         self.options = nil
     }
     
+    mutating func applySystem(option: LocalRoomOptionModel?){
+        if option?.system == nil {return}
+        if option!.system!.isEmpty {return}
+        var messages = self.messages
+        messages.removeAll(where: {$0.role == .system})
+        var lastMessage = messages.popLast()
+        messages.append(.initSystem(content: option!.system!))
+        messages.append(lastMessage!)
+        self.messages = messages
+    }
     
     mutating func applyOption(option: LocalRoomOptionModel?, appSetting: AppSetting) {
-        let option = option ?? LocalRoomOptionModel.init(room: nil)
+        let option = option ?? LocalRoomOptionModel.init()
         self.options = .init(topP: option.top_p, topK: option.top_k, temperature: option.temperature)
         self.model = option.model ?? appSetting.model
     }
