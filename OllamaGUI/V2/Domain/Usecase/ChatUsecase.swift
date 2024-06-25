@@ -19,7 +19,7 @@ class ChatUsecase {
     func cancelChat() {
         bag.removeAll()
     }
-    
+
     func chatV3(
         req: ReqChatModel,
         appSetting: AppSetting,
@@ -27,10 +27,10 @@ class ChatUsecase {
     ) -> AnyPublisher<ResChatModel, NetworkError> {
         var dto = req
         dto.model = appSetting.model
-        dto.applyOption(option: option,appSetting: appSetting)
+        dto.applyOption(option: option, appSetting: appSetting)
         print(option?.system)
         dto.applySystem(option: option)
-        print(dto.messages.map{$0.role})
+        print(dto.messages.map { $0.role })
         return ollamaRepository.chatV2(req: dto).eraseToAnyPublisher()
     }
 
@@ -41,7 +41,7 @@ class ChatUsecase {
     ) -> AnyPublisher<ChatModel, NetworkError> {
         var dto = req
         dto.model = appSetting.model
-        
+
         dto = dto.applyOptionV2(option: option)
         return ollamaRepository.chat(req: dto).eraseToAnyPublisher()
     }

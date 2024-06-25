@@ -8,7 +8,6 @@
 import Foundation
 import SwiftData
 
-
 class LocalUsecase {
     var repository: LocalRepository
 
@@ -35,14 +34,15 @@ class LocalUsecase {
     func deleteRoom(room: LocalRoomModel) async throws -> Bool {
         return try await repository.deleteRoom(room: room).value
     }
+
     func changeRoomName(room: LocalRoomModel, to: String) async throws -> Bool {
         return try await repository.changeRoomName(room: room, to: to).value
     }
-    
+
     func addNewRoom(room: LocalRoomModel) async throws -> Bool {
         return try await repository.addNewRoom(room: room).value
     }
-    
+
     func updateRoomDate(room: LocalRoomModel, to: Date) async throws -> Bool {
         return try await repository.updateRoomDate(room: room, to: to).value
     }

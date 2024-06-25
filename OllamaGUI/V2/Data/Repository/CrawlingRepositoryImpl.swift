@@ -5,8 +5,8 @@
 //  Created by 배상휘 on 3/8/24.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 class CrawlingRepositoryImpl: CrawlingRepository {
     var datasource: WebDatasource

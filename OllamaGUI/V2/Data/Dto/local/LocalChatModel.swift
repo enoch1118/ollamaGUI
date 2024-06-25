@@ -19,19 +19,18 @@ class LocalChatModel {
         self.createdAt = createdAt
         self.room = room
     }
-    
+
     var isSystem: Bool {
         message?.role == .system
     }
-    
+
     var isMe: Bool {
         message?.role == .user
     }
-    
-    
-    init(message: LocalMessageModel, room: LocalRoomModel){
+
+    init(message: LocalMessageModel, room: LocalRoomModel) {
         self.message = message
-        self.createdAt = .now
+        createdAt = .now
         self.room = room
     }
 }

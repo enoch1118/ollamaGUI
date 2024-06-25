@@ -1,16 +1,16 @@
 //
-//  EmbedingRepository.swift
+//  OllamaRepository.swift
 //  ollamaGUI
 //
 //  Created by 배상휘 on 3/8/24.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 protocol OllamaRepository {
-    func getEmbeding(prompt: String,model:String)->AnyPublisher<[Float],NetworkError>
-    func chat(req:ChatRequestModel)->AnyPublisher<ChatModel,NetworkError>
-    func chatV2(req:ReqChatModel)->AnyPublisher<ResChatModel,NetworkError>
-    func check()->Future<Bool,Never>
+    func getEmbeding(prompt: String, model: String) -> AnyPublisher<[Float], NetworkError>
+    func chat(req: ChatRequestModel) -> AnyPublisher<ChatModel, NetworkError>
+    func chatV2(req: ReqChatModel) -> AnyPublisher<ResChatModel, NetworkError>
+    func check() -> Future<Bool, Never>
 }

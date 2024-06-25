@@ -66,11 +66,10 @@ class LocalRepositoryImpl: LocalRepository {
 
     func deleteRoom(room: LocalRoomModel) -> Future<Bool, LocalDataError> {
         return Future { promise in
-                self.context.delete(
-                     room
-                )
-                promise(.success(true))
-            
+            self.context.delete(
+                room
+            )
+            promise(.success(true))
         }
     }
 

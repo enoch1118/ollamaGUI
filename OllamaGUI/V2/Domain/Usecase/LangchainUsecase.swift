@@ -112,8 +112,7 @@ class LangchainUsecase {
                   }).store(in: &bag)
         }
     }
-    
-    
+
     func embedding(for doc: String,
                    model: String) -> Future<[Float], NetworkError>
     {
