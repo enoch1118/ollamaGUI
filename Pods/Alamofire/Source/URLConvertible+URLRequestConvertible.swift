@@ -74,9 +74,9 @@ public protocol URLRequestConvertible {
     func asURLRequest() throws -> URLRequest
 }
 
-extension URLRequestConvertible {
+public extension URLRequestConvertible {
     /// The `URLRequest` returned by discarding any `Error` encountered.
-    public var urlRequest: URLRequest? { try? asURLRequest() }
+    var urlRequest: URLRequest? { try? asURLRequest() }
 }
 
 extension URLRequest: URLRequestConvertible {
@@ -86,7 +86,7 @@ extension URLRequest: URLRequestConvertible {
 
 // MARK: -
 
-extension URLRequest {
+public extension URLRequest {
     /// Creates an instance with the specified `url`, `method`, and `headers`.
     ///
     /// - Parameters:
@@ -94,7 +94,7 @@ extension URLRequest {
     ///   - method:  The `HTTPMethod`.
     ///   - headers: The `HTTPHeaders`, `nil` by default.
     /// - Throws:    Any error thrown while converting the `URLConvertible` to a `URL`.
-    public init(url: URLConvertible, method: HTTPMethod, headers: HTTPHeaders? = nil) throws {
+    init(url: URLConvertible, method: HTTPMethod, headers: HTTPHeaders? = nil) throws {
         let url = try url.asURL()
 
         self.init(url: url)

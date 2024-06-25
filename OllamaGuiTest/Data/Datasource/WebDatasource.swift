@@ -45,7 +45,7 @@ final class WebDatasourceTest: XCTestCase {
 
         waitForExpectations(timeout: 20)
     }
-    
+
     func test_크롤링테스트2() {
         let expectation = expectation(description: "crawling wiki")
         var res = ""

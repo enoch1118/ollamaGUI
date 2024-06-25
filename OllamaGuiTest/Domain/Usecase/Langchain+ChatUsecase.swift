@@ -25,7 +25,7 @@ class LangChainChatUsecaseTest: XCTestCase {
             configurations: config)
 
         let sessionManager = SessionManager()
-        
+
         let ollamaDataSource = OllamaDatasourceImpl(
             baseUrl: appSetting.baseUrl,
             session: sessionManager.session
@@ -53,7 +53,5 @@ class LangChainChatUsecaseTest: XCTestCase {
         container = nil
     }
 
-    func test_EmbeddingChat() {
-        
-    }
+    func test_EmbeddingChat() {}
 }

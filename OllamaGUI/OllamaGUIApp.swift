@@ -1,5 +1,5 @@
 //
-//  ollamaGUIApp.swift
+//  OllamaGUIApp.swift
 //  ollamaGUI
 //
 //  Created by 배상휘 on 1/9/24.
@@ -21,18 +21,26 @@ struct VisualEffect: NSViewRepresentable {
 }
 
 @main
-struct ollamaGUIApp: App {
+struct OllamaGUIApp: App {
     var body: some Scene {
         WindowGroup {
-            RootView()
-                .frame(minWidth: 390, maxWidth: 390, minHeight: 640, idealHeight: 640)
-                .inject()
+            V3HomeView()
+                .frame(minWidth: 390, maxWidth: 390,
+                       minHeight: 640, idealHeight: 640)
                 .preferredColorScheme(.dark)
-                .modelContainer(
-                    for: [MessageEntity.self, ChatEntity.self, RoomEntity.self, AppSettingEntity.self, LocalChatModel.self, LocalRoomModel.self, LocalMessageModel.self, LocalRoomOptionModel.self]
-                )
         }
         .windowStyle(HiddenTitleBarWindowStyle())
         .windowResizability(.contentSize)
+//        WindowGroup {
+//            RootView()
+//                .frame(minWidth: 390, maxWidth: 390, minHeight: 640, idealHeight: 640)
+//                .inject()
+//                .preferredColorScheme(.dark)
+//                .modelContainer(
+//                    for: [MessageEntity.self, ChatEntity.self, RoomEntity.self, AppSettingEntity.self, LocalChatModel.self, LocalRoomModel.self, LocalMessageModel.self, LocalRoomOptionModel.self]
+//                )
+//        }
+//        .windowStyle(HiddenTitleBarWindowStyle())
+//        .windowResizability(.contentSize)
     }
 }

@@ -66,7 +66,7 @@ extension Request {
 
     // MARK: Properties
 
-    fileprivate var acceptableStatusCodes: Range<Int> { 200..<300 }
+    fileprivate var acceptableStatusCodes: Range<Int> { 200 ..< 300 }
 
     fileprivate var acceptableContentTypes: [String] {
         if let accept = request?.value(forHTTPHeaderField: "Accept") {
@@ -81,7 +81,8 @@ extension Request {
     fileprivate func validate<S: Sequence>(statusCode acceptableStatusCodes: S,
                                            response: HTTPURLResponse)
         -> ValidationResult
-        where S.Iterator.Element == Int {
+        where S.Iterator.Element == Int
+    {
         if acceptableStatusCodes.contains(response.statusCode) {
             return .success(())
         } else {
@@ -96,7 +97,8 @@ extension Request {
                                            response: HTTPURLResponse,
                                            data: Data?)
         -> ValidationResult
-        where S.Iterator.Element == String {
+        where S.Iterator.Element == String
+    {
         guard let data = data, !data.isEmpty else { return .success(()) }
 
         return validate(contentType: acceptableContentTypes, response: response)
@@ -105,7 +107,8 @@ extension Request {
     fileprivate func validate<S: Sequence>(contentType acceptableContentTypes: S,
                                            response: HTTPURLResponse)
         -> ValidationResult
-        where S.Iterator.Element == String {
+        where S.Iterator.Element == String
+    {
         guard
             let responseContentType = response.mimeType,
             let responseMIMEType = MIMEType(responseContentType)
@@ -143,10 +146,10 @@ extension Request {
 
 // MARK: -
 
-extension DataRequest {
+public extension DataRequest {
     /// A closure used to validate a request that takes a URL request, a URL response and data, and returns whether the
     /// request was valid.
-    public typealias Validation = (URLRequest?, HTTPURLResponse, Data?) -> ValidationResult
+    typealias Validation = (URLRequest?, HTTPURLResponse, Data?) -> ValidationResult
 
     /// Validates that the response has a status code in the specified sequence.
     ///
@@ -156,7 +159,7 @@ extension DataRequest {
     ///
     /// - Returns:                         The instance.
     @discardableResult
-    public func validate<S: Sequence>(statusCode acceptableStatusCodes: S) -> Self where S.Iterator.Element == Int {
+    func validate<S: Sequence>(statusCode acceptableStatusCodes: S) -> Self where S.Iterator.Element == Int {
         validate { [unowned self] _, response, _ in
             self.validate(statusCode: acceptableStatusCodes, response: response)
         }
@@ -170,7 +173,7 @@ extension DataRequest {
     ///
     /// - returns: The request.
     @discardableResult
-    public func validate<S: Sequence>(contentType acceptableContentTypes: @escaping @autoclosure () -> S) -> Self where S.Iterator.Element == String {
+    func validate<S: Sequence>(contentType acceptableContentTypes: @escaping @autoclosure () -> S) -> Self where S.Iterator.Element == String {
         validate { [unowned self] _, response, data in
             self.validate(contentType: acceptableContentTypes(), response: response, data: data)
         }
@@ -183,7 +186,7 @@ extension DataRequest {
     ///
     /// - returns: The request.
     @discardableResult
-    public func validate() -> Self {
+    func validate() -> Self {
         let contentTypes: () -> [String] = { [unowned self] in
             acceptableContentTypes
         }
@@ -191,10 +194,10 @@ extension DataRequest {
     }
 }
 
-extension DataStreamRequest {
+public extension DataStreamRequest {
     /// A closure used to validate a request that takes a `URLRequest` and `HTTPURLResponse` and returns whether the
     /// request was valid.
-    public typealias Validation = (_ request: URLRequest?, _ response: HTTPURLResponse) -> ValidationResult
+    typealias Validation = (_ request: URLRequest?, _ response: HTTPURLResponse) -> ValidationResult
 
     /// Validates that the response has a status code in the specified sequence.
     ///
@@ -204,7 +207,7 @@ extension DataStreamRequest {
     ///
     /// - Returns:                         The instance.
     @discardableResult
-    public func validate<S: Sequence>(statusCode acceptableStatusCodes: S) -> Self where S.Iterator.Element == Int {
+    func validate<S: Sequence>(statusCode acceptableStatusCodes: S) -> Self where S.Iterator.Element == Int {
         validate { [unowned self] _, response in
             self.validate(statusCode: acceptableStatusCodes, response: response)
         }
@@ -218,7 +221,7 @@ extension DataStreamRequest {
     ///
     /// - returns: The request.
     @discardableResult
-    public func validate<S: Sequence>(contentType acceptableContentTypes: @escaping @autoclosure () -> S) -> Self where S.Iterator.Element == String {
+    func validate<S: Sequence>(contentType acceptableContentTypes: @escaping @autoclosure () -> S) -> Self where S.Iterator.Element == String {
         validate { [unowned self] _, response in
             self.validate(contentType: acceptableContentTypes(), response: response)
         }
@@ -231,7 +234,7 @@ extension DataStreamRequest {
     ///
     /// - Returns: The instance.
     @discardableResult
-    public func validate() -> Self {
+    func validate() -> Self {
         let contentTypes: () -> [String] = { [unowned self] in
             acceptableContentTypes
         }
@@ -241,12 +244,12 @@ extension DataStreamRequest {
 
 // MARK: -
 
-extension DownloadRequest {
+public extension DownloadRequest {
     /// A closure used to validate a request that takes a URL request, a URL response, a temporary URL and a
     /// destination URL, and returns whether the request was valid.
-    public typealias Validation = (_ request: URLRequest?,
-                                   _ response: HTTPURLResponse,
-                                   _ fileURL: URL?)
+    typealias Validation = (_ request: URLRequest?,
+                            _ response: HTTPURLResponse,
+                            _ fileURL: URL?)
         -> ValidationResult
 
     /// Validates that the response has a status code in the specified sequence.
@@ -257,7 +260,7 @@ extension DownloadRequest {
     ///
     /// - Returns:                         The instance.
     @discardableResult
-    public func validate<S: Sequence>(statusCode acceptableStatusCodes: S) -> Self where S.Iterator.Element == Int {
+    func validate<S: Sequence>(statusCode acceptableStatusCodes: S) -> Self where S.Iterator.Element == Int {
         validate { [unowned self] _, response, _ in
             self.validate(statusCode: acceptableStatusCodes, response: response)
         }
@@ -271,7 +274,7 @@ extension DownloadRequest {
     ///
     /// - returns: The request.
     @discardableResult
-    public func validate<S: Sequence>(contentType acceptableContentTypes: @escaping @autoclosure () -> S) -> Self where S.Iterator.Element == String {
+    func validate<S: Sequence>(contentType acceptableContentTypes: @escaping @autoclosure () -> S) -> Self where S.Iterator.Element == String {
         validate { [unowned self] _, response, fileURL in
             guard let validFileURL = fileURL else {
                 return .failure(AFError.responseValidationFailed(reason: .dataFileNil))
@@ -293,7 +296,7 @@ extension DownloadRequest {
     ///
     /// - returns: The request.
     @discardableResult
-    public func validate() -> Self {
+    func validate() -> Self {
         let contentTypes = { [unowned self] in
             acceptableContentTypes
         }

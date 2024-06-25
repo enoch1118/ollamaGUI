@@ -50,44 +50,44 @@ extension Lock {
 }
 
 #if canImport(Darwin)
-/// An `os_unfair_lock` wrapper.
-final class UnfairLock: Lock {
-    private let unfairLock: os_unfair_lock_t
+    /// An `os_unfair_lock` wrapper.
+    final class UnfairLock: Lock {
+        private let unfairLock: os_unfair_lock_t
 
-    init() {
-        unfairLock = .allocate(capacity: 1)
-        unfairLock.initialize(to: os_unfair_lock())
-    }
+        init() {
+            unfairLock = .allocate(capacity: 1)
+            unfairLock.initialize(to: os_unfair_lock())
+        }
 
-    deinit {
-        unfairLock.deinitialize(count: 1)
-        unfairLock.deallocate()
-    }
+        deinit {
+            unfairLock.deinitialize(count: 1)
+            unfairLock.deallocate()
+        }
 
-    fileprivate func lock() {
-        os_unfair_lock_lock(unfairLock)
-    }
+        fileprivate func lock() {
+            os_unfair_lock_lock(unfairLock)
+        }
 
-    fileprivate func unlock() {
-        os_unfair_lock_unlock(unfairLock)
+        fileprivate func unlock() {
+            os_unfair_lock_unlock(unfairLock)
+        }
     }
-}
 
 #elseif canImport(Foundation)
-extension NSLock: Lock {}
+    extension NSLock: Lock {}
 #else
-#error("This platform needs a Lock-conforming type without Foundation.")
+    #error("This platform needs a Lock-conforming type without Foundation.")
 #endif
 
 /// A thread-safe wrapper around a value.
 @dynamicMemberLookup
 final class Protected<Value> {
     #if canImport(Darwin)
-    private let lock = UnfairLock()
+        private let lock = UnfairLock()
     #elseif canImport(Foundation)
-    private let lock = NSLock()
+        private let lock = NSLock()
     #else
-    #error("This platform needs a Lock-conforming type without Foundation.")
+        #error("This platform needs a Lock-conforming type without Foundation.")
     #endif
     private var value: Value
 
@@ -156,7 +156,7 @@ extension Protected where Value == Request.MutableState {
 }
 
 extension Protected: Equatable where Value: Equatable {
-    static func ==(lhs: Protected<Value>, rhs: Protected<Value>) -> Bool {
+    static func == (lhs: Protected<Value>, rhs: Protected<Value>) -> Bool {
         lhs.read { left in rhs.read { right in left == right }}
     }
 }

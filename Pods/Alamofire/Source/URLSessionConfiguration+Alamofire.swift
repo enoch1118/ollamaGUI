@@ -25,10 +25,10 @@
 import Foundation
 
 extension URLSessionConfiguration: AlamofireExtended {}
-extension AlamofireExtension where ExtendedType: URLSessionConfiguration {
+public extension AlamofireExtension where ExtendedType: URLSessionConfiguration {
     /// Alamofire's default configuration. Same as `URLSessionConfiguration.default` but adds Alamofire default
     /// `Accept-Language`, `Accept-Encoding`, and `User-Agent` headers.
-    public static var `default`: URLSessionConfiguration {
+    static var `default`: URLSessionConfiguration {
         let configuration = URLSessionConfiguration.default
         configuration.headers = .default
 
@@ -37,7 +37,7 @@ extension AlamofireExtension where ExtendedType: URLSessionConfiguration {
 
     /// `.ephemeral` configuration with Alamofire's default `Accept-Language`, `Accept-Encoding`, and `User-Agent`
     /// headers.
-    public static var ephemeral: URLSessionConfiguration {
+    static var ephemeral: URLSessionConfiguration {
         let configuration = URLSessionConfiguration.ephemeral
         configuration.headers = .default
 

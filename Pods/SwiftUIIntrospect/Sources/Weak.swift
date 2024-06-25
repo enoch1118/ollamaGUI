@@ -9,6 +9,6 @@ public final class Weak<T: AnyObject> {
     }
 
     public init(wrappedValue: T? = nil) {
-        self._wrappedValue = wrappedValue
+        _wrappedValue = wrappedValue
     }
 }

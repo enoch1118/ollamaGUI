@@ -38,7 +38,8 @@ extension OperationQueue {
                      maxConcurrentOperationCount: Int = OperationQueue.defaultMaxConcurrentOperationCount,
                      underlyingQueue: DispatchQueue? = nil,
                      name: String? = nil,
-                     startSuspended: Bool = false) {
+                     startSuspended: Bool = false)
+    {
         self.init()
         self.qualityOfService = qualityOfService
         self.maxConcurrentOperationCount = maxConcurrentOperationCount

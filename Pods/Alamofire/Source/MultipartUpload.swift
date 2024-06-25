@@ -36,7 +36,8 @@ final class MultipartUpload {
 
     init(encodingMemoryThreshold: UInt64,
          request: URLRequestConvertible,
-         multipartFormData: MultipartFormData) {
+         multipartFormData: MultipartFormData)
+    {
         self.encodingMemoryThreshold = encodingMemoryThreshold
         self.request = request
         fileManager = multipartFormData.fileManager

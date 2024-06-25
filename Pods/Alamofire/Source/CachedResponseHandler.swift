@@ -77,7 +77,8 @@ public struct ResponseCacher {
 extension ResponseCacher: CachedResponseHandler {
     public func dataTask(_ task: URLSessionDataTask,
                          willCacheResponse response: CachedURLResponse,
-                         completion: @escaping (CachedURLResponse?) -> Void) {
+                         completion: @escaping (CachedURLResponse?) -> Void)
+    {
         switch behavior {
         case .cache:
             completion(response)
@@ -90,18 +91,18 @@ extension ResponseCacher: CachedResponseHandler {
     }
 }
 
-extension CachedResponseHandler where Self == ResponseCacher {
+public extension CachedResponseHandler where Self == ResponseCacher {
     /// Provides a `ResponseCacher` which caches the response, if allowed. Equivalent to `ResponseCacher.cache`.
-    public static var cache: ResponseCacher { .cache }
+    static var cache: ResponseCacher { .cache }
 
     /// Provides a `ResponseCacher` which does not cache the response. Equivalent to `ResponseCacher.doNotCache`.
-    public static var doNotCache: ResponseCacher { .doNotCache }
+    static var doNotCache: ResponseCacher { .doNotCache }
 
     /// Creates a `ResponseCacher` which modifies the proposed `CachedURLResponse` using the provided closure.
     ///
     /// - Parameter closure: Closure used to modify the `CachedURLResponse`.
     /// - Returns:           The `ResponseCacher`.
-    public static func modify(using closure: @escaping ((URLSessionDataTask, CachedURLResponse) -> CachedURLResponse?)) -> ResponseCacher {
+    static func modify(using closure: @escaping ((URLSessionDataTask, CachedURLResponse) -> CachedURLResponse?)) -> ResponseCacher {
         ResponseCacher(behavior: .modify(closure))
     }
 }

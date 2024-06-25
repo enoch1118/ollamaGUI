@@ -81,7 +81,8 @@ extension Redirector: RedirectHandler {
     public func task(_ task: URLSessionTask,
                      willBeRedirectedTo request: URLRequest,
                      for response: HTTPURLResponse,
-                     completion: @escaping (URLRequest?) -> Void) {
+                     completion: @escaping (URLRequest?) -> Void)
+    {
         switch behavior {
         case .follow:
             completion(request)
@@ -94,18 +95,18 @@ extension Redirector: RedirectHandler {
     }
 }
 
-extension RedirectHandler where Self == Redirector {
+public extension RedirectHandler where Self == Redirector {
     /// Provides a `Redirector` which follows redirects. Equivalent to `Redirector.follow`.
-    public static var follow: Redirector { .follow }
+    static var follow: Redirector { .follow }
 
     /// Provides a `Redirector` which does not follow redirects. Equivalent to `Redirector.doNotFollow`.
-    public static var doNotFollow: Redirector { .doNotFollow }
+    static var doNotFollow: Redirector { .doNotFollow }
 
     /// Creates a `Redirector` which modifies the redirected `URLRequest` using the provided closure.
     ///
     /// - Parameter closure: Closure used to modify the redirect.
     /// - Returns:           The `Redirector`.
-    public static func modify(using closure: @escaping (URLSessionTask, URLRequest, HTTPURLResponse) -> URLRequest?) -> Redirector {
+    static func modify(using closure: @escaping (URLSessionTask, URLRequest, HTTPURLResponse) -> URLRequest?) -> Redirector {
         Redirector(behavior: .modify(closure))
     }
 }

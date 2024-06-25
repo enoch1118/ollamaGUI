@@ -1,0 +1,9 @@
+excluded:
+  - Pods
+  - OllamaGUI/Old
+  - OllamaGUI/V2
+
+disabled-rules:
+  - identifier_name
+  - identifier_name_violation
+  - type_name

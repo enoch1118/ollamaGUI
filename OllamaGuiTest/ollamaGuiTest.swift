@@ -5,11 +5,10 @@
 //  Created by 배상휘 on 3/8/24.
 //
 
+@testable import OllamaGUI
 import XCTest
-@testable import ollamaGUI
 
-final class ollamaGuiTest: XCTestCase {
-
+final class OllamaGuiTest: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -32,5 +31,4 @@ final class ollamaGuiTest: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }
