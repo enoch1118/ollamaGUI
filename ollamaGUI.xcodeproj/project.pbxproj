@@ -79,6 +79,8 @@
 		AC64593E2B5BF2980039B26E /* LibraryModelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC64593D2B5BF2980039B26E /* LibraryModelListView.swift */; };
 		AC6459412B5BF5440039B26E /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6459402B5BF5440039B26E /* TagsView.swift */; };
 		AC6459432B5BFBCD0039B26E /* OllamaTagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6459422B5BFBCD0039B26E /* OllamaTagModel.swift */; };
+		AC6751662C3A7FC800C16E6B /* V3ChatInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6751652C3A7FC800C16E6B /* V3ChatInput.swift */; };
+		AC6751682C3A7FFF00C16E6B /* V3CommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6751672C3A7FFF00C16E6B /* V3CommonView.swift */; };
 		AC67ECA22B5943580081FA1A /* AppSettingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC67ECA12B5943580081FA1A /* AppSettingEntity.swift */; };
 		AC725C2D2B511D3200B3E266 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC725C2C2B511D3200B3E266 /* Interactor.swift */; };
 		AC725C2F2B5125BB00B3E266 /* ChatRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC725C2E2B5125BB00B3E266 /* ChatRequestModel.swift */; };
@@ -221,6 +223,8 @@
 		AC64593D2B5BF2980039B26E /* LibraryModelListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryModelListView.swift; sourceTree = "<group>"; };
 		AC6459402B5BF5440039B26E /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
 		AC6459422B5BFBCD0039B26E /* OllamaTagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OllamaTagModel.swift; sourceTree = "<group>"; };
+		AC6751652C3A7FC800C16E6B /* V3ChatInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = V3ChatInput.swift; path = ollamaGUI/V3/Presentation/Common/V3ChatInput.swift; sourceTree = SOURCE_ROOT; };
+		AC6751672C3A7FFF00C16E6B /* V3CommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = V3CommonView.swift; path = ollamaGUI/V3/Presentation/Common/V3CommonView.swift; sourceTree = SOURCE_ROOT; };
 		AC67ECA12B5943580081FA1A /* AppSettingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingEntity.swift; sourceTree = "<group>"; };
 		AC725C2C2B511D3200B3E266 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		AC725C2E2B5125BB00B3E266 /* ChatRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestModel.swift; sourceTree = "<group>"; };
@@ -341,8 +345,9 @@
 		6CF687E82C20145B00ED13D2 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				AC6751642C3A7FBA00C16E6B /* Common */,
+				AC6751632C3A7FB300C16E6B /* Home */,
 				6CF688022C201E3300ED13D2 /* Utils */,
-				6CF688002C2019DD00ED13D2 /* V3HomeView.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -810,6 +815,23 @@
 				ACD176282B5E5BAB0020A15E /* TagListItem.swift */,
 			);
 			path = Tags;
+			sourceTree = "<group>";
+		};
+		AC6751632C3A7FB300C16E6B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				6CF688002C2019DD00ED13D2 /* V3HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		AC6751642C3A7FBA00C16E6B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				AC6751652C3A7FC800C16E6B /* V3ChatInput.swift */,
+				AC6751672C3A7FFF00C16E6B /* V3CommonView.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		AC842E2C2B4D16F700F9EC3F = {
@@ -1315,6 +1337,7 @@
 				AC97DE422B543FF200A4508B /* KeyPressedController.swift in Sources */,
 				6CF687F32C20192700ED13D2 /* V3OllamaDatasource.swift in Sources */,
 				ACDCFDD42B5A761F00DAB674 /* ModelManagerView.swift in Sources */,
+				AC6751682C3A7FFF00C16E6B /* V3CommonView.swift in Sources */,
 				AC30143E2B9AEC6600B24460 /* RootView.swift in Sources */,
 				AC842E6B2B4FC7F000F9EC3F /* MessageEditor.swift in Sources */,
 				AC842E652B4E81D700F9EC3F /* BubbleShape.swift in Sources */,
@@ -1327,6 +1350,7 @@
 				ACD176312B5E758A0020A15E /* PullRequestModel.swift in Sources */,
 				AC36BCA42B57B0E200AD8BD2 /* RoomView.swift in Sources */,
 				AC30145E2B9AF0BD00B24460 /* LangchainUsecase.swift in Sources */,
+				AC6751662C3A7FC800C16E6B /* V3ChatInput.swift in Sources */,
 				AC842E532B4D3A5000F9EC3F /* SidebarButton.swift in Sources */,
 				ACD1762F2B5E69630020A15E /* PullResponseModel.swift in Sources */,
 				AC5703AB2BA03A0600248D45 /* MuseError.swift in Sources */,
@@ -1561,7 +1585,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"ollamaGUI/Preview Content\"";
-				DEVELOPMENT_TEAM = 8UH94HQT78;
+				DEVELOPMENT_TEAM = D5W99SHK6S;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1591,7 +1615,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"ollamaGUI/Preview Content\"";
-				DEVELOPMENT_TEAM = 8UH94HQT78;
+				DEVELOPMENT_TEAM = D5W99SHK6S;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
