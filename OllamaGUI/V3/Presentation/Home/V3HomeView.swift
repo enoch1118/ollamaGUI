@@ -10,8 +10,8 @@ import SwiftUI
 
 struct V3HomeView: View {
     var body: some View {
-        GeometryReader{ geo in
-            ZStack(alignment:.bottom){
+        GeometryReader { _ in
+            ZStack(alignment: .bottom) {
                 V3HomeContentView()
                 V3ChatInput(text: .constant(""))
                     .padding()
@@ -22,16 +22,14 @@ struct V3HomeView: View {
 
 struct V3HomeContentView: View {
     var body: some View {
-        ScrollView{
-            VStack(alignment:.leading){
+        ScrollView {
+            VStack(alignment: .leading) {
                 Text("Your server is Connected {server addr:port}")
-                    .frame(maxWidth: .infinity,alignment: .leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
-                
             }
         }
     }
-    
 }
 
 #Preview {

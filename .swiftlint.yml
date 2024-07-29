@@ -3,7 +3,7 @@ excluded:
   - OllamaGUI/Old
   - OllamaGUI/V2
 
-disabled-rules:
+disabled_rules:
   - identifier_name
   - identifier_name_violation
   - type_name

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D8D5FBE0BCFC2D861ECE9F8 /* Pods_ollamaGUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99CC9802010F649185C7EF44 /* Pods_ollamaGUI.framework */; };
+		6C5D6B062C3B74920016B46F /* V3ViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5D6B052C3B74920016B46F /* V3ViewHelper.swift */; };
 		6CF687EB2C20146C00ED13D2 /* V3Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF687EA2C20146C00ED13D2 /* V3Injection.swift */; };
 		6CF687EF2C20165F00ED13D2 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6CF687EE2C20165F00ED13D2 /* .swiftlint.yml */; };
 		6CF687F12C20191E00ED13D2 /* V3WebDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF687F02C20191E00ED13D2 /* V3WebDatasource.swift */; };
@@ -150,6 +151,7 @@
 
 /* Begin PBXFileReference section */
 		53CA5445BF6B3981C24E69FB /* Pods-ollamaGUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ollamaGUI.debug.xcconfig"; path = "Target Support Files/Pods-ollamaGUI/Pods-ollamaGUI.debug.xcconfig"; sourceTree = "<group>"; };
+		6C5D6B052C3B74920016B46F /* V3ViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3ViewHelper.swift; sourceTree = "<group>"; };
 		6CF687EA2C20146C00ED13D2 /* V3Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = V3Injection.swift; path = OllamaGUI/V3/Core/Boot/V3Injection.swift; sourceTree = SOURCE_ROOT; };
 		6CF687EE2C20165F00ED13D2 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		6CF687F02C20191E00ED13D2 /* V3WebDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3WebDatasource.swift; sourceTree = "<group>"; };
@@ -306,6 +308,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C5D6B042C3B747E0016B46F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				6C5D6B052C3B74920016B46F /* V3ViewHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		6CF687E42C20142D00ED13D2 /* V3 */ = {
 			isa = PBXGroup;
 			children = (
@@ -828,6 +838,7 @@
 		AC6751642C3A7FBA00C16E6B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				6C5D6B042C3B747E0016B46F /* Helper */,
 				AC6751652C3A7FC800C16E6B /* V3ChatInput.swift */,
 				AC6751672C3A7FFF00C16E6B /* V3CommonView.swift */,
 			);
@@ -1103,9 +1114,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC842E442B4D16F800F9EC3F /* Build configuration list for PBXNativeTarget "ollamaGUI" */;
 			buildPhases = (
+				5AB10DA11C2E15D989FDEAD2 /* [CP] Check Pods Manifest.lock */,
 				6CF687ED2C20153800ED13D2 /* Formatter */,
 				6CF687EC2C20151500ED13D2 /* LInter */,
-				5AB10DA11C2E15D989FDEAD2 /* [CP] Check Pods Manifest.lock */,
 				AC842E312B4D16F700F9EC3F /* Sources */,
 				AC842E322B4D16F700F9EC3F /* Frameworks */,
 				AC842E332B4D16F700F9EC3F /* Resources */,
@@ -1228,7 +1239,7 @@
 		};
 		6CF687EC2C20151500ED13D2 /* LInter */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -1246,7 +1257,7 @@
 		};
 		6CF687ED2C20153800ED13D2 /* Formatter */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -1258,7 +1269,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nexport PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftformat > /dev/null; then\n  swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
 		};
@@ -1282,6 +1293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC5703AF2BA1865400248D45 /* LangchainSheet.swift in Sources */,
+				6C5D6B062C3B74920016B46F /* V3ViewHelper.swift in Sources */,
 				AC40BC002B55221000AA7D1C /* DataInteractor.swift in Sources */,
 				AC30146B2B9AFC0D00B24460 /* BaseLoader.swift in Sources */,
 				ACDCFDDA2B5AD36F00DAB674 /* IntHelper.swift in Sources */,
@@ -1585,7 +1597,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"ollamaGUI/Preview Content\"";
-				DEVELOPMENT_TEAM = D5W99SHK6S;
+				DEVELOPMENT_TEAM = 8UH94HQT78;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1615,7 +1627,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"ollamaGUI/Preview Content\"";
-				DEVELOPMENT_TEAM = D5W99SHK6S;
+				DEVELOPMENT_TEAM = 8UH94HQT78;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
